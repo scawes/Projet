@@ -12,11 +12,13 @@ public class Adulte extends Etat implements Trace {
 	public Adulte(Fourmi fourmi) {
 		super(fourmi);
 		vie=200;
+		
 		role=Role.getRole(fourmi);
 	}
 
 	@Override
 	public	void evenement() {
+
 		role.evenement();
 	}
 

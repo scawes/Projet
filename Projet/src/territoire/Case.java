@@ -11,10 +11,12 @@ public class Case implements Trace{
 
 	Position position;
 	List<Fourmi> fourmiPresente;
+	Boolean marked;
 	
 	Case(Position position) {
 		this.position = position;
 		fourmiPresente = new ArrayList<Fourmi>();
+		marked=false;
 	}
 
 	public void ajouterEntite(Fourmi fourmi){

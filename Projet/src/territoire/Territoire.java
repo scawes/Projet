@@ -7,16 +7,19 @@ import java.util.Map;
 
 import fourmi.Fourmi;
 import fourmiliere.Fourmiliere;
+import observeur.Evenement;
+import observeur.Observeur;
 import rapports.Rapport;
+import rapports.RapportTrace;
 import rapports.Trace;
 
-public class Territoire implements Trace{
+public class Territoire implements Observeur,Trace{
 
 	static Territoire territoire = new Territoire();
 	Map<Position, Case> grille;
 	List<Fourmiliere> listeFourmiliere;
 	
-	static Territoire getInstance(){
+	public static Territoire getInstance(){
 		return territoire;
 	}
 	
@@ -55,5 +58,15 @@ public class Territoire implements Trace{
 		for(Position position : grille.keySet()){
 			grille.get(position).trace(rapport);
 		}
+	}
+
+	@Override
+	public void receive(Evenement evt) {
+		for(Fourmiliere fourmiliere : listeFourmiliere){
+			fourmiliere.evenement();;
+		}
+		Rapport rapport = new RapportTrace();
+		trace(rapport);
+		System.out.println(rapport);
 	}
 }
