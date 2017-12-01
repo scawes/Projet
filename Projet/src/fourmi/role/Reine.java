@@ -23,7 +23,7 @@ public class Reine extends Role implements Trace {
 	}
 
 	private void ponte() {
-		fourmi.getFourmiliere().ajouterFourmi(new Fourmi(fourmi.getFourmiliere()));
+		fourmi.getFourmiliere().ajouterFourmi(new Fourmi(fourmi.getFourmiliere(),fourmi.getPosition()));
 	}
 
 	@Override

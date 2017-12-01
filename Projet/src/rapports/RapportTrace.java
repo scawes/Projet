@@ -10,6 +10,8 @@ import fourmi.role.Reine;
 import fourmi.role.Sexue;
 import fourmi.role.Soldat;
 import fourmiliere.Fourmiliere;
+import territoire.Case;
+import territoire.Territoire;
 
 public class RapportTrace implements Rapport{
 	private Integer nombreOeuf;
@@ -95,6 +97,19 @@ public class RapportTrace implements Rapport{
 	@Override
 	public void traceForFourmiliere(Soldat solda) {
 		this.nombreSolda++;
+	}
+
+	@Override
+	public void traceForFourmiliere(Territoire territoire) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	@Override
+	public void traceForFourmiliere(Case caseTerritoire) {
+		// TODO Auto-generated method stub
+		
 	}
 	
 }

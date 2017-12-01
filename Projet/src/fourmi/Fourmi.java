@@ -5,14 +5,17 @@ import fourmi.etat.Oeuf;
 import fourmiliere.Fourmiliere;
 import rapports.Rapport;
 import rapports.Trace;
+import territoire.Position;
 
 public class Fourmi implements Trace {
 	
 	Fourmiliere fourmiliere;
 	Etat etat;
+	Position position;
 
-	public Fourmi(Fourmiliere fourmiliere) {
+	public Fourmi(Fourmiliere fourmiliere,Position position) {
 		etat=new Oeuf(this);
+		this.position=position;
 		this.fourmiliere=fourmiliere;
 	}
 	
@@ -22,6 +25,10 @@ public class Fourmi implements Trace {
 	
 	public Fourmiliere getFourmiliere() {
 		return fourmiliere;
+	}
+	
+	public Position getPosition() {
+		return position;
 	}
 
 	public void evenement() {

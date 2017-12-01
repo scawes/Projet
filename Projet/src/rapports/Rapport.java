@@ -10,6 +10,8 @@ import fourmi.role.Reine;
 import fourmi.role.Sexue;
 import fourmi.role.Soldat;
 import fourmiliere.Fourmiliere;
+import territoire.Case;
+import territoire.Territoire;
 
 public interface Rapport {
 	void traceForFourmiliere(Fourmiliere fourmiliere);
@@ -20,6 +22,8 @@ public interface Rapport {
 	void traceForFourmiliere(Lymphe lymphe);
 	void traceForFourmiliere(Reine reine);
 	void traceForFourmiliere(Ouvriere ouvriere);
-	void traceForFourmiliere(Soldat solda);
+	void traceForFourmiliere(Soldat soldat);
 	void traceForFourmiliere(Sexue sexue);
+	void traceForFourmiliere(Territoire territoire);
+	void traceForFourmiliere(Case caseTerritoire);
 }
