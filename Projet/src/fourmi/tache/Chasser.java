@@ -8,6 +8,7 @@ import territoire.Territoire;
 public class Chasser extends Tache {
 
 	Case emplacement;
+	Case emplacementPrecedent;
 	
 	public Chasser(Fourmi fourmi) {
 		super(fourmi);
@@ -23,6 +24,13 @@ public class Chasser extends Tache {
 		Case VoisinBas  = Territoire.getInstance().getCase(new Position(positionX,positionY-1));
 		
 		
+	}
+	
+	int importanceCase(Case caseTest){
+		if(caseTest.getPheromone())return 2;
+		if(emplacementPrecedent.equals(caseTest))return 0;
+		
+		return 1;
 	}
 	
 }

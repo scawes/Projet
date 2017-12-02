@@ -10,6 +10,7 @@ import fourmiliere.Fourmiliere;
 import observeur.Evenement;
 import observeur.Observeur;
 import rapports.Rapport;
+import rapports.RapportGraphique;
 import rapports.RapportTrace;
 import rapports.Trace;
 
@@ -26,7 +27,7 @@ public class Territoire implements Observeur,Trace{
 	Territoire() {
 		grille= new HashMap<Position,Case>();
 		listeFourmiliere=new ArrayList<Fourmiliere>();
-		//creerCase(new Position(0, 0));
+		creerCase(new Position(0, 0));
 	}
 	
 	public Case creerCase(Position nouvellePosition){
@@ -57,6 +58,7 @@ public class Territoire implements Observeur,Trace{
 		}
 		for(Position position : grille.keySet()){
 			grille.get(position).trace(rapport);
+			System.out.println("territoire");
 		}
 	}
 
@@ -65,8 +67,8 @@ public class Territoire implements Observeur,Trace{
 		for(Fourmiliere fourmiliere : listeFourmiliere){
 			fourmiliere.evenement();;
 		}
-		Rapport rapport = new RapportTrace();
+		/*Rapport rapport = new RapportTrace();
 		trace(rapport);
-		System.out.println(rapport);
+		System.out.println(rapport);*/
 	}
 }

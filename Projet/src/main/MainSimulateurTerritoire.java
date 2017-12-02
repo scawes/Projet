@@ -1,7 +1,10 @@
 package main;
 
+import Vue.LanceurVue;
 import fourmi.Fourmi;
 import fourmi.etat.Adulte;
+import rapports.Rapport;
+import rapports.RapportGraphique;
 import simulateur.Simulateur;
 import territoire.Position;
 import territoire.Territoire;
@@ -18,6 +21,9 @@ public class MainSimulateurTerritoire {
 		Simulateur sim = new Simulateur(Territoire.getInstance());
 		sim.start();
 
+		
+		LanceurVue.getVue().lancer(args);
+		
 	}
 
 }

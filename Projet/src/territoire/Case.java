@@ -18,6 +18,18 @@ public class Case implements Trace{
 		fourmiPresente = new ArrayList<Fourmi>();
 		marked=false;
 	}
+	
+	public Position getPosition(){
+		return position;
+	}
+	
+	public void setPheromone(){
+		marked=true;
+	}
+	
+	public boolean getPheromone(){
+		return marked;
+	}
 
 	public void ajouterEntite(Fourmi fourmi){
 		fourmiPresente.add(fourmi);
