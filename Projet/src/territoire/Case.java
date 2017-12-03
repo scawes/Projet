@@ -4,7 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import Vue.Controleur;
+import Vue.GestionVue;
 import fourmi.Fourmi;
+import observeur.Evenement;
+import observeur.Observeur;
 import rapports.Rapport;
 import rapports.Trace;
 
@@ -13,6 +16,7 @@ public class Case implements Trace{
 	Position position;
 	List<Fourmi> fourmiPresente;
 	int element;
+	int vie = 20;
 	
 	Case(Position position) {
 		this.position = position;
@@ -26,8 +30,11 @@ public class Case implements Trace{
 	}
 	
 	public void setPheromone(int element){
-		this.element=element;
-		draw();
+		if(this.element!=element){
+			this.element=element;
+			draw();
+		}
+		vie=50;
 	}
 	
 	public int getPheromone(){
@@ -47,12 +54,22 @@ public class Case implements Trace{
 	}
 	
 	void draw(){
-		Controleur.drawCase(getPosition(),getPheromone());
+		GestionVue.getInstance().drawCase(getPosition(),getPheromone());
 	}
 	
 	
 	@Override
 	public void trace(Rapport rapport) {
 		rapport.traceForFourmiliere(this);
+	}
+
+	
+	public void evenement() {
+		if(fourmiPresente.size()<=0||element>=0)vie--;
+		if(vie<0){
+			//Controleur.clearCase(position);
+			//Territoire.getInstance().removeCase(this);
+			setPheromone(0);
+		}
 	}
 }

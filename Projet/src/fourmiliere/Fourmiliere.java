@@ -7,7 +7,6 @@ import fourmi.Fourmi;
 import rapports.Rapport;
 import rapports.Trace;
 import territoire.Position;
-import territoire.Territoire;
 
 public class Fourmiliere implements Trace {
 	

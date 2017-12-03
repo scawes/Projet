@@ -2,22 +2,22 @@ package territoire;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 
 import fourmi.Fourmi;
 import fourmiliere.Fourmiliere;
 import observeur.Evenement;
 import observeur.Observeur;
 import rapports.Rapport;
-import rapports.RapportGraphique;
-import rapports.RapportTrace;
 import rapports.Trace;
 
 public class Territoire implements Observeur,Trace{
 
 	static Territoire territoire = new Territoire();
-	HashMap<Position, Case> grille;
+	Map<Position, Case> grille;
 	List<Fourmiliere> listeFourmiliere;
 	
 	public static Territoire getInstance(){
@@ -28,6 +28,7 @@ public class Territoire implements Observeur,Trace{
 		grille= new HashMap<Position,Case>();
 		listeFourmiliere=new ArrayList<Fourmiliere>();
 	}
+	
 	
 	public Case creerCase(Position nouvellePosition){
 		Case nouvelleCase = new Case(nouvellePosition);
@@ -43,6 +44,10 @@ public class Territoire implements Observeur,Trace{
 			}
 		}
 		return creerCase(position);
+	}
+	
+	public void removeCase(Case maCase){
+		grille.remove(maCase.getPosition());
 	}
 	
 	public Fourmiliere nouvelleFourmilliere(Fourmi reine){
@@ -61,9 +66,13 @@ public class Territoire implements Observeur,Trace{
 		for(Fourmiliere fourmiliere : listeFourmiliere){
 			fourmiliere.trace(rapport);
 		}
-		for(Position position : grille.keySet()){
-			grille.get(position).trace(rapport);
+		for(Iterator<Entry<Position, Case>> iterateur = grille.entrySet().iterator();iterateur.hasNext();){
+			Map.Entry<Position, Case> emplacement = (Map.Entry<Position, Case>) iterateur.next();
+			emplacement.getValue().trace(rapport);
 		}
+		/*for(Position position : grille.keySet()){
+			grille.get(position).trace(rapport);
+		}*/
 	}
 
 	@Override
@@ -71,5 +80,19 @@ public class Territoire implements Observeur,Trace{
 		for(Fourmiliere fourmiliere : listeFourmiliere){
 			fourmiliere.evenement();;
 		}
+		Iterator<Entry<Position, Case>> iterateur = grille.entrySet().iterator();
+		Map.Entry<Position, Case> emplacement  = (Map.Entry<Position, Case>) iterateur.next();
+		Case temporaire = emplacement.getValue();
+		while(iterateur.hasNext()){
+			emplacement = (Map.Entry<Position, Case>) iterateur.next();
+			temporaire.evenement();
+			temporaire =  emplacement.getValue();
+		}
+		
+		/*for(Iterator<Entry<Position, Case>> iterateur = grille.entrySet().iterator();iterateur.hasNext();){
+			Map.Entry<Position, Case> emplacement = (Map.Entry<Position, Case>) iterateur.next();
+			emplacement.getValue().evenement();
+			iterateur.
+		}*/
 	}
 }

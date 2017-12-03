@@ -5,6 +5,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
+import javafx.util.Duration;
 import observeur.Evenement;
 import observeur.Observable;
 import observeur.Observeur;
@@ -12,11 +15,12 @@ import observeur.TimeChange;
 
 public class Simulateur extends Thread implements Observable {
 	
-	int TICK = 100;
+	int TICK = 300;
 
 	private Map<String, List<Observeur>> observers;
 	
-	static Simulateur simulateur = new Simulateur();
+	static Simulateur simulateur = new Simulateur(100);
+	Timeline timeline;
 	
 	public static Simulateur getInstance(){
 		return simulateur;
@@ -26,12 +30,41 @@ public class Simulateur extends Thread implements Observable {
 		this.observers = new HashMap<>();
 	}
 	
+	//simulateur temps optimiser canvas
+	Simulateur(int time) {
+		
+		this.observers = new HashMap<>();
+		timeline = new Timeline(
+                new KeyFrame(
+                        Duration.seconds(0), 
+                        event -> run()
+                ),
+                new KeyFrame(Duration.seconds((double)time/1000))
+        );
+        timeline.setCycleCount(Timeline.INDEFINITE);
+        timeline.play();
+		
+	}
+	
+	public void setTimer(int temps){
+		timeline.stop();
+		timeline = new Timeline(
+                new KeyFrame(
+                        Duration.seconds(0), 
+                        event -> run()
+                ),
+                new KeyFrame(Duration.seconds((double)temps/1000))
+        );
+        timeline.setCycleCount(Timeline.INDEFINITE);
+        timeline.play();
+	}
+	
 	Simulateur(Observeur observer) {
 		this.observers = new HashMap<>();
 		this.record(TimeChange.class.getName(), observer);
 	}
 
-	@Override
+	/*@Override
 	public void run() {
 		while (true) {
 
@@ -42,6 +75,12 @@ public class Simulateur extends Thread implements Observable {
 			}
 			this.signal(new TimeChange(this));
 		}
+
+	}*/
+	@Override
+	public void run() {
+			this.signal(new TimeChange(this));
+		
 
 	}
 

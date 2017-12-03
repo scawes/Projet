@@ -15,8 +15,18 @@ public class Chasser extends Tache {
 	public Chasser(Fourmi fourmi) {
 		super(fourmi);
 		emplacement = Territoire.getInstance().getCase(fourmi.getPosition());
+		emplacementPrecedent=emplacement;
 	}
 
+	public void changerCase(Case nouvellePosition){
+		emplacementPrecedent=emplacement;
+		emplacementPrecedent.supprimerEntite(fourmi);
+		emplacement=nouvellePosition;
+		emplacement.setPheromone(getIndexFourmiliere());
+		emplacement.ajouterEntite(fourmi);
+		fourmi.setPosition(emplacement.getPosition());
+	}
+	
 	void deplacer(){
 		int positionX = fourmi.getPosition().getX();
 		int positionY = fourmi.getPosition().getY();
@@ -26,12 +36,7 @@ public class Chasser extends Tache {
 		listeVoisin[2]  = Territoire.getInstance().getCase(new Position(positionX,positionY+1));
 		listeVoisin[3]  = Territoire.getInstance().getCase(new Position(positionX,positionY-1));
 		
-		emplacementPrecedent=emplacement;
-		emplacementPrecedent.supprimerEntite(fourmi);
-		emplacement=nextCase(listeVoisin);
-		emplacement.setPheromone(getIndexFourmiliere());
-		emplacement.ajouterEntite(fourmi);
-		fourmi.setPosition(emplacement.getPosition());
+		changerCase(nextCase(listeVoisin));
 	}
 	
 	Case nextCase(Case [] listeVoisin){
@@ -54,7 +59,7 @@ public class Chasser extends Tache {
 				seuil += listeProbabilite[i];
 			}
 		}
-		return null;
+		return emplacement;
 		
 	}
 	
@@ -63,12 +68,22 @@ public class Chasser extends Tache {
 	}
 	
 	int importanceCase(Case caseTest){
-		if(emplacementPrecedent.equals(caseTest))return 1;
-		if(caseTest.getPheromone()==getIndexFourmiliere())return 10;
+		if(caseTest.getPosition().getX()<0 || caseTest.getPosition().getY()<0)return 0; //fixe
+		if(caseTest.equals(emplacementPrecedent))return 1;	//préférence aucun retour en arriere
+		
+		if(caseTest.getPheromone()==getIndexFourmiliere()){	//préférence suivre phéromone
+			return 3;
+		}
+		//préférence a aller tout droit
+		if(emplacementPrecedent.getPosition().getX()-emplacement.getPosition().getX()== emplacement.getPosition().getX()-caseTest.getPosition().getX() ||
+				emplacementPrecedent.getPosition().getY()-emplacement.getPosition().getY()== emplacement.getPosition().getY()-caseTest.getPosition().getY() ){
+			return 2;
+		}
+		//option case inataignable
 		if(caseTest.getPheromone()==-2)return 0;
 		
-		
-		return 100;
+		//case par defaut
+		return 1;
 	}
 
 	@Override
