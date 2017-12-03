@@ -15,7 +15,7 @@ import observeur.TimeChange;
 
 public class Simulateur extends Thread implements Observable {
 	
-	int TICK = 300;
+	int TICK = 100;
 
 	private Map<String, List<Observeur>> observers;
 	

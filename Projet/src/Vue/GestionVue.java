@@ -51,20 +51,26 @@ public class GestionVue {
         gc.setFill(Color.BLACK);
 
         gc.fillRect(position.getX()*taille, position.getY()*taille, taille, taille);
-        if(element == 1) {
-        	gc.setFill(Color.GREEN);
-        } else if(element == -1) {
-        	gc.setFill(Color.BROWN);
-        } else if(element == -2) {
-        	gc.setFill(Color.BLACK);
-        } else {
-        	gc.setFill(Color.WHITE);
-        }
+        
+        gc.setFill(getColor(element));
+        
         gc.fillRect(position.getX()*taille+1, position.getY()*taille+1, taille-2, taille-2);       
         gc.setFill(Color.BLACK);
         //gc.fillText(String.valueOf(Territoire.getInstance().getCase(position).getEntite().size()), position.getX()*taille+taille*0.25, position.getY()*taille+taille*0.75, taille/2);
         //gc.fillText(String.valueOf(Territoire.getInstance().getCase(position).getEntite().size()), position.getX()*taille+taille*0.25, position.getY()*taille+taille*0.75);
     }
+	
+	Color getColor(int element){
+		if(element == 1) {
+        	return Color.GREEN;
+        } else if(element == -1) {
+        	return Color.BROWN;
+        } else if(element == -2) {
+        	return Color.BLACK;
+        } else {
+        	return Color.WHITE;
+        }
+	}
 	
 	public void clear(){
 		

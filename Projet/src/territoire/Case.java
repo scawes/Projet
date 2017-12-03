@@ -3,11 +3,8 @@ package territoire;
 import java.util.ArrayList;
 import java.util.List;
 
-import Vue.Controleur;
 import Vue.GestionVue;
 import fourmi.Fourmi;
-import observeur.Evenement;
-import observeur.Observeur;
 import rapports.Rapport;
 import rapports.Trace;
 
@@ -34,7 +31,7 @@ public class Case implements Trace{
 			this.element=element;
 			draw();
 		}
-		vie=50;
+		vie=100;
 	}
 	
 	public int getPheromone(){
@@ -65,7 +62,7 @@ public class Case implements Trace{
 
 	
 	public void evenement() {
-		if(fourmiPresente.size()<=0||element>=0)vie--;
+		if(fourmiPresente.size()<=0||element>0)vie--;
 		if(vie<0){
 			//Controleur.clearCase(position);
 			//Territoire.getInstance().removeCase(this);
