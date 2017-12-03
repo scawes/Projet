@@ -3,6 +3,7 @@ package territoire;
 import java.util.ArrayList;
 import java.util.List;
 
+import Vue.Controleur;
 import fourmi.Fourmi;
 import rapports.Rapport;
 import rapports.Trace;
@@ -11,24 +12,26 @@ public class Case implements Trace{
 
 	Position position;
 	List<Fourmi> fourmiPresente;
-	Boolean marked;
+	int element;
 	
 	Case(Position position) {
 		this.position = position;
 		fourmiPresente = new ArrayList<Fourmi>();
-		marked=false;
+		element=0;
+		draw();
 	}
 	
 	public Position getPosition(){
 		return position;
 	}
 	
-	public void setPheromone(){
-		marked=true;
+	public void setPheromone(int element){
+		this.element=element;
+		draw();
 	}
 	
-	public boolean getPheromone(){
-		return marked;
+	public int getPheromone(){
+		return element;
 	}
 
 	public void ajouterEntite(Fourmi fourmi){
@@ -37,6 +40,14 @@ public class Case implements Trace{
 	
 	public void supprimerEntite(Fourmi fourmi){
 		fourmiPresente.remove(fourmi);
+	}
+	
+	public List<Fourmi> getEntite(){
+		return fourmiPresente;
+	}
+	
+	void draw(){
+		Controleur.drawCase(getPosition(),getPheromone());
 	}
 	
 	

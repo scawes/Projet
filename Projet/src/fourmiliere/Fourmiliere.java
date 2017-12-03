@@ -7,20 +7,21 @@ import fourmi.Fourmi;
 import rapports.Rapport;
 import rapports.Trace;
 import territoire.Position;
+import territoire.Territoire;
 
 public class Fourmiliere implements Trace {
 	
 
-	List<Position> position;
+	List<Position> surface;
 	List<Fourmi> population;
 	
 	public Fourmiliere(Fourmi reine) {
 		population=new ArrayList<Fourmi>();
-		position=new ArrayList<Position>();
+		surface=new ArrayList<Position>();
 		reine.setFourmiliere(this);
 
 		ajouterFourmi(reine);
-		position.add(reine.getPosition());
+		extentionConstruction(reine.getPosition());
 		
 	}
 	
@@ -29,10 +30,13 @@ public class Fourmiliere implements Trace {
 	}
 	
 	public void evenement() {
-		
 		for(int i=0;i<population.size();i++){
 			population.get(i).evenement();
 		}	
+	}
+	
+	public void extentionConstruction(Position position){
+		surface.add(position);
 	}
 
 	@Override

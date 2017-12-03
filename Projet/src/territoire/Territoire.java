@@ -17,7 +17,7 @@ import rapports.Trace;
 public class Territoire implements Observeur,Trace{
 
 	static Territoire territoire = new Territoire();
-	Map<Position, Case> grille;
+	HashMap<Position, Case> grille;
 	List<Fourmiliere> listeFourmiliere;
 	
 	public static Territoire getInstance(){
@@ -27,7 +27,6 @@ public class Territoire implements Observeur,Trace{
 	Territoire() {
 		grille= new HashMap<Position,Case>();
 		listeFourmiliere=new ArrayList<Fourmiliere>();
-		creerCase(new Position(0, 0));
 	}
 	
 	public Case creerCase(Position nouvellePosition){
@@ -37,17 +36,23 @@ public class Territoire implements Observeur,Trace{
 	}
 	
 	public Case getCase(Position position){
-		Case resultat = grille.get(position);
-		if(resultat == null){
-			resultat = creerCase(position);
+
+		for(Position key : grille.keySet()){
+			if(key.equals(position)){
+				return grille.get(key);
+			}
 		}
-		return resultat;
+		return creerCase(position);
 	}
 	
 	public Fourmiliere nouvelleFourmilliere(Fourmi reine){
 		Fourmiliere fourmiliere = new Fourmiliere(reine);
 		listeFourmiliere.add(fourmiliere);
 		return fourmiliere;
+	}
+	
+	public List<Fourmiliere> getFourmiliere(){
+		return listeFourmiliere;
 	}
 
 	@Override
@@ -58,7 +63,6 @@ public class Territoire implements Observeur,Trace{
 		}
 		for(Position position : grille.keySet()){
 			grille.get(position).trace(rapport);
-			System.out.println("territoire");
 		}
 	}
 
@@ -67,8 +71,5 @@ public class Territoire implements Observeur,Trace{
 		for(Fourmiliere fourmiliere : listeFourmiliere){
 			fourmiliere.evenement();;
 		}
-		/*Rapport rapport = new RapportTrace();
-		trace(rapport);
-		System.out.println(rapport);*/
 	}
 }

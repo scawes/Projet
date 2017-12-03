@@ -11,10 +11,22 @@ import observeur.Observeur;
 import observeur.TimeChange;
 
 public class Simulateur extends Thread implements Observable {
+	
+	int TICK = 100;
 
 	private Map<String, List<Observeur>> observers;
+	
+	static Simulateur simulateur = new Simulateur();
+	
+	public static Simulateur getInstance(){
+		return simulateur;
+	}
 
-	public Simulateur(Observeur observer) {
+	Simulateur() {
+		this.observers = new HashMap<>();
+	}
+	
+	Simulateur(Observeur observer) {
 		this.observers = new HashMap<>();
 		this.record(TimeChange.class.getName(), observer);
 	}
@@ -24,7 +36,7 @@ public class Simulateur extends Thread implements Observable {
 		while (true) {
 
 			try {
-				Thread.sleep(300);
+				Thread.sleep(TICK);
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}

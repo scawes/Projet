@@ -20,7 +20,6 @@ public class LanceurVue extends Application {
 	    stage.setTitle("Fourmiliere");
 	    
 	    Parent root = FXMLLoader.load(getClass().getResource("InterfaceFourmi.fxml"));
-	    System.out.println("Test");
 	    Scene scene = new Scene(root);
 	    stage.setScene(scene);
 	    stage.show();

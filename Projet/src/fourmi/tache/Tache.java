@@ -9,4 +9,10 @@ public abstract class Tache {
 	public Tache(Fourmi fourmi) {
 		this.fourmi=fourmi;
 	}
+
+	public static Tache getTache(Fourmi fourmi) {
+		return new Chasser(fourmi);
+	}
+	
+	public abstract void evenement();
 }

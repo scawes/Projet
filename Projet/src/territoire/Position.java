@@ -19,4 +19,13 @@ public class Position {
 		this.x=x;
 		this.y=y;
 	}
+	
+	public String toString(){
+		return "x : "+x+" y : "+y;
+	}
+	
+	public boolean equals(Position position){
+		if(x==position.getX() && y==position.getY())return true;
+		return false;
+	}
 }

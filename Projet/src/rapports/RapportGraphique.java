@@ -110,7 +110,7 @@ public class RapportGraphique implements Rapport{
 	@Override
 	public void traceForFourmiliere(Case caseTerritoire) {
 		// TODO Auto-generated method stub
-		Controleur.drawCase(caseTerritoire.getPosition());
+		//Controleur.drawCase(caseTerritoire.getPosition(),caseTerritoire.getPheromone());
 	}
 	
 }
