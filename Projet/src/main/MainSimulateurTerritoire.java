@@ -1,16 +1,7 @@
 package main;
 
 import Vue.LanceurVue;
-import Vue.MiseAJour;
-import fourmi.Fourmi;
-import fourmi.etat.Adulte;
-import observeur.TimeChange;
-import rapports.Rapport;
-import rapports.RapportGraphique;
 import simulateur.Simulateur;
-import territoire.Case;
-import territoire.Position;
-import territoire.Territoire;
 
 public class MainSimulateurTerritoire {
 

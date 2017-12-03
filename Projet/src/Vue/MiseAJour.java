@@ -15,10 +15,9 @@ public class MiseAJour {
 		
 	}
 	
+	@SuppressWarnings("deprecation")
 	public static void graphique(){
 		Simulateur.getInstance().suspend();
-		
-		
 		GestionVue.getInstance().clear();
 		Rapport rapport = new RapportGraphique();
 		Territoire.getInstance().trace(rapport);

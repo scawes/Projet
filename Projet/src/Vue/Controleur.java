@@ -3,19 +3,12 @@ package Vue;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import fourmi.Fourmi;
-import fourmi.etat.Adulte;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.paint.Color;
-import observeur.TimeChange;
-import rapports.Rapport;
-import rapports.RapportGraphique;
 import simulateur.Simulateur;
 import territoire.Position;
-import territoire.Territoire;
 
 public class Controleur implements Initializable {
 	
