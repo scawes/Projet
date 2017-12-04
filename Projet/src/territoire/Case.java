@@ -2,8 +2,10 @@ package territoire;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 
 import Vue.GestionVue;
 import fourmi.Fourmi;
@@ -31,6 +33,8 @@ public class Case implements Observable, Trace{
 	private Map<String, List<Observeur>> observers;
 	
 	Case(Position position,GestionVue gestionVue) {
+		observers = new HashMap<String, List<Observeur>>();
+		
 		this.position = position;
 		fourmiPresente = new ArrayList<Fourmi>();
 		element=0;
@@ -55,7 +59,7 @@ public class Case implements Observable, Trace{
 	        else {
 	          Pheromone pheromone;
 	          if(maFourmi instanceof Ouvriere)pheromone=new PheromoneMale(maFourmi.getEtat().getFourmi()) ;
-	          if(maFourmi instanceof Sexue)pheromone=new PheromoneFemelle(maFourmi.getEtat().getFourmi()) ;
+	          else pheromone=new PheromoneFemelle(maFourmi.getEtat().getFourmi()) ;
 	          
 	          this.listePheromones.put(maFourmi.getEtat().getFourmi().getFourmiliere(),pheromone );
 	        }
@@ -65,7 +69,12 @@ public class Case implements Observable, Trace{
 	}
 	
 	public int getPheromone(){
-		return element;
+		int puissance=0;
+		for(Iterator<Entry<Fourmiliere, Pheromone>> it = listePheromones.entrySet().iterator() ; it.hasNext();){
+			int valeur = it.next().getValue().getPuissance();
+			if(puissance<valeur)puissance=valeur;
+		}
+		return puissance;
 	}
 
 	public void ajouterEntite(Fourmi fourmi){

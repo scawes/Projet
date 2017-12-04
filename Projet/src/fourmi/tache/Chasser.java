@@ -27,7 +27,7 @@ public class Chasser extends Tache {
 		emplacementPrecedent=emplacement;
 		emplacementPrecedent.supprimerEntite(role.getEtat().getFourmi());
 		emplacement=nouvellePosition;
-		emplacement.addPheromone(getIndexFourmiliere());
+		emplacement.addPheromone(role);
 		emplacement.ajouterEntite(role.getEtat().getFourmi());
 		role.getEtat().getFourmi().setPosition(emplacement.getPosition());
 	}
@@ -89,6 +89,17 @@ public class Chasser extends Tache {
 		
 		//case par defaut
 		return 1;
+	}
+	
+	int importanceCase2(Case caseTest){
+		if(caseTest.getPosition().getX()<0 || caseTest.getPosition().getY()<0)return 0; //fixe
+		if(caseTest.equals(emplacementPrecedent))return 1;	//pr�f�rence aucun retour en arriere
+		
+		//option case inataignable
+		if(caseTest.getPheromone()==-2)return 0;
+		
+		//case par defaut
+		return caseTest.getPheromone();
 	}
 
 	@Override

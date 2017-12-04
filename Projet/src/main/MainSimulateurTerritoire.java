@@ -21,7 +21,7 @@ public class MainSimulateurTerritoire {
 		//Simulateur.getInstance().start();
 
 		
-		LanceurVue.getVue().lancer(args);
+		new LanceurVue().lancer(args);
 		
 	}
 

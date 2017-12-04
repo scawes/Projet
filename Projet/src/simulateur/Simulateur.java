@@ -25,11 +25,11 @@ public class Simulateur extends Thread implements Observable {
 	
 
 	public Simulateur() {
-		this.observers = new HashMap<>();
+		this(100);
 	}
 	
 	//simulateur temps optimiser canvas
-	Simulateur(int time) {
+	public Simulateur(int time) {
 		
 		this.observers = new HashMap<>();
 		timeline = new Timeline(

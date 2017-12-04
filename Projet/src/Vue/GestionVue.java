@@ -53,7 +53,7 @@ public class GestionVue implements Observeur{
 
         gc.fillRect(position.getX()*taille, position.getY()*taille, taille, taille);
         
-        gc.setFill(getColor(element));
+        gc.setFill(getColor2(element));
         
         gc.fillRect(position.getX()*taille+1, position.getY()*taille+1, taille-2, taille-2);       
         gc.setFill(Color.BLACK);
@@ -64,6 +64,19 @@ public class GestionVue implements Observeur{
 	Color getColor(int element){
 		if(element == 1) {
         	return Color.GREEN;
+        } else if(element == -1) {
+        	return Color.BROWN;
+        } else if(element == -2) {
+        	return Color.BLACK;
+        } else {
+        	return Color.WHITE;
+        }
+	}
+	
+	Color getColor2(int element){
+		if(element > 0) {
+			if(element < 1000)return Color.color(1-(double)element/1000, 1, 1-(double)element/1000);
+			else return Color.color(0, 1, 0);
         } else if(element == -1) {
         	return Color.BROWN;
         } else if(element == -2) {

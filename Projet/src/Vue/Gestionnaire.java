@@ -12,9 +12,11 @@ public class Gestionnaire {
 	GestionRapport gestionRapport;
 	
 	public Gestionnaire(Canvas canvas) {
+		gestionVue = new GestionVue(this,canvas);
 		territoire=new Territoire(this);
 		simulateur =new Simulateur();
-		gestionVue = new GestionVue(this,canvas);
+		gestionRapport= new GestionRapport(this);
+
 	}
 	
 	public Territoire getTerritoire() {

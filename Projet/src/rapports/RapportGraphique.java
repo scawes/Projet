@@ -1,5 +1,6 @@
 package rapports;
 
+import Vue.GestionRapport;
 import Vue.GestionVue;
 import fourmi.Fourmi;
 import fourmi.etat.Adulte;
@@ -16,9 +17,10 @@ import territoire.Territoire;
 
 public class RapportGraphique implements Rapport{
 	
+	GestionRapport gestionRapport;
 	
-	public RapportGraphique() {
-		
+	public RapportGraphique(GestionRapport gestionRapport) {
+		this.gestionRapport=gestionRapport;
 	}
 	
 	@Override
@@ -87,7 +89,7 @@ public class RapportGraphique implements Rapport{
 	@Override
 	public void traceForFourmiliere(Case caseTerritoire) {
 		// TODO Auto-generated method stub
-		GestionVue.getInstance().drawCase(caseTerritoire.getPosition(),caseTerritoire.getPheromone());
+		gestionRapport.getGestionnaire().getGestionVue().drawCase(caseTerritoire.getPosition(),caseTerritoire.getPheromone());
 	}
 	
 }

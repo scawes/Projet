@@ -8,9 +8,7 @@ import javafx.stage.Stage;
 
 
 public class LanceurVue extends Application {
-  
-	static LanceurVue vue = new LanceurVue();
-	  
+	
 	  public void lancer(String[] args) {
 	    launch(args); //lancement via un thread
 	  }
@@ -25,9 +23,7 @@ public class LanceurVue extends Application {
 	    stage.show();
 	  }
 	  
-	  public static LanceurVue getVue() {
-	    return vue;
-	  }
+
 	  
 
 	  
