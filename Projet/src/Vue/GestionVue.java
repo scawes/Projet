@@ -5,12 +5,15 @@ import fourmi.etat.Adulte;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
+import observeur.Evenement;
+import observeur.Observeur;
 import observeur.TimeChange;
 import simulateur.Simulateur;
+import territoire.Case;
 import territoire.Position;
 import territoire.Territoire;
 
-public class GestionVue {
+public class GestionVue implements Observeur{
 	
 
 	private Canvas canvas;
@@ -80,6 +83,12 @@ public class GestionVue {
 	
 	public void clearCase(Position position){
 		gc.clearRect(position.getX()*taille+1, position.getY()*taille+1, taille-2, taille-2);
+	}
+
+	@Override
+	public void receive(Evenement evt) {
+		Case casemodif = (Case)evt.source();
+		drawCase(casemodif.getPosition(),casemodif.getPheromone());
 	}
 	
 }

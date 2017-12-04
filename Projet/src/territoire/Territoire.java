@@ -30,7 +30,7 @@ public class Territoire implements Observeur,Trace{
 	
 	
 	public Case creerCase(Position nouvellePosition){
-		Case nouvelleCase = new Case(nouvellePosition);
+		Case nouvelleCase = new Case(nouvellePosition,gestionnaire.getGestionVue());
 		grille.put(nouvellePosition, nouvelleCase);
 		return nouvelleCase;
 	}

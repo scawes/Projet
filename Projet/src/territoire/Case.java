@@ -11,26 +11,33 @@ import fourmi.role.Ouvriere;
 import fourmi.role.Role;
 import fourmi.role.Sexue;
 import fourmiliere.Fourmiliere;
+import observeur.Evenement;
+import observeur.ModificationCase;
+import observeur.Observable;
+import observeur.Observeur;
 import pheromone.Pheromone;
 import pheromone.PheromoneFemelle;
 import pheromone.PheromoneMale;
 import rapports.Rapport;
 import rapports.Trace;
 
-public class Case implements Trace{
+public class Case implements Observable, Trace{
 
 	Position position;
 	List<Fourmi> fourmiPresente;
 	int element;
 	int vie = 20;
 	Map<Fourmiliere,Pheromone> listePheromones ;
+	private Map<String, List<Observeur>> observers;
 	
-	Case(Position position) {
+	Case(Position position,GestionVue gestionVue) {
 		this.position = position;
 		fourmiPresente = new ArrayList<Fourmi>();
 		element=0;
 		listePheromones = new HashMap<Fourmiliere,Pheromone>();
+		record(ModificationCase.class.getName(), gestionVue);
 		draw();
+		
 	}
 	
 	public Position getPosition(){
@@ -74,7 +81,7 @@ public class Case implements Trace{
 	}
 	
 	void draw(){
-		GestionVue.getInstance().drawCase(getPosition(),getPheromone());
+		signal(new ModificationCase(this));
 	}
 	
 	
@@ -92,4 +99,26 @@ public class Case implements Trace{
 			//addPheromone(0);
 		}
 	}
+	
+	@Override
+	public void record(String evtTypeName, Observeur o) {
+		if (!observers.containsKey(evtTypeName)) {
+			observers.put(evtTypeName, new ArrayList<Observeur>());
+		}
+		List<Observeur> l = observers.get(evtTypeName);
+		l.add(o);
+	}
+
+	@Override
+	public void signal(Evenement evt) {
+		String evtName = evt.getClass().getName();
+		if (!observers.containsKey(evtName)) {
+			return;
+		}
+		List<Observeur> l = observers.get(evtName);
+		for (Observeur o : l) {
+			o.receive(evt);
+		}
+	}
+	
 }
