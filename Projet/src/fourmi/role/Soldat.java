@@ -1,13 +1,13 @@
 package fourmi.role;
 
-import fourmi.Fourmi;
+import fourmi.etat.Etat;
 import rapports.Rapport;
 import rapports.Trace;
 
 public class Soldat extends Role implements Trace {
 
-	public Soldat(Fourmi fourmi) {
-		super(fourmi);
+	public Soldat(Etat etat) {
+		super(etat);
 		// TODO Auto-generated constructor stub
 	}
 

@@ -16,13 +16,9 @@ import rapports.Trace;
 
 public class Territoire implements Observeur,Trace{
 
-	static Territoire territoire = new Territoire();
 	Map<Position, Case> grille;
 	List<Fourmiliere> listeFourmiliere;
 	
-	public static Territoire getInstance(){
-		return territoire;
-	}
 	
 	Territoire() {
 		grille= new HashMap<Position,Case>();
@@ -51,7 +47,7 @@ public class Territoire implements Observeur,Trace{
 	}
 	
 	public Fourmiliere nouvelleFourmilliere(Fourmi reine){
-		Fourmiliere fourmiliere = new Fourmiliere(reine);
+		Fourmiliere fourmiliere = new Fourmiliere(reine,this);
 		listeFourmiliere.add(fourmiliere);
 		return fourmiliere;
 	}

@@ -7,14 +7,17 @@ import fourmi.Fourmi;
 import rapports.Rapport;
 import rapports.Trace;
 import territoire.Position;
+import territoire.Territoire;
 
 public class Fourmiliere implements Trace {
 	
 
 	List<Position> surface;
 	List<Fourmi> population;
+	Territoire territoire;
 	
-	public Fourmiliere(Fourmi reine) {
+	public Fourmiliere(Fourmi reine,Territoire territoire) {
+		this.territoire=territoire;
 		population=new ArrayList<Fourmi>();
 		surface=new ArrayList<Position>();
 		reine.setFourmiliere(this);
@@ -22,6 +25,10 @@ public class Fourmiliere implements Trace {
 		ajouterFourmi(reine);
 		extentionConstruction(reine.getPosition());
 		
+	}
+	
+	public Territoire getTerritoire() {
+		return territoire;
 	}
 	
 	public void ajouterFourmi(Fourmi fourmi){

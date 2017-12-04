@@ -13,29 +13,33 @@ public class Chasser extends Tache {
 	Case emplacement;
 	Case emplacementPrecedent;
 	
+	Territoire getTerritoire() {
+		return role.getEtat().getFourmi().getFourmiliere().getTerritoire();
+	}
+	
 	public Chasser(Role role) {
 		super(role);
-		emplacement = Territoire.getInstance().getCase(fourmi.getPosition());
+		emplacement = getTerritoire().getCase(role.getEtat().getFourmi().getPosition());
 		emplacementPrecedent=emplacement;
 	}
 
 	public void changerCase(Case nouvellePosition){
 		emplacementPrecedent=emplacement;
-		emplacementPrecedent.supprimerEntite(fourmi);
+		emplacementPrecedent.supprimerEntite(role.getEtat().getFourmi());
 		emplacement=nouvellePosition;
 		emplacement.setPheromone(getIndexFourmiliere());
-		emplacement.ajouterEntite(fourmi);
-		fourmi.setPosition(emplacement.getPosition());
+		emplacement.ajouterEntite(role.getEtat().getFourmi());
+		role.getEtat().getFourmi().setPosition(emplacement.getPosition());
 	}
 	
 	void deplacer(){
-		int positionX = fourmi.getPosition().getX();
-		int positionY = fourmi.getPosition().getY();
+		int positionX = role.getEtat().getFourmi().getPosition().getX();
+		int positionY = role.getEtat().getFourmi().getPosition().getY();
 		Case [] listeVoisin = new Case[4];
-		listeVoisin[0]  = Territoire.getInstance().getCase(new Position(positionX+1,positionY));
-		listeVoisin[1]  = Territoire.getInstance().getCase(new Position(positionX-1,positionY));
-		listeVoisin[2]  = Territoire.getInstance().getCase(new Position(positionX,positionY+1));
-		listeVoisin[3]  = Territoire.getInstance().getCase(new Position(positionX,positionY-1));
+		listeVoisin[0]  = getTerritoire().getCase(new Position(positionX+1,positionY));
+		listeVoisin[1]  = getTerritoire().getCase(new Position(positionX-1,positionY));
+		listeVoisin[2]  = getTerritoire().getCase(new Position(positionX,positionY+1));
+		listeVoisin[3]  = getTerritoire().getCase(new Position(positionX,positionY-1));
 		
 		changerCase(nextCase(listeVoisin));
 	}
@@ -65,7 +69,7 @@ public class Chasser extends Tache {
 	}
 	
 	int getIndexFourmiliere(){
-		return Territoire.getInstance().getFourmiliere().indexOf(fourmi.getFourmiliere())+1;
+		return getTerritoire().getFourmiliere().indexOf(role.getEtat().getFourmi().getFourmiliere())+1;
 	}
 	
 	int importanceCase(Case caseTest){

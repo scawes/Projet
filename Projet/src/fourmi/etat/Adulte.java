@@ -13,7 +13,7 @@ public class Adulte extends Etat implements Trace {
 		super(fourmi);
 		vie=200;
 		
-		role=Role.getRole(fourmi);
+		role=Role.getRole(this);
 	}
 
 	@Override

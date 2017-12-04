@@ -1,13 +1,14 @@
 package fourmi.role;
 
 import fourmi.Fourmi;
+import fourmi.etat.Etat;
 import rapports.Rapport;
 import rapports.Trace;
 
 public class Sexue extends Role implements Trace {
 
-	public Sexue(Fourmi fourmi) {
-		super(fourmi);
+	public Sexue(Etat etat) {
+		super(etat);
 		// TODO Auto-generated constructor stub
 	}
 
