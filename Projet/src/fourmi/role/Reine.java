@@ -1,6 +1,7 @@
 package fourmi.role;
 
 import fourmi.Fourmi;
+import fourmi.etat.Etat;
 import rapports.Rapport;
 import rapports.Trace;
 
@@ -12,8 +13,8 @@ public class Reine extends Role implements Trace {
 	private static int dureeDeVieMax = 10;
 	
 	
-	public Reine(Fourmi fourmi) {
-		super(fourmi);
+	public Reine(Etat etat) {
+		super(etat);
 		delaisPonte=5;
 		dureeDeVie = (dureeDeVieMin + (int)Math.random()* ((dureeDeVieMax-dureeDeVieMin)+1));
 		
@@ -30,7 +31,7 @@ public class Reine extends Role implements Trace {
 	}
 
 	private void ponte() {
-		fourmi.getFourmiliere().ajouterFourmi(new Fourmi(fourmi.getFourmiliere(),fourmi.getPosition()));
+		etat.getFourmi().getFourmiliere().ajouterFourmi(new Fourmi(etat.getFourmi().getFourmiliere(),etat.getFourmi().getPosition()));
 	}
 	
 	private void mortNaturelle() {
