@@ -27,7 +27,7 @@ public class Chasser extends Tache {
 		emplacementPrecedent=emplacement;
 		emplacementPrecedent.supprimerEntite(role.getEtat().getFourmi());
 		emplacement=nouvellePosition;
-		emplacement.setPheromone(getIndexFourmiliere());
+		emplacement.addPheromone(getIndexFourmiliere());
 		emplacement.ajouterEntite(role.getEtat().getFourmi());
 		role.getEtat().getFourmi().setPosition(emplacement.getPosition());
 	}
@@ -74,12 +74,12 @@ public class Chasser extends Tache {
 	
 	int importanceCase(Case caseTest){
 		if(caseTest.getPosition().getX()<0 || caseTest.getPosition().getY()<0)return 0; //fixe
-		if(caseTest.equals(emplacementPrecedent))return 1;	//préférence aucun retour en arriere
+		if(caseTest.equals(emplacementPrecedent))return 1;	//prï¿½fï¿½rence aucun retour en arriere
 		
-		if(caseTest.getPheromone()==getIndexFourmiliere()){	//préférence suivre phéromone
+		if(caseTest.getPheromone()==getIndexFourmiliere()){	//prï¿½fï¿½rence suivre phï¿½romone
 			return 3;
 		}
-		//préférence a aller tout droit
+		//prï¿½fï¿½rence a aller tout droit
 		if(emplacementPrecedent.getPosition().getX()-emplacement.getPosition().getX()== emplacement.getPosition().getX()-caseTest.getPosition().getX() ||
 				emplacementPrecedent.getPosition().getY()-emplacement.getPosition().getY()== emplacement.getPosition().getY()-caseTest.getPosition().getY() ){
 			return 2;

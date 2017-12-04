@@ -1,11 +1,19 @@
 package territoire;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import Vue.GestionVue;
 import fourmi.Fourmi;
+import fourmi.role.Ouvriere;
+import fourmi.role.Role;
+import fourmi.role.Sexue;
+import fourmiliere.Fourmiliere;
 import pheromone.Pheromone;
+import pheromone.PheromoneFemelle;
+import pheromone.PheromoneMale;
 import rapports.Rapport;
 import rapports.Trace;
 
@@ -15,13 +23,13 @@ public class Case implements Trace{
 	List<Fourmi> fourmiPresente;
 	int element;
 	int vie = 20;
-	List<Pheromone> listePheromones ;
+	Map<Fourmiliere,Pheromone> listePheromones ;
 	
 	Case(Position position) {
 		this.position = position;
 		fourmiPresente = new ArrayList<Fourmi>();
 		element=0;
-		listePheromones = new ArrayList<Pheromone>();
+		listePheromones = new HashMap<Fourmiliere,Pheromone>();
 		draw();
 	}
 	
@@ -31,11 +39,21 @@ public class Case implements Trace{
 	
 	
 	
-	public void setPheromone(int element){
-		if(this.element!=element){
-			this.element=element;
-			draw();
-		}
+	public void addPheromone(Role maFourmi){
+	      
+	        if(this.listePheromones.containsKey(maFourmi.getEtat().getFourmi().getFourmiliere())){
+                 this.listePheromones.get(maFourmi.getEtat().getFourmi().getFourmiliere()).passageFourmie();
+                  draw();
+                }
+	        else {
+	          Pheromone pheromone;
+	          if(maFourmi instanceof Ouvriere)pheromone=new PheromoneMale(maFourmi.getEtat().getFourmi()) ;
+	          if(maFourmi instanceof Sexue)pheromone=new PheromoneFemelle(maFourmi.getEtat().getFourmi()) ;
+	          
+	          this.listePheromones.put(maFourmi.getEtat().getFourmi().getFourmiliere(),pheromone );
+	        }
+	      
+		
 		vie=100;
 	}
 	
@@ -71,7 +89,7 @@ public class Case implements Trace{
 		if(vie<0){
 			//Controleur.clearCase(position);
 			//Territoire.getInstance().removeCase(this);
-			setPheromone(0);
+			//addPheromone(0);
 		}
 	}
 }
