@@ -5,6 +5,7 @@ import java.util.List;
 
 import Vue.GestionVue;
 import fourmi.Fourmi;
+import pheromone.Pheromone;
 import rapports.Rapport;
 import rapports.Trace;
 
@@ -14,17 +15,21 @@ public class Case implements Trace{
 	List<Fourmi> fourmiPresente;
 	int element;
 	int vie = 20;
+	List<Pheromone> listePheromones ;
 	
 	Case(Position position) {
 		this.position = position;
 		fourmiPresente = new ArrayList<Fourmi>();
 		element=0;
+		listePheromones = new ArrayList<Pheromone>();
 		draw();
 	}
 	
 	public Position getPosition(){
 		return position;
 	}
+	
+	
 	
 	public void setPheromone(int element){
 		if(this.element!=element){
