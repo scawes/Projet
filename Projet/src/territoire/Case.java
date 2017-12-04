@@ -87,7 +87,7 @@ public class Case implements Trace{
 	public void evenement() {
 		if(fourmiPresente.size()<=0||element>0)vie--;
 		if(vie<0){
-			//Controleur.clearCase(position);
+			//Controleur.clearCase(position);test
 			//Territoire.getInstance().removeCase(this);
 			//addPheromone(0);
 		}
