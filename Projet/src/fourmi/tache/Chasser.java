@@ -1,6 +1,7 @@
 package fourmi.tache;
 
 import fourmi.Fourmi;
+import fourmi.role.Role;
 import territoire.Case;
 import territoire.Position;
 import territoire.Territoire;
@@ -12,8 +13,8 @@ public class Chasser extends Tache {
 	Case emplacement;
 	Case emplacementPrecedent;
 	
-	public Chasser(Fourmi fourmi) {
-		super(fourmi);
+	public Chasser(Role role) {
+		super(role);
 		emplacement = Territoire.getInstance().getCase(fourmi.getPosition());
 		emplacementPrecedent=emplacement;
 	}

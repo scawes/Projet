@@ -1,20 +1,21 @@
 package fourmi.role;
 
 import fourmi.Fourmi;
+import fourmi.etat.Etat;
 import rapports.Trace;
 
 public abstract class Role implements Trace{
 
-	Fourmi fourmi;
+	Etat etat;
 	
-	public Role(Fourmi fourmi) {
-		this.fourmi=fourmi;
+	public Role(Etat etat) {
+		this.etat=etat;
 	}
 	
 	public static Role getRole(Fourmi fourmi) {
 		if(fourmi.getFourmiliere()==null)
-		return new Reine(fourmi);
-		else return new Ouvriere(fourmi);
+		return new Reine(etat);
+		else return new Ouvriere(etat);
 	}
 
 	public abstract void evenement();

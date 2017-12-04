@@ -1,6 +1,7 @@
 package fourmi.role;
 
 import fourmi.Fourmi;
+import fourmi.etat.Etat;
 import rapports.Rapport;
 import rapports.Trace;
 
@@ -8,8 +9,8 @@ public class Reine extends Role implements Trace {
 
 	int delaisPonte;
 	
-	public Reine(Fourmi fourmi) {
-		super(fourmi);
+	public Reine(Etat etat) {
+		super(etat);
 		delaisPonte=5;
 	}
 
@@ -23,7 +24,7 @@ public class Reine extends Role implements Trace {
 	}
 
 	private void ponte() {
-		fourmi.getFourmiliere().ajouterFourmi(new Fourmi(fourmi.getFourmiliere(),fourmi.getPosition()));
+		etat.getFourmi().getFourmiliere().ajouterFourmi(new Fourmi(etat.getFourmi().getFourmiliere(),etat.getFourmi().getPosition()));
 	}
 
 	@Override

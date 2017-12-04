@@ -1,17 +1,17 @@
 package fourmi.tache;
 
-import fourmi.Fourmi;
+import fourmi.role.Role;
 
 public abstract class Tache {
 	
-	Fourmi fourmi;
+	Role role;
 
-	public Tache(Fourmi fourmi) {
-		this.fourmi=fourmi;
+	public Tache(Role role) {
+		this.role=role;
 	}
 
-	public static Tache getTache(Fourmi fourmi) {
-		return new Chasser(fourmi);
+	public static Tache getTache(Role role) {
+		return new Chasser(role);
 	}
 	
 	public abstract void evenement();

@@ -12,6 +12,10 @@ public abstract class Etat implements Trace {
 		this.fourmi=fourmi;
 	}
 	
+	public Fourmi getFourmi() {
+		return fourmi;
+	}
+	
 	public abstract void evenement();
 
 }
