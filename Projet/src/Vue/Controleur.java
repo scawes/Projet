@@ -12,54 +12,53 @@ import territoire.Position;
 
 public class Controleur implements Initializable {
 	
+	Gestionnaire gestionnaire;
 	
 	@FXML
-	Canvas affichage;
-
-	static GraphicsContext gc ;
+	Canvas canvas;
 	
 	
 	@FXML
 	public void rafraichir(){
-		MiseAJour.graphique();
+		gestionnaire.getGestionRapport().graphique();
 	}
 	
 	@FXML
 	public void trace(){
-		MiseAJour.trace();
+		gestionnaire.getGestionRapport().trace();
 	}
 	
 	@FXML
 	public void zoom(){
-		GestionVue.getInstance().setTaille(10);
-		MiseAJour.graphique();
+		gestionnaire.getGestionVue().setTaille(10);
+		gestionnaire.getGestionRapport().graphique();
 	}
 	
 	@FXML
 	public void vite(){
-		Simulateur.getInstance().setTimer(100);
+		gestionnaire.getSimulateur().setTimer(100);
 	}
 	
 	@FXML
 	public void lent(){
-		Simulateur.getInstance().setTimer(1000);
+		gestionnaire.getSimulateur().setTimer(1000);
 	}
 	
 	@FXML
 	public void dezoom(){
-		GestionVue.getInstance().setTaille(3);
-		MiseAJour.graphique();
+		gestionnaire.getGestionVue().setTaille(3);
+		gestionnaire.getGestionRapport().graphique();
 	}
 	
 	@FXML
 	public void NouvelleFourmiliere(){
-		GestionVue.getInstance().NouvelleFourmiliere(new Position(10,10));
+		gestionnaire.getGestionVue().NouvelleFourmiliere(new Position(10,10));
 	}
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		GestionVue.getInstance().setCanvas(affichage);
-		GestionVue.getInstance().setTaille(3);
+		gestionnaire=new Gestionnaire(canvas);
+		gestionnaire.getGestionVue().setTaille(3);
 	}
 	
 

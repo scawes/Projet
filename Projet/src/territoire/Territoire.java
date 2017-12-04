@@ -88,6 +88,8 @@ public class Territoire implements Observeur,Trace{
 			temporaire =  emplacement.getValue();
 		}
 		
+		
+		
 		/*for(Iterator<Entry<Position, Case>> iterateur = grille.entrySet().iterator();iterateur.hasNext();){
 			Map.Entry<Position, Case> emplacement = (Map.Entry<Position, Case>) iterateur.next();
 			emplacement.getValue().evenement();

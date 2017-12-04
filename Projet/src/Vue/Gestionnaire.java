@@ -9,6 +9,7 @@ public class Gestionnaire {
 	Territoire territoire;
 	Simulateur simulateur;
 	GestionVue gestionVue;
+	GestionRapport gestionRapport;
 	
 	public Gestionnaire(Canvas canvas) {
 		territoire=new Territoire(this);
@@ -26,6 +27,10 @@ public class Gestionnaire {
 	
 	public GestionVue getGestionVue() {
 		return gestionVue;
+	}
+	
+	public GestionRapport getGestionRapport() {
+		return gestionRapport;
 	}
 	
 }
