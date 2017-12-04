@@ -19,14 +19,12 @@ public class Simulateur extends Thread implements Observable {
 
 	private Map<String, List<Observeur>> observers;
 	
-	static Simulateur simulateur = new Simulateur(100);
+	
 	Timeline timeline;
 	
-	public static Simulateur getInstance(){
-		return simulateur;
-	}
+	
 
-	Simulateur() {
+	public Simulateur() {
 		this.observers = new HashMap<>();
 	}
 	

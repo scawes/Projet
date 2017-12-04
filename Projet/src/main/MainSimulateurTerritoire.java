@@ -18,7 +18,7 @@ public class MainSimulateurTerritoire {
 		
 		Simulateur.getInstance().record(TimeChange.class.getName(), Territoire.getInstance());
 		*/
-		Simulateur.getInstance().start();
+		//Simulateur.getInstance().start();
 
 		
 		LanceurVue.getVue().lancer(args);

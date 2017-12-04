@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
+import Vue.Gestionnaire;
 import fourmi.Fourmi;
 import fourmiliere.Fourmiliere;
 import observeur.Evenement;
@@ -18,9 +19,11 @@ public class Territoire implements Observeur,Trace{
 
 	Map<Position, Case> grille;
 	List<Fourmiliere> listeFourmiliere;
+	Gestionnaire gestionnaire;
 	
 	
-	Territoire() {
+	public Territoire(Gestionnaire gestionnaire) {
+		this.gestionnaire = gestionnaire;
 		grille= new HashMap<Position,Case>();
 		listeFourmiliere=new ArrayList<Fourmiliere>();
 	}

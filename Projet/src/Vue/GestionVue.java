@@ -12,18 +12,16 @@ import territoire.Territoire;
 
 public class GestionVue {
 	
-	private static GestionVue gestionVue = new GestionVue();
+
 	private Canvas canvas;
 	private GraphicsContext gc ;
 	private int taille;
+	Gestionnaire gestionnaire;
 	
-	 GestionVue() {
+	 GestionVue(Gestionnaire gestionnaire,Canvas canvas) {
+		 this.gestionnaire=gestionnaire;
+		setCanvas(canvas);
 		taille = 10;
-	}
-	
-	
-	public static GestionVue getInstance(){
-		return gestionVue;
 	}
 	
 	public void setCanvas(Canvas canvas) {
@@ -40,9 +38,9 @@ public class GestionVue {
 	public void NouvelleFourmiliere(Position position){
 		Fourmi reine = new Fourmi(null,position);
 		reine.evolution(new Adulte(reine));
-		Territoire.getInstance().getCase(reine.getPosition());
-		Territoire.getInstance().nouvelleFourmilliere(reine);
-		Simulateur.getInstance().record(TimeChange.class.getName(), Territoire.getInstance());
+		gestionnaire.getTerritoire().getCase(reine.getPosition());
+		gestionnaire.getTerritoire().nouvelleFourmilliere(reine);
+		gestionnaire.getSimulateur().record(TimeChange.class.getName(), gestionnaire.getTerritoire());
 	}
 	
 	public void drawCase(Position position,int element) {
