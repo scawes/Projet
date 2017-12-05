@@ -17,6 +17,7 @@ public class Adulte extends Etat implements Trace {
 		vie=200;
 		appetit = 0;
 		role=Role.getRole(this);//ajouter cette methode danss adulte
+		timerNourriture = 60;
 	}
 	
 	Case getCase() {
@@ -35,6 +36,17 @@ public class Adulte extends Etat implements Trace {
 		role.trace(rapport);
 	}
 	
+	public void incrementeAppetit() {
+	  
+	  if(this.timerNourriture ==0) {
+	    appetit += (this.fourmi.getPoid()/180);
+	    timerNourriture =60;
+	  }
+	  else {
+	    this.timerNourriture--;
+	  }
+	}
+	
 	public void manger() {
 	  int j =0;
 	  double nourriture;
@@ -44,12 +56,12 @@ public class Adulte extends Etat implements Trace {
 	        if(appetit>this.getCase().getProies().get(j).getPoid()) {
 	          nourriture = this.getCase().getProies().get(j).getPoid();
 	          this.getCase().getProies().get(j).decrementePoid(nourriture);
-	          appetit +=nourriture;
+	          appetit -=nourriture;
 	        }
 	        else {
 	          nourriture = appetit;
 	          this.getCase().getProies().get(j).decrementePoid(nourriture);
-                  appetit +=nourriture;
+                  appetit -=nourriture;
 	          
 	        }
 	      }
