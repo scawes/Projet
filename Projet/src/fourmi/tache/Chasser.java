@@ -42,6 +42,7 @@ public class Chasser extends Tache {
 			} else {
 				seuil += listeProbabilite[i];
 			}
+			
 		}
 		return getTerritoire().getCase(role.getEtat().getFourmi().getDeplacement().getEmplacement());
 		
