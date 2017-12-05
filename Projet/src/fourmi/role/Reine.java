@@ -8,7 +8,7 @@ import rapports.Trace;
 public class Reine extends Role implements Trace {
 
 	int delaisPonte;
-	double dureeDeVie;
+	
 	private static double dureeDeVieMin = 4;
 	private static double dureeDeVieMax = 10;
 	//double poids;
@@ -17,8 +17,10 @@ public class Reine extends Role implements Trace {
 	public Reine(Etat etat) {
 		super(etat);
 		delaisPonte=5;
-		dureeDeVie = (dureeDeVieMin + (double)Math.random()* ((dureeDeVieMax-dureeDeVieMin)+1));
-		this.etat.getFourmi().setPoid(15);
+		
+		double dureeDeVie = (dureeDeVieMin + (double)Math.random()* ((dureeDeVieMax-dureeDeVieMin)+1));
+		this.setDureeDeVie(dureeDeVie);
+		this.setPoid(15);
 		
 	
 	}
@@ -33,8 +35,8 @@ public class Reine extends Role implements Trace {
 	}
 
 	private void ponte() {
-		etat.getFourmi().getFourmiliere().ajouterFourmi(
-				new Fourmi(etat.getFourmi().getFourmiliere(),etat.getFourmi().getDeplacement().getEmplacement()));
+		this.getFourmiliere().ajouterFourmi(
+				new Fourmi(this.getFourmiliere(),etat.getFourmi().getDeplacement().getEmplacement()));
 	}
 	
 
