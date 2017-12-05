@@ -1,7 +1,12 @@
 package fourmi.etat;
 
+import java.util.List;
+
 import fourmi.Fourmi;
+import proie.Proie;
 import rapports.Trace;
+import territoire.Case;
+import territoire.Position;
 
 public abstract class Etat implements Trace {
 
@@ -15,6 +20,14 @@ public abstract class Etat implements Trace {
 		this.fourmi=fourmi;
 	}
 	
+	double getPoid() {
+	 return this.fourmi.getPoid();
+	}
+	
+	void setPoid(double poid) {
+	  this.fourmi.setPoid(poid);
+	}
+	
 	double getDureeDeVie() {
           return this.fourmi.getDureeDeVie();
         }
@@ -26,6 +39,23 @@ public abstract class Etat implements Trace {
         void decrementDureeDeVie() {
           double tampon=this.getDureeDeVie()-1;
           this.fourmi.setDureeDeVie(tampon);
+        }
+        
+        Case getCase() {
+          return this.fourmi.getFourmiliere().getTerritoire().getCase(this.fourmi.getDeplacement().getEmplacement());
+        }
+        
+        
+        Position getPosition() {
+          return this.fourmi.getDeplacement().getEmplacement();
+        }
+        
+        List<Position> getPositionsFourmiliere(){
+          return this.fourmi.getFourmiliere().getPosition();
+        }
+
+        List<Proie> getProiePresnte(){
+          return this.getCase().getProies();
         }
 	
 	public Fourmi getFourmi() {

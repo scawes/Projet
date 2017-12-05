@@ -10,10 +10,45 @@ public class Larve extends Etat implements Trace{
 
 	Larve(Fourmi fourmi) {
 		super(fourmi);
-		this.fourmi.setDureeDeVie(10);
+		this.setDureeDeVie(10);
+		this.setPoid(this.getPoid()*3);
 		appetit =0;
 		
 	}
+	
+public void incrementeAppetit() {
+          
+          if(this.timerNourriture ==0) {
+            appetit += (this.getPoid()/60);
+            timerNourriture =60;
+          }
+          else {
+            this.timerNourriture--;
+          }
+        }
+        
+        public void manger() {
+          int j =0;
+          double nourriture;
+          for (int i = 0 ; i< this.getPositionsFourmiliere().size(); i++) {
+            if(this.getPosition().equals(this.getPositionsFourmiliere().get(i))) {
+              while(j <this.getProiePresnte().size() && appetit !=0) {
+                if(appetit>this.getProiePresnte().get(j).getPoid()) {
+                  nourriture = this.getProiePresnte().get(j).getPoid();
+                  this.getProiePresnte().get(j).decrementePoid(nourriture);
+                  appetit -=nourriture;
+                }
+                else {
+                  nourriture = appetit;
+                  this.getCase().getProies().get(j).decrementePoid(nourriture);
+                  appetit -=nourriture;
+                  
+                }
+              }
+            
+            }
+          }
+        }
 	
 	
 

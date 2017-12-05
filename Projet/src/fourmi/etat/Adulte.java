@@ -24,21 +24,8 @@ public class Adulte extends Etat implements Trace {
 		timerNourriture = 60;
 	}
 	
-	Case getCase() {
-	  return this.fourmi.getFourmiliere().getTerritoire().getCase(this.fourmi.getDeplacement().getEmplacement());
-	}
-	
-	Position getPosition() {
-	  return this.fourmi.getDeplacement().getEmplacement();
-	}
-	
-	List<Position> getPositionsFourmiliere(){
-	  return this.fourmi.getFourmiliere().getPosition();
-	}
 
-	List<Proie> getProiePresnte(){
-	  return this.getCase().getProies();
-	}
+
 	@Override
 	public	void evenement() {
 
