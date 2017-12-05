@@ -9,6 +9,7 @@ public class Lymphe extends Etat implements Trace{
 	Lymphe(Fourmi fourmi) {
 		super(fourmi);
 		vie = 20;
+		
 	}
 
 	@Override
