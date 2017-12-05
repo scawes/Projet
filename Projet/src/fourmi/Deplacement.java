@@ -38,4 +38,8 @@ public class Deplacement {
 		return listeVoisin;
 		//changerCase(nextCase(listeVoisin));
 	}
+	
+	public Position getPosition() {
+		return emplacement.getPosition();
+	}
 }
