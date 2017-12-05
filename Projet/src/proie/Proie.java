@@ -7,12 +7,13 @@ public class Proie {
   Position position;
   double poid;
   Deplacement deplacement;
+  Boolean enVie;
   private final double poidMin = 1.5;
   private final double poidMax = 240;
   
   public Proie() {
     poid = (poidMin + (double)Math.random()* ((poidMax-poidMin)+1));
-
+    enVie = true;
   }
   
   public Deplacement getDeplacement() {
@@ -29,7 +30,7 @@ public class Proie {
   }
   
   public void deces() {
-    ProieMorte unCadavre = new ProieMorte(this.poid,this.position);
-    
+   
+    this.enVie= false;
   }
 }
