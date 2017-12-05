@@ -20,6 +20,7 @@ import observeur.Observeur;
 import pheromone.Pheromone;
 import pheromone.PheromoneFemelle;
 import pheromone.PheromoneMale;
+import proie.Proie;
 import rapports.Rapport;
 import rapports.Trace;
 
@@ -27,6 +28,7 @@ public class Case implements Observable, Trace{
 
 	Position position;
 	List<Fourmi> fourmiPresente;
+	List<Proie> proiePresente;
 	int element;
 	int vie = 20;
 	Map<Fourmiliere,Pheromone> listePheromones ;
@@ -37,6 +39,7 @@ public class Case implements Observable, Trace{
 		
 		this.position = position;
 		fourmiPresente = new ArrayList<Fourmi>();
+		proiePresente = new ArrayList<Proie>();
 		element=0;
 		listePheromones = new HashMap<Fourmiliere,Pheromone>();
 		record(ModificationCase.class.getName(), gestionVue);

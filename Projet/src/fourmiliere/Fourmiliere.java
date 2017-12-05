@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import fourmi.Fourmi;
+import proie.Proie;
 import rapports.Rapport;
 import rapports.Trace;
 import territoire.Position;
@@ -14,6 +15,7 @@ public class Fourmiliere implements Trace {
 
 	List<Position> surface;
 	List<Fourmi> population;
+	
 	Territoire territoire;
 	
 	public Fourmiliere(Fourmi reine,Territoire territoire) {
