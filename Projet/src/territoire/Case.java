@@ -51,6 +51,10 @@ public class Case implements Observable, Trace{
 		return position;
 	}
 	
+	public List<Proie> getProies(){
+	  return this.proiePresente;
+	}
+	
 	
 	
 	public void addPheromone(Role maFourmi){

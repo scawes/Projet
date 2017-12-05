@@ -17,6 +17,8 @@ public class Adulte extends Etat implements Trace {
 		appetit = 0;
 		role=Role.getRole(this);//ajouter cette methode danss adulte
 	}
+	
+	case
 
 	@Override
 	public	void evenement() {
@@ -34,7 +36,7 @@ public class Adulte extends Etat implements Trace {
 	  
 	  for (int i = 0 ; i< this.fourmi.getFourmiliere().getPosition().size(); i++) {
 	    if(this.fourmi.getDeplacement().getEmplacement().equals(this.fourmi.getFourmiliere().getPosition().get(i))) {
-	      this.fourmi.getDeplacement().getEmplacement().
+	      this.fourmi.getFourmiliere().getTerritoire().getCase(this.fourmi.getDeplacement().getEmplacement()).getProies();
 	    
 	    }
 	  }
