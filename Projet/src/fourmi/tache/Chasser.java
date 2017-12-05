@@ -8,7 +8,7 @@ import territoire.Territoire;
 
 public class Chasser extends Tache {
 
-	int NOMBRE_VOISIN = 4;
+	final int NOMBRE_VOISIN = 4;
 	
 	Territoire getTerritoire() {
 		return role.getEtat().getFourmi().getFourmiliere().getTerritoire();
@@ -42,8 +42,9 @@ public class Chasser extends Tache {
 			} else {
 				seuil += listeProbabilite[i];
 			}
+			
 		}
-		return emplacement;
+		return getTerritoire().getCase(role.getEtat().getFourmi().getDeplacement().getEmplacement());
 		
 	}
 	
@@ -53,14 +54,20 @@ public class Chasser extends Tache {
 	
 	int importanceCase(Case caseTest){
 		if(caseTest.getPosition().getX()<0 || caseTest.getPosition().getY()<0)return 0; //fixe
-		if(caseTest.equals(emplacementPrecedent))return 1;	//pr�f�rence aucun retour en arriere
+		if(caseTest.equals(role.getEtat().getFourmi().getDeplacement().getEmplacementPrecedent()))return 1;	//pr�f�rence aucun retour en arriere
 		
 		if(caseTest.getPheromone()==getIndexFourmiliere()){	//pr�f�rence suivre ph�romone
 			return 3;
 		}
 		//pr�f�rence a aller tout droit
-		if(emplacementPrecedent.getPosition().getX()-emplacement.getPosition().getX()== emplacement.getPosition().getX()-caseTest.getPosition().getX() ||
-				emplacementPrecedent.getPosition().getY()-emplacement.getPosition().getY()== emplacement.getPosition().getY()-caseTest.getPosition().getY() ){
+		if(role.getEtat().getFourmi().getDeplacement().getEmplacementPrecedent().getX() -
+				role.getEtat().getFourmi().getDeplacement().getEmplacement().getX() ==
+				role.getEtat().getFourmi().getDeplacement().getEmplacement().getX() - 
+				caseTest.getPosition().getX() ||
+				role.getEtat().getFourmi().getDeplacement().getEmplacementPrecedent().getY() - 
+				role.getEtat().getFourmi().getDeplacement().getEmplacement().getY() ==
+				role.getEtat().getFourmi().getDeplacement().getEmplacementPrecedent().getY() - 
+				caseTest.getPosition().getY() ){
 			return 2;
 		}
 		//option case inataignable
@@ -72,7 +79,7 @@ public class Chasser extends Tache {
 	
 	int importanceCase2(Case caseTest){
 		if(caseTest.getPosition().getX()<0 || caseTest.getPosition().getY()<0)return 0; //fixe
-		if(caseTest.equals(emplacementPrecedent))return 1;	//pr�f�rence aucun retour en arriere
+		if(caseTest.equals(role.getEtat().getFourmi().getDeplacement().getEmplacementPrecedent()))return 1;	//pr�f�rence aucun retour en arriere
 		
 		//option case inataignable
 		if(caseTest.getPheromone()==-2)return 0;

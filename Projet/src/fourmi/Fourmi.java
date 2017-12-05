@@ -21,6 +21,10 @@ public class Fourmi implements Trace {
 		deplacement = new Deplacement(this);
 	}
 	
+	public Deplacement getDeplacement() {
+		return deplacement;
+	}
+	
 	public void setPosition(Position position){
 		this.position=position;
 	}
