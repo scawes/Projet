@@ -85,8 +85,9 @@ public class Case implements Observable, Trace{
 		for(Iterator<Entry<Fourmiliere, Pheromone>> it = listePheromones.entrySet().iterator() ; it.hasNext();){
 			Pheromone pheromone = it.next().getValue();
 			if(pheromone.isFourmiliere(role.getEtat().getFourmi().getFourmiliere())) {
-				if(pheromone.isSexue() && role instanceof Sexue) return pheromone.getPuissance();
-				if((!pheromone.isSexue()) && role instanceof Ouvriere) return pheromone.getPuissance();
+				if((!pheromone.isSexue()) && role instanceof Sexue) return pheromone.getPuissance();
+				if((pheromone.isSexue()) && role instanceof Ouvriere) return pheromone.getPuissance();
+				
 			}
 		}
 		return puissance;

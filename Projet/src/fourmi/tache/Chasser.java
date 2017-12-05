@@ -45,6 +45,7 @@ public class Chasser extends Tache {
 			listeProbabilite[i] = importanceCase(listeVoisin[i]);
 			total += listeProbabilite[i];
 		}
+
 		
 		double random = Math.random()*total;
 		
@@ -67,10 +68,11 @@ public class Chasser extends Tache {
 		//if(positionTest.getX()<0 || positionTest.getY()<0)return 0; //fixe
 		if(positionTest.equals(getDeplacement().getEmplacementPrecedent()))return 1;	//pr�f�rence aucun retour en arriere
 		int pheromone = getTerritoire().getCase(positionTest).getPheromone(role);
+		System.out.println("test "+pheromone);
 		//option case inataignable
 		if(pheromone==-2)return 0;
-		
 		//case par defaut 
+		if(pheromone<=0)return 1;
 		return pheromone;
 	}
 
