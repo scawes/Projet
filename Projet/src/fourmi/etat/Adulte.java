@@ -10,10 +10,11 @@ public class Adulte extends Etat implements Trace {
 	Role role;
 	
 	
+	
 	public Adulte(Fourmi fourmi) {
 		super(fourmi);
 		vie=200;
-		
+		appetit = 0;
 		role=Role.getRole(this);//ajouter cette methode danss adulte
 	}
 
@@ -30,9 +31,10 @@ public class Adulte extends Etat implements Trace {
 	}
 	
 	public void manger() {
+	  
 	  for (int i = 0 ; i< this.fourmi.getFourmiliere().getPosition().size(); i++) {
 	    if(this.fourmi.getDeplacement().getEmplacement().equals(this.fourmi.getFourmiliere().getPosition().get(i))) {
-	      
+	      this.fourmi.getDeplacement().getEmplacement().
 	    
 	    }
 	  }
