@@ -8,14 +8,13 @@ public class Deplacement {
 
 	int NOMBRE_VOISIN = 4;
 	
-	Case emplacement;
-	Case emplacementPrecedent;
+	Position emplacement;
+	Position emplacementPrecedent;
 	Fourmi fourmi;
 	
-	public Deplacement(Fourmi fourmi) {
+	public Deplacement(Fourmi fourmi,Position position) {
 		this.fourmi=fourmi;
-		emplacement = this.fourmi.getFourmiliere().getTerritoire().
-				getCase(fourmi.getPosition());
+		emplacement = position;
 		emplacementPrecedent=emplacement;
 	}
 	
@@ -25,10 +24,9 @@ public class Deplacement {
 	
 	public void changerCase(Position nouvellePosition){
 		emplacementPrecedent=emplacement;
-		emplacementPrecedent.supprimerEntite(fourmi);
-		emplacement=getTerritoire().getCase(nouvellePosition);
-		emplacement.ajouterEntite(fourmi);
-		fourmi.setPosition(emplacement.getPosition());
+		getTerritoire().getCase(emplacementPrecedent).supprimerEntite(fourmi);
+		emplacement=nouvellePosition;
+		getTerritoire().getCase(emplacement).ajouterEntite(fourmi);
 	}
 	
 	public Position[] getVoisin(){
@@ -43,10 +41,10 @@ public class Deplacement {
 	}
 	
 	public Position getEmplacement() {
-		return emplacement.getPosition();
+		return emplacement;
 	}
 	
 	public Position getEmplacementPrecedent() {
-		return emplacementPrecedent.getPosition();
+		return emplacementPrecedent;
 	}
 }
