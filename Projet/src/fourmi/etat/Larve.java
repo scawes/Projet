@@ -27,7 +27,7 @@ public void incrementeAppetit() {
           }
         }
         
-        public void manger() {
+        public void manger(Fourmi fourmi) {
           int j =0;
           double nourriture;
           for (int i = 0 ; i< this.getPositionsFourmiliere().size(); i++) {

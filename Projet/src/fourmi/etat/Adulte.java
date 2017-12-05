@@ -13,6 +13,7 @@ import territoire.Position;
 public class Adulte extends Etat implements Trace {
 
 	Role role;
+	int tempsDehors ; 
 
 	
 	public Adulte(Fourmi fourmi) {
@@ -22,6 +23,7 @@ public class Adulte extends Etat implements Trace {
 		appetit = 0;
 		role=Role.getRole(this);//ajouter cette methode danss adulte
 		timerNourriture = 60;
+		this.tempsDehors=0;
 	}
 	
 
@@ -31,6 +33,18 @@ public class Adulte extends Etat implements Trace {
 
 		role.evenement();
 	}
+	
+	public boolean dureetrajetLimite() {
+	  if(tempsDehors>600) {
+	    return true;
+	  }
+	  else {
+	    tempsDehors++;
+	    return false;
+	  }
+	}
+	
+	
 
 	@Override
 	public void trace(Rapport rapport) {

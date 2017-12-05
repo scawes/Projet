@@ -8,6 +8,7 @@ public class Proie {
   double poid;
   Deplacement deplacement;
   Boolean enVie;
+  int fraicheur;
   private final double poidMin = 1.5;
   private final double poidMax = 240;
   
@@ -40,5 +41,8 @@ public class Proie {
   public void deces() {
    
     this.enVie= false;
+  }
+  public void decrementeFraicheur() {
+    fraicheur--;
   }
 }
