@@ -13,7 +13,7 @@ import territoire.Territoire;
 public class Fourmiliere implements Trace {
 	
 
-	List<Position> surface;
+	List<Position> surface;//represente la surface sur laquelle s'etend la fourmiliere
 	List<Fourmi> population;
 	
 	Territoire territoire;

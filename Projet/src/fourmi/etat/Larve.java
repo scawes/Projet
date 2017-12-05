@@ -15,8 +15,10 @@ public class Larve extends Etat implements Trace{
 		appetit =0;
 		
 	}
-	
-public void incrementeAppetit() {
+	/*
+	 * Elle represente l'evolution de l'appetit dans le temps
+	 */
+	public void incrementeAppetit() {
           
           if(this.timerNourriture ==0) {
             appetit += (this.getPoid()/60);
@@ -26,7 +28,10 @@ public void incrementeAppetit() {
             this.timerNourriture--;
           }
         }
-        
+        /*
+         * Elle represente l'action de nourir la larve 
+         * La fourmi en parametre est celle qui la nourrie
+         */
         public void manger(Fourmi fourmi) {
           int j =0;
           double nourriture;
