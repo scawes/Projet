@@ -70,7 +70,7 @@ public class Chasser extends Tache {
 		//option case inataignable
 		if(pheromone==-2)return 0;
 		
-		//case par defaut
+		//case par defaut 
 		return pheromone;
 	}
 
