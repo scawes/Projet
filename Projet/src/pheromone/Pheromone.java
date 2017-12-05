@@ -16,4 +16,8 @@ public abstract class Pheromone {
 	  return dureeDAction;
   }
   
+  
+  public void decrementPheromone() {
+	  this.dureeDAction -= this.raffraichissementPheromone;
+  }
 }
