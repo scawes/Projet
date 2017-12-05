@@ -76,6 +76,12 @@ public class Case implements Observable, Trace{
 		}
 		return puissance;
 	}
+	
+	public void decrementPeromone() {
+		for(Entry<Fourmiliere, Pheromone> entry:this.listePheromones.entrySet()) {
+			entry.getValue().decrementPheromone();
+		}
+	}
 
 	public void ajouterEntite(Fourmi fourmi){
 		fourmiPresente.add(fourmi);
@@ -101,12 +107,14 @@ public class Case implements Observable, Trace{
 
 	
 	public void evenement() {
-		if(fourmiPresente.size()<=0||element>0)vie--;
-		if(vie<0){
-			//Controleur.clearCase(position);test
-			//Territoire.getInstance().removeCase(this);
-			//addPheromone(0);
-		}
+//		if(fourmiPresente.size()<=0||element>0)vie--;
+//		if(vie<0){
+//			//Controleur.clearCase(position);test
+//			//Territoire.getInstance().removeCase(this);
+//			//addPheromone(0);
+//		}
+		
+		this.decrementPeromone();
 	}
 	
 	@Override
