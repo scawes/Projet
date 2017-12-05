@@ -14,7 +14,7 @@ public class Adulte extends Etat implements Trace {
 	public Adulte(Fourmi fourmi) {
 		super(fourmi);
 
-		vie=200;
+		
 		appetit = 0;
 		role=Role.getRole(this);//ajouter cette methode danss adulte
 		timerNourriture = 60;

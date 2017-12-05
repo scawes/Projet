@@ -10,16 +10,18 @@ public class Larve extends Etat implements Trace{
 
 	Larve(Fourmi fourmi) {
 		super(fourmi);
-		vie = 15;
+		this.fourmi.setDureeDeVie(15);
 		appetit =0;
 		
 	}
+	
+	
 
 	@Override
 	public void evenement() {
 		// TODO Auto-generated method stub
-		vie--;
-		if(vie<0) {
+		this.decrementDureeDeVie();
+		if(this.getDureeDeVie()<0) {
 			fourmi.evolution(new Lymphe(fourmi));
 		}
 	}

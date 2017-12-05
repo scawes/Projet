@@ -6,7 +6,7 @@ import rapports.Trace;
 public abstract class Etat implements Trace {
 
 	Fourmi fourmi;
-	int vie;
+	
 	double appetit;
 	int timerNourriture;
 	double poid;
@@ -14,6 +14,19 @@ public abstract class Etat implements Trace {
 	Etat(Fourmi fourmi){
 		this.fourmi=fourmi;
 	}
+	
+	double getDureeDeVie() {
+          return this.fourmi.getDureeDeVie();
+        }
+        
+        void setDureeDeVie(double duree) {
+          this.fourmi.setDureeDeVie(duree);
+        }
+        
+        void decrementDureeDeVie() {
+          double tampon=this.getDureeDeVie()-1;
+          this.fourmi.setDureeDeVie(tampon);
+        }
 	
 	public Fourmi getFourmi() {
 		return fourmi;

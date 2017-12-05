@@ -8,15 +8,16 @@ public class Lymphe extends Etat implements Trace{
 
 	Lymphe(Fourmi fourmi) {
 		super(fourmi);
-		vie = 20;
+		this.setDureeDeVie(20);
+		
 		
 	}
 
 	@Override
 	public void evenement() {
 		// TODO Auto-generated method stub
-		vie--;
-		if(vie<0) {
+		this.decrementDureeDeVie();
+		if(this.getDureeDeVie()<0) {
 			fourmi.evolution(new Adulte(fourmi));
 		}
 	}
