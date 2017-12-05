@@ -11,6 +11,8 @@ public class Larve extends Etat implements Trace{
 	Larve(Fourmi fourmi) {
 		super(fourmi);
 		vie = 15;
+		appetit =0;
+		
 	}
 
 	@Override
