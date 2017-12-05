@@ -31,7 +31,7 @@ public class Adulte extends Etat implements Trace {
 	
 	public void manger() {
 	  for (int i = 0 ; i< this.fourmi.getFourmiliere().getPosition().size(); i++) {
-	    if(this.fourmi.getPosition().equals(this.fourmi.getFourmiliere().getPosition().get(i))) {
+	    if(this.fourmi.getDeplacement().getEmplacement().equals(this.fourmi.getFourmiliere().getPosition().get(i))) {
 	      
 	    
 	    }

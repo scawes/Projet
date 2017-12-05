@@ -30,8 +30,8 @@ public class Deplacement {
 	}
 	
 	public Position[] getVoisin(){
-		int positionX = fourmi.getPosition().getX();
-		int positionY = fourmi.getPosition().getY();
+		int positionX = emplacement.getX();
+		int positionY = emplacement.getY();
 		Position [] listeVoisin = new Position[4];
 		listeVoisin[0]  = new Position(positionX+1,positionY);
 		listeVoisin[1]  = new Position(positionX-1,positionY);

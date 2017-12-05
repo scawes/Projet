@@ -41,7 +41,7 @@ public class GestionVue implements Observeur{
 	public void NouvelleFourmiliere(Position position){
 		Fourmi reine = new Fourmi(null,position);
 		reine.evolution(new Adulte(reine));
-		gestionnaire.getTerritoire().getCase(reine.getPosition());
+		gestionnaire.getTerritoire().getCase(reine.getDeplacement().getEmplacement());
 		gestionnaire.getTerritoire().nouvelleFourmilliere(reine);
 		gestionnaire.getSimulateur().record(TimeChange.class.getName(), gestionnaire.getTerritoire());
 	}

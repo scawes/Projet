@@ -23,7 +23,7 @@ public class Fourmiliere implements Trace {
 		reine.setFourmiliere(this);
 
 		ajouterFourmi(reine);
-		extentionConstruction(reine.getPosition());
+		extentionConstruction(reine.getDeplacement().getEmplacement());
 		
 	}
 	
