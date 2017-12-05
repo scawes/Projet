@@ -12,11 +12,13 @@ public class Fourmi implements Trace {
 	Fourmiliere fourmiliere;
 	Etat etat;
 	Position position;
+	Deplacement deplacement;
 
 	public Fourmi(Fourmiliere fourmiliere,Position position) {
 		etat=new Oeuf(this);
 		setPosition(position);
 		this.fourmiliere=fourmiliere;
+		deplacement = new Deplacement(this);
 	}
 	
 	public void setPosition(Position position){

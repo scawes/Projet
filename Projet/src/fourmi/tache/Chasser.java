@@ -10,39 +10,18 @@ public class Chasser extends Tache {
 
 	int NOMBRE_VOISIN = 4;
 	
-	Case emplacement;
-	Case emplacementPrecedent;
-	
 	Territoire getTerritoire() {
 		return role.getEtat().getFourmi().getFourmiliere().getTerritoire();
 	}
 	
 	public Chasser(Role role) {
 		super(role);
-		emplacement = getTerritoire().getCase(role.getEtat().getFourmi().getPosition());
-		emplacementPrecedent=emplacement;
+		
 	}
 
-	public void changerCase(Case nouvellePosition){
-		emplacementPrecedent=emplacement;
-		emplacementPrecedent.supprimerEntite(role.getEtat().getFourmi());
-		emplacement=nouvellePosition;
-		emplacement.addPheromone(role);
-		emplacement.ajouterEntite(role.getEtat().getFourmi());
-		role.getEtat().getFourmi().setPosition(emplacement.getPosition());
-	}
 	
-	void deplacer(){
-		int positionX = role.getEtat().getFourmi().getPosition().getX();
-		int positionY = role.getEtat().getFourmi().getPosition().getY();
-		Case [] listeVoisin = new Case[4];
-		listeVoisin[0]  = getTerritoire().getCase(new Position(positionX+1,positionY));
-		listeVoisin[1]  = getTerritoire().getCase(new Position(positionX-1,positionY));
-		listeVoisin[2]  = getTerritoire().getCase(new Position(positionX,positionY+1));
-		listeVoisin[3]  = getTerritoire().getCase(new Position(positionX,positionY-1));
-		
-		changerCase(nextCase(listeVoisin));
-	}
+	
+	
 	
 	Case nextCase(Case [] listeVoisin){
 		int [] listeProbabilite = new int[NOMBRE_VOISIN];
