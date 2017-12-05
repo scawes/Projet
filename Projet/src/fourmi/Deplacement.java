@@ -39,7 +39,11 @@ public class Deplacement {
 		//changerCase(nextCase(listeVoisin));
 	}
 	
-	public Position getPosition() {
+	public Position getEmplacement() {
 		return emplacement.getPosition();
+	}
+	
+	public Position getEmplacementPrecedent() {
+		return emplacementPrecedent.getPosition();
 	}
 }
