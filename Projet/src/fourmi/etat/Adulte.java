@@ -1,10 +1,14 @@
 package fourmi.etat;
 
+import java.util.List;
+
 import fourmi.Fourmi;
 import fourmi.role.Role;
+import proie.Proie;
 import rapports.Rapport;
 import rapports.Trace;
 import territoire.Case;
+import territoire.Position;
 
 public class Adulte extends Etat implements Trace {
 
@@ -23,7 +27,18 @@ public class Adulte extends Etat implements Trace {
 	Case getCase() {
 	  return this.fourmi.getFourmiliere().getTerritoire().getCase(this.fourmi.getDeplacement().getEmplacement());
 	}
+	
+	Position getPosition() {
+	  return this.fourmi.getDeplacement().getEmplacement();
+	}
+	
+	List<Position> getPositionsFourmiliere(){
+	  return this.fourmi.getFourmiliere().getPosition();
+	}
 
+	List<Proie> getProiePresnte(){
+	  return this.getCase().getProies();
+	}
 	@Override
 	public	void evenement() {
 
@@ -50,12 +65,12 @@ public class Adulte extends Etat implements Trace {
 	public void manger() {
 	  int j =0;
 	  double nourriture;
-	  for (int i = 0 ; i< this.fourmi.getFourmiliere().getPosition().size(); i++) {
-	    if(this.fourmi.getDeplacement().getEmplacement().equals(this.fourmi.getFourmiliere().getPosition().get(i))) {
-	      while(j <this.getCase().getProies().size() && appetit !=0) {
-	        if(appetit>this.getCase().getProies().get(j).getPoid()) {
-	          nourriture = this.getCase().getProies().get(j).getPoid();
-	          this.getCase().getProies().get(j).decrementePoid(nourriture);
+	  for (int i = 0 ; i< this.getPositionsFourmiliere().size(); i++) {
+	    if(this.getPosition().equals(this.getPositionsFourmiliere().get(i))) {
+	      while(j <this.getProiePresnte().size() && appetit !=0) {
+	        if(appetit>this.getProiePresnte().get(j).getPoid()) {
+	          nourriture = this.getProiePresnte().get(j).getPoid();
+	          this.getProiePresnte().get(j).decrementePoid(nourriture);
 	          appetit -=nourriture;
 	        }
 	        else {

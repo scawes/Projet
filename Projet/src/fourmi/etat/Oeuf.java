@@ -9,16 +9,16 @@ public class Oeuf extends Etat implements Trace{
 
 	public Oeuf(Fourmi fourmi) {
 		super(fourmi);
-		vie=10;
+		this.setDureeDeVie(3);
 	}
 
-	int vie = 10;
+	
 	
 	@Override
 	public void evenement() {
 		// TODO Auto-generated method stub
-		vie--;
-		if(vie<0) {
+		this.decrementDureeDeVie();
+		if(this.getDureeDeVie()<0) {
 			fourmi.evolution(new Larve(fourmi));
 		}
 	}

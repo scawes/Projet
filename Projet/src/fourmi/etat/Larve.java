@@ -10,7 +10,7 @@ public class Larve extends Etat implements Trace{
 
 	Larve(Fourmi fourmi) {
 		super(fourmi);
-		this.fourmi.setDureeDeVie(15);
+		this.fourmi.setDureeDeVie(10);
 		appetit =0;
 		
 	}
