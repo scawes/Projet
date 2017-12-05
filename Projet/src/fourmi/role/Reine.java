@@ -11,6 +11,7 @@ public class Reine extends Role implements Trace {
 	double dureeDeVie;
 	private static double dureeDeVieMin = 4;
 	private static double dureeDeVieMax = 10;
+	double poids;
 	
 	
 	public Reine(Etat etat) {
