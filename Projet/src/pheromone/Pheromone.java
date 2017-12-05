@@ -18,7 +18,7 @@ public abstract class Pheromone {
   
   
   public void decrementPheromone() {
-	  this.dureeDAction -= this.raffraichissementPheromone;
+	  this.dureeDAction --;
   }
   
   public boolean isFourmiliere(Fourmiliere fourmiliere) {
