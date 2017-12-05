@@ -70,7 +70,7 @@ public class Chasser extends Tache {
 		int pheromone = getTerritoire().getCase(positionTest).getPheromone(role);
 		//option case inataignable
 		if(pheromone==-2)return 0;
-		//case par defaut 
+		//case par defaut  
 		if(pheromone<50)return 50;
 		
 		return pheromone;
