@@ -9,11 +9,12 @@ public class Adulte extends Etat implements Trace {
 
 	Role role;
 	
+	
 	public Adulte(Fourmi fourmi) {
 		super(fourmi);
 		vie=200;
 		
-		role=Role.getRole(this);
+		role=Role.getRole(this);//ajouter cette methode danss adulte
 	}
 
 	@Override
@@ -26,6 +27,15 @@ public class Adulte extends Etat implements Trace {
 	public void trace(Rapport rapport) {
 		rapport.traceForFourmiliere(this);
 		role.trace(rapport);
+	}
+	
+	public void manger() {
+	  for (int i = 0 ; i< this.fourmi.getFourmiliere().getPosition().size(); i++) {
+	    if(this.fourmi.getPosition().equals(this.fourmi.getFourmiliere().getPosition().get(i))) {
+	      
+	    
+	    }
+	  }
 	}
 
 }

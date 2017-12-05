@@ -35,6 +35,10 @@ public class Fourmiliere implements Trace {
 		population.add(fourmi);
 	}
 	
+	public List<Position> getPosition(){
+	  return surface;
+	}
+	
 	public void evenement() {
 		for(int i=0;i<population.size();i++){
 			population.get(i).evenement();
