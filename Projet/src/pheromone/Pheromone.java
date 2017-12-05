@@ -20,4 +20,13 @@ public abstract class Pheromone {
   public void decrementPheromone() {
 	  this.dureeDAction -= this.raffraichissementPheromone;
   }
+  
+  public boolean isFourmiliere(Fourmiliere fourmiliere) {
+	  return this.fourmiliere.equals(fourmiliere);
+  }
+  
+  public boolean isSexue() {
+	  return sexe;
+  }
+  
 }

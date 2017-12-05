@@ -2,6 +2,7 @@ package fourmi;
 
 import territoire.Case;
 import territoire.Position;
+import territoire.Territoire;
 
 public class Deplacement {
 
@@ -18,25 +19,27 @@ public class Deplacement {
 		emplacementPrecedent=emplacement;
 	}
 	
-	public void changerCase(Case nouvellePosition){
+	Territoire getTerritoire() {
+		return fourmi.getFourmiliere().getTerritoire();
+	}
+	
+	public void changerCase(Position nouvellePosition){
 		emplacementPrecedent=emplacement;
 		emplacementPrecedent.supprimerEntite(fourmi);
-		emplacement=nouvellePosition;
-		//emplacement.addPheromone(fourmi.);
+		emplacement=getTerritoire().getCase(nouvellePosition);
 		emplacement.ajouterEntite(fourmi);
 		fourmi.setPosition(emplacement.getPosition());
 	}
 	
-	public Case[] getVoisin(){
+	public Position[] getVoisin(){
 		int positionX = fourmi.getPosition().getX();
 		int positionY = fourmi.getPosition().getY();
-		Case [] listeVoisin = new Case[4];
-		listeVoisin[0]  = fourmi.getFourmiliere().getTerritoire().getCase(new Position(positionX+1,positionY));
-		listeVoisin[1]  = fourmi.getFourmiliere().getTerritoire().getCase(new Position(positionX-1,positionY));
-		listeVoisin[2]  = fourmi.getFourmiliere().getTerritoire().getCase(new Position(positionX,positionY+1));
-		listeVoisin[3]  = fourmi.getFourmiliere().getTerritoire().getCase(new Position(positionX,positionY-1));
+		Position [] listeVoisin = new Position[4];
+		listeVoisin[0]  = new Position(positionX+1,positionY);
+		listeVoisin[1]  = new Position(positionX-1,positionY);
+		listeVoisin[2]  = new Position(positionX,positionY+1);
+		listeVoisin[3]  = new Position(positionX,positionY-1);
 		return listeVoisin;
-		//changerCase(nextCase(listeVoisin));
 	}
 	
 	public Position getEmplacement() {

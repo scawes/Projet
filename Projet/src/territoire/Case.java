@@ -77,8 +77,21 @@ public class Case implements Observable, Trace{
 		return puissance;
 	}
 	
+	public int getPheromone(Role role){
+		int puissance=0;
+		for(Iterator<Entry<Fourmiliere, Pheromone>> it = listePheromones.entrySet().iterator() ; it.hasNext();){
+			Pheromone pheromone = it.next().getValue();
+			if(pheromone.isFourmiliere(role.getEtat().getFourmi().getFourmiliere())) {
+				if(pheromone.isSexue() && role instanceof Sexue) return pheromone.getPuissance();
+				if((!pheromone.isSexue()) && role instanceof Ouvriere) return pheromone.getPuissance();
+			}
+		}
+		return puissance;
+	}
+	
+	
 	public void decrementPeromone() {
-		for(Entry<Fourmiliere, Pheromone> entry:this.listePheromones.entrySet()) {
+		for(Entry<Fourmiliere, Pheromone> entry : this.listePheromones.entrySet()) {
 			entry.getValue().decrementPheromone();
 		}
 	}
@@ -106,14 +119,7 @@ public class Case implements Observable, Trace{
 	}
 
 	
-	public void evenement() {
-//		if(fourmiPresente.size()<=0||element>0)vie--;
-//		if(vie<0){
-//			//Controleur.clearCase(position);test
-//			//Territoire.getInstance().removeCase(this);
-//			//addPheromone(0);
-//		}
-		
+	public void evenement() {		
 		this.decrementPeromone();
 	}
 	

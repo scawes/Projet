@@ -1,8 +1,8 @@
 package fourmi.tache;
 
+import fourmi.Deplacement;
 import fourmi.Fourmi;
 import fourmi.role.Role;
-import territoire.Case;
 import territoire.Position;
 import territoire.Territoire;
 
@@ -10,20 +10,34 @@ public class Chasser extends Tache {
 
 	final int NOMBRE_VOISIN = 4;
 	
-	Territoire getTerritoire() {
-		return role.getEtat().getFourmi().getFourmiliere().getTerritoire();
-	}
-	
 	public Chasser(Role role) {
 		super(role);
-		
 	}
 
+	Territoire getTerritoire() {
+		return getFourmi().getFourmiliere().getTerritoire();
+	}
+	
+	Fourmi getFourmi() {
+		return role.getEtat().getFourmi();
+	}
+	
+	Deplacement getDeplacement() {
+		return getFourmi().getDeplacement();
+	}
+	
+	int getIndexFourmiliere(){
+		return getTerritoire().getFourmiliere().indexOf(role.getEtat().getFourmi().getFourmiliere())+1;
+	}
+	
+	public void phaseChasse() {
+		Position caseSuivante =nextCase(getDeplacement().getVoisin());
+		getDeplacement().changerCase(caseSuivante);
+		getTerritoire().getCase(caseSuivante).addPheromone(role);
+	}
 	
 	
-	
-	
-	Case nextCase(Case [] listeVoisin){
+	Position nextCase(Position [] listeVoisin){
 		int [] listeProbabilite = new int[NOMBRE_VOISIN];
 		int total=0;
 		
@@ -42,55 +56,27 @@ public class Chasser extends Tache {
 			} else {
 				seuil += listeProbabilite[i];
 			}
-			
 		}
-		return getTerritoire().getCase(role.getEtat().getFourmi().getDeplacement().getEmplacement());
+		return getDeplacement().getEmplacement();
 		
 	}
 	
-	int getIndexFourmiliere(){
-		return getTerritoire().getFourmiliere().indexOf(role.getEtat().getFourmi().getFourmiliere())+1;
-	}
 	
-	int importanceCase(Case caseTest){
-		if(caseTest.getPosition().getX()<0 || caseTest.getPosition().getY()<0)return 0; //fixe
-		if(caseTest.equals(role.getEtat().getFourmi().getDeplacement().getEmplacementPrecedent()))return 1;	//pr�f�rence aucun retour en arriere
-		
-		if(caseTest.getPheromone()==getIndexFourmiliere()){	//pr�f�rence suivre ph�romone
-			return 3;
-		}
-		//pr�f�rence a aller tout droit
-		if(role.getEtat().getFourmi().getDeplacement().getEmplacementPrecedent().getX() -
-				role.getEtat().getFourmi().getDeplacement().getEmplacement().getX() ==
-				role.getEtat().getFourmi().getDeplacement().getEmplacement().getX() - 
-				caseTest.getPosition().getX() ||
-				role.getEtat().getFourmi().getDeplacement().getEmplacementPrecedent().getY() - 
-				role.getEtat().getFourmi().getDeplacement().getEmplacement().getY() ==
-				role.getEtat().getFourmi().getDeplacement().getEmplacementPrecedent().getY() - 
-				caseTest.getPosition().getY() ){
-			return 2;
-		}
+	
+	int importanceCase(Position positionTest){
+		//if(positionTest.getX()<0 || positionTest.getY()<0)return 0; //fixe
+		if(positionTest.equals(getDeplacement().getEmplacementPrecedent()))return 1;	//pr�f�rence aucun retour en arriere
+		int pheromone = getTerritoire().getCase(positionTest).getPheromone(role);
 		//option case inataignable
-		if(caseTest.getPheromone()==-2)return 0;
+		if(pheromone==-2)return 0;
 		
 		//case par defaut
-		return 1;
-	}
-	
-	int importanceCase2(Case caseTest){
-		if(caseTest.getPosition().getX()<0 || caseTest.getPosition().getY()<0)return 0; //fixe
-		if(caseTest.equals(role.getEtat().getFourmi().getDeplacement().getEmplacementPrecedent()))return 1;	//pr�f�rence aucun retour en arriere
-		
-		//option case inataignable
-		if(caseTest.getPheromone()==-2)return 0;
-		
-		//case par defaut
-		return caseTest.getPheromone();
+		return pheromone;
 	}
 
 	@Override
 	public void evenement() {
-		deplacer();
+		phaseChasse();
 	}
 	
 }
