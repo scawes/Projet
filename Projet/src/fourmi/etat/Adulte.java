@@ -9,11 +9,11 @@ import territoire.Case;
 public class Adulte extends Etat implements Trace {
 
 	Role role;
-	
-	
+
 	
 	public Adulte(Fourmi fourmi) {
 		super(fourmi);
+
 		vie=200;
 		appetit = 0;
 		role=Role.getRole(this);//ajouter cette methode danss adulte
