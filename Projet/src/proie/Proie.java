@@ -29,6 +29,14 @@ public class Proie {
     
   }
   
+  public double getPoid() {
+    return this.poid;
+  }
+  
+  public void decrementePoid(double manger) {
+    this.poid-= manger;
+  }
+  
   public void deces() {
    
     this.enVie= false;
