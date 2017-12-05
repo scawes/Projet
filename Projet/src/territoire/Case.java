@@ -57,7 +57,7 @@ public class Case implements Observable, Trace{
 	      
 	        if(this.listePheromones.containsKey(maFourmi.getEtat().getFourmi().getFourmiliere())){
                  this.listePheromones.get(maFourmi.getEtat().getFourmi().getFourmiliere()).passageFourmie();
-                  draw();
+                  
                 }
 	        else {
 	          Pheromone pheromone;
@@ -67,7 +67,7 @@ public class Case implements Observable, Trace{
 	          this.listePheromones.put(maFourmi.getEtat().getFourmi().getFourmiliere(),pheromone );
 	        }
 	      
-		
+	        draw();
 		vie=100;
 	}
 	
@@ -97,7 +97,9 @@ public class Case implements Observable, Trace{
 	public void decrementPeromone() {
 		for(Entry<Fourmiliere, Pheromone> entry : this.listePheromones.entrySet()) {
 			entry.getValue().decrementPheromone();
+			
 		}
+		
 	}
 
 	public void ajouterEntite(Fourmi fourmi){

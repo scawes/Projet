@@ -15,7 +15,7 @@ import territoire.Territoire;
 
 public class GestionVue implements Observeur{
 	
-
+	final int SEUIL = 200;
 	private Canvas canvas;
 	private GraphicsContext gc ;
 	private int taille;
@@ -75,7 +75,7 @@ public class GestionVue implements Observeur{
 	
 	Color getColor2(int element){
 		if(element > 0) {
-			if(element < 1000)return Color.color(1-(double)element/1000, 1, 1-(double)element/1000);
+			if(element < SEUIL)return Color.color(1-(double)element/SEUIL, 1, 1-(double)element/SEUIL);
 			else return Color.color(0, 1, 0);
         } else if(element == -1) {
         	return Color.BROWN;
