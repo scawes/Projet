@@ -11,6 +11,10 @@ public class RetourFourmiliere extends Tache{
 	
 	public Case getNextCase() {
 		
+		Case nextCase;
+		
+		for(this.role.getEtat().getFourmi()) {}
+		
 		return null;
 	}
 
