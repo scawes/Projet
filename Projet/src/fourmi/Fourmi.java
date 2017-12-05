@@ -13,13 +13,33 @@ public class Fourmi implements Trace {
 	Etat etat;
 	Position position;
 	Deplacement deplacement;
+	private double dureeDevie;
+	private double poid;
+	private static double poidMin = 1.5;
+	private static double poidMax = 2;
+	        
+	private static double dureeDeVieMin = 1.5;
+	private static double dureeDeVieMax = 2.5;
+	        
 
 	public Fourmi(Fourmiliere fourmiliere,Position position) {
 		etat=new Oeuf(this);
 		setPosition(position);
 		this.fourmiliere=fourmiliere;
 		deplacement = new Deplacement(this);
+		this.poid = (poidMin + (double)Math.random()* ((poidMax-poidMin)+1));
+		this.dureeDevie = (dureeDeVieMin + (double)Math.random()* ((dureeDeVieMax-dureeDeVieMin)+1));
 	}
+	
+	public double getPoid() {
+	  return this.poid;
+	}
+	
+	public void DecrementeDureeDeVie() {
+	  dureeDevie --;
+	}
+	
+	
 	
 	public Deplacement getDeplacement() {
 		return deplacement;
