@@ -18,7 +18,7 @@ public class Reine extends Role implements Trace {
 		delaisPonte=5;
 		dureeDeVie = (dureeDeVieMin + (double)Math.random()* ((dureeDeVieMax-dureeDeVieMin)+1));
 		
-	
+	//bla
 	}
 
 	@Override
@@ -34,12 +34,7 @@ public class Reine extends Role implements Trace {
 		etat.getFourmi().getFourmiliere().ajouterFourmi(new Fourmi(etat.getFourmi().getFourmiliere(),etat.getFourmi().getPosition()));
 	}
 	
-	private void mortNaturelle() {
-	  dureeDeVie--;
-	  if(dureeDeVie < 0 ) {
-	    
-	  }
-	}
+
 
 	@Override
 	public void trace(Rapport rapport) {
