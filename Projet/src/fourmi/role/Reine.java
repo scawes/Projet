@@ -18,7 +18,7 @@ public class Reine extends Role implements Trace {
 		delaisPonte=5;
 		dureeDeVie = (dureeDeVieMin + (double)Math.random()* ((dureeDeVieMax-dureeDeVieMin)+1));
 		
-	//blabla
+	
 	}
 
 	@Override
