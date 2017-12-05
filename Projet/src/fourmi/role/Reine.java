@@ -8,15 +8,15 @@ import rapports.Trace;
 public class Reine extends Role implements Trace {
 
 	int delaisPonte;
-	int dureeDeVie;
-	private static int dureeDeVieMin = 4;
-	private static int dureeDeVieMax = 10;
+	double dureeDeVie;
+	private static double dureeDeVieMin = 4;
+	private static double dureeDeVieMax = 10;
 	
 	
 	public Reine(Etat etat) {
 		super(etat);
 		delaisPonte=5;
-		dureeDeVie = (dureeDeVieMin + (int)Math.random()* ((dureeDeVieMax-dureeDeVieMin)+1));
+		dureeDeVie = (dureeDeVieMin + (double)Math.random()* ((dureeDeVieMax-dureeDeVieMin)+1));
 		
 	
 	}
