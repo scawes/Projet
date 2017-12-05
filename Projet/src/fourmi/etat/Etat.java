@@ -41,6 +41,10 @@ public abstract class Etat implements Trace {
           this.fourmi.setDureeDeVie(tampon);
         }
         
+        /**
+         * retourne l'instance de la case sur la qu'elle elle se situe
+         * @return Case
+         */
         Case getCase() {
           return this.fourmi.getFourmiliere().getTerritoire().getCase(this.fourmi.getDeplacement().getEmplacement());
         }

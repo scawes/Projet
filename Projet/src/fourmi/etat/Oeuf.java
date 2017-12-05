@@ -13,7 +13,9 @@ public class Oeuf extends Etat implements Trace{
 	}
 
 	
-	
+	/**
+	 * Cette methode déclenche l'eclosion de l'oeuf
+	 */
 	@Override
 	public void evenement() {
 		// TODO Auto-generated method stub
