@@ -9,6 +9,7 @@ public abstract class Etat implements Trace {
 	int vie;
 	double appetit;
 	int timerNourriture;
+	double poid;
 	
 	Etat(Fourmi fourmi){
 		this.fourmi=fourmi;

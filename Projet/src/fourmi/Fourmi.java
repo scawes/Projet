@@ -34,6 +34,10 @@ public class Fourmi implements Trace {
 	  return this.poid;
 	}
 	
+	public void setPoid(double poid) {
+	  this.poid = poid;
+	}
+	
 	public void DecrementeDureeDeVie() {
 	  dureeDevie --;
 	}
