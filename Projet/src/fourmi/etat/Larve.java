@@ -5,6 +5,8 @@ import rapports.Rapport;
 import rapports.Trace;
 
 public class Larve extends Etat implements Trace{
+  
+  
 
 	Larve(Fourmi fourmi) {
 		super(fourmi);
