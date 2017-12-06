@@ -1,10 +1,7 @@
 package fourmi.tache.ouvriere;
 
-import java.util.List;
-
 import fourmi.Fourmi;
 import fourmi.role.Ouvriere;
-import proie.Proie;
 import proie.etat.MortProie;
 import territoire.Territoire;
 import territoire.zone.DeplacementFourmi;
@@ -40,19 +37,20 @@ public class RetourFourmiliere extends TacheOuvriere{
 	}
 	
 	public void phaseRentrer() {
-		if(voirFourmiliere())return;
 		Position caseSuivante =nextCase(getDeplacement().getVoisin());
 		getDeplacement().changerCase(caseSuivante);
-		proie.actionFourmi(caseSuivante);
+		proie.actionFourmi(getDeplacement().getEmplacement());
 		getTerritoire().getCase(caseSuivante).addPheromone(role);
 		voirFourmiliere();
 	}
 
 	public boolean voirFourmiliere() {
-		if(getFourmi().getFourmiliere().getPosition().contains(getDeplacement().getEmplacement())) {
-			role.getTache();
-			System.out.println("RAMENER");
-			return true;
+		for(Position positionFourmiliere : getFourmi().getFourmiliere().getPosition()){
+			if(positionFourmiliere.equals(getDeplacement().getEmplacement())) {
+				role.getTache();
+				//System.out.println("RAMENER");
+				return true;
+			}
 		}
 		return false;
 	}

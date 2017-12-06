@@ -12,6 +12,7 @@ import fourmi.role.Soldat;
 import fourmiliere.Fourmiliere;
 import territoire.Territoire;
 import territoire.zone.Case;
+import territoire.zone.Position;
 
 public class RapportTrace implements Rapport{
 	private Integer nombreOeuf;
@@ -109,7 +110,9 @@ public class RapportTrace implements Rapport{
 	@Override
 	public void traceForFourmiliere(Case caseTerritoire) {
 		// TODO Auto-generated method stub
-		
+		if(caseTerritoire.getPosition().equals(new Position(10, 10))){
+			System.out.println("Nourriture disponible : "+caseTerritoire.getProies().size());
+		}
 	}
 	
 }

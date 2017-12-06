@@ -40,6 +40,9 @@ public class Attaque extends TacheOuvriere {
 	
 	public void phaseAttaque() {
 		getTerritoire().getCase(getDeplacement().getEmplacement()).addPheromone(role);
+		if(!proie.getDeplacement().getEmplacement().equals(getDeplacement().getEmplacement())){
+			fuiteProie();
+		}
 	}
 	
 	

@@ -54,8 +54,18 @@ public class Chasser extends TacheOuvriere {
 					role.tacheAttaque(proie);
 					return true;
 				} else {
+					for(Position positionFourmiliere : getFourmi().getFourmiliere().getPosition()){
+						if(positionFourmiliere.equals(getDeplacement().getEmplacement())) {
+							return false;
+						}
+					}
+					if(((MortProie)proie.getEtat()).estPrise()){
+						return false;
+					}
 					role.tacheRamenerProie((MortProie) proie.getEtat());
 					return true;
+					
+					
 				}
 			}
 		}

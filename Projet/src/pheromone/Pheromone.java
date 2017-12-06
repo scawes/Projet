@@ -6,12 +6,12 @@ public abstract class Pheromone {
   Fourmiliere fourmiliere ;
   boolean sexe;
   int dureeDAction= 100;
-  final int raffraichissementPheromone = 50;
+  final int RAFFRAICHISSEMENT = 50;
   final int MAX = 150;
 
   public void passageFourmie(){
-	  if(dureeDAction+raffraichissementPheromone<MAX) {
-		  dureeDAction+=raffraichissementPheromone;
+	  if(dureeDAction+RAFFRAICHISSEMENT<MAX) {
+		  dureeDAction+=RAFFRAICHISSEMENT;
 	  }
 	  
   }
