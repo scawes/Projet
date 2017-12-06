@@ -18,14 +18,14 @@ public class Fourmiliere implements Trace {
 	
 	Territoire territoire;
 	
-	public Fourmiliere(Fourmi reine,Territoire territoire) {
+	public Fourmiliere(Position position,Territoire territoire) {
 		this.territoire=territoire;
 		population=new ArrayList<Fourmi>();
 		surface=new ArrayList<Position>();
-		reine.setFourmiliere(this);
+		//reine.setFourmiliere(this);
 
-		ajouterFourmi(reine);
-		extentionConstruction(reine.getDeplacement().getEmplacement());
+		//ajouterFourmi(reine);
+		extentionConstruction(position);
 		
 	}
 	
@@ -57,6 +57,11 @@ public class Fourmiliere implements Trace {
 		for(Fourmi fourmi : population) {
 			fourmi.trace(rapport);
 		}
+	}
+
+	public List<Fourmi> getListeFourmi() {
+		// TODO Auto-generated method stub
+		return population;
 	}
 	
 	

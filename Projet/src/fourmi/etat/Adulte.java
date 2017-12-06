@@ -1,14 +1,11 @@
 package fourmi.etat;
 
-import java.util.List;
-
 import fourmi.Fourmi;
+import fourmi.role.Ouvriere;
+import fourmi.role.Reine;
 import fourmi.role.Role;
-import proie.Proie;
 import rapports.Rapport;
 import rapports.Trace;
-import territoire.Case;
-import territoire.Position;
 
 public class Adulte extends Etat implements Trace {
 
@@ -21,12 +18,17 @@ public class Adulte extends Etat implements Trace {
 
 		
 		appetit = 0;
-		role=Role.getRole(this);//ajouter cette methode danss adulte
+		role=getRole(this);//ajouter cette methode danss adulte
 		timerNourriture = 60;
 		this.tempsDehors=0;
 	}
 	
-
+	public Role getRole(Etat etat) {
+		if(etat.getFourmi().getFourmiliere().getListeFourmi().size()<1)
+		return new Reine(etat);
+		else return new Ouvriere(etat);
+	}
+	
 
 	@Override
 	public	void evenement() {

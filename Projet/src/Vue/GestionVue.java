@@ -2,6 +2,7 @@ package Vue;
 
 import fourmi.Fourmi;
 import fourmi.etat.Adulte;
+import fourmiliere.Fourmiliere;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
@@ -23,6 +24,7 @@ public class GestionVue implements Observeur{
 		 this.gestionnaire=gestionnaire;
 		setCanvas(canvas);
 		taille = 10;
+		gestionnaire.getSimulateur().record(TimeChange.class.getName(), gestionnaire.getTerritoire());
 	}
 	
 	public void setCanvas(Canvas canvas) {
@@ -37,11 +39,12 @@ public class GestionVue implements Observeur{
 	
 	
 	public void NouvelleFourmiliere(Position position){
-		Fourmi reine = new Fourmi(null,position);
+		gestionnaire.getTerritoire().getCase(position);
+		Fourmiliere fourmiliere = gestionnaire.getTerritoire().nouvelleFourmilliere(position);
+		Fourmi reine = new Fourmi(fourmiliere,position);
 		reine.evolution(new Adulte(reine));
-		gestionnaire.getTerritoire().getCase(reine.getDeplacement().getEmplacement());
-		gestionnaire.getTerritoire().nouvelleFourmilliere(reine);
-		gestionnaire.getSimulateur().record(TimeChange.class.getName(), gestionnaire.getTerritoire());
+		fourmiliere.ajouterFourmi(reine);
+		
 	}
 	
 	public void drawCase(Position position,int element) {
@@ -50,13 +53,14 @@ public class GestionVue implements Observeur{
         if(this.taille>5) {
         	gc.setFill(Color.GRAY);
         	gc.fillRect(position.getX()*taille, position.getY()*taille, taille, taille);
+        	gc.setFill(getColorCase(element));
+            gc.fillRect(position.getX()*taille+1, position.getY()*taille+1, taille-2, taille-2); 
         } else {
-        	gc.setFill(Color.WHITE);
-        	gc.fillRect(position.getX()*taille, position.getY()*taille, taille, taille);
+        	gc.setFill(getColorCase(element));
+            gc.fillRect(position.getX()*taille+1, position.getY()*taille+1, taille-2, taille-2); 
         }
 
-        gc.setFill(getColorCase(element));
-        gc.fillRect(position.getX()*taille+1, position.getY()*taille+1, taille-2, taille-2);       
+              
     }
 	
 	public void drawFourmi(Position position,int nombreFourmis) {
@@ -70,7 +74,9 @@ public class GestionVue implements Observeur{
 						taille/4, taille/4); 
 			}
 		} else {
-			gc.fillOval(position.getX()*(taille)+taille/2, position.getY()*(taille)+taille/2, 1, 1); 
+			/*gc.fillOval(position.getX()*(taille)+taille/2,
+					position.getY()*(taille)+taille/2,
+					taille/4, taille/4); */
 		}
 		
 	}

@@ -66,8 +66,8 @@ public class Territoire implements Observeur,Trace{
 	
 	
 	
-	public Fourmiliere nouvelleFourmilliere(Fourmi reine){
-		Fourmiliere fourmiliere = new Fourmiliere(reine,this);
+	public Fourmiliere nouvelleFourmilliere(Position position){
+		Fourmiliere fourmiliere = new Fourmiliere(position,this);
 		listeFourmiliere.add(fourmiliere);
 		return fourmiliere;
 	}

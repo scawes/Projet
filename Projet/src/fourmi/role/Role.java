@@ -11,12 +11,6 @@ public abstract class Role implements Trace{
 	public Role(Etat etat) {
 		this.etat=etat;
 	}
-	
-	public static Role getRole(Etat etat) {
-		if(etat.getFourmi().getFourmiliere()==null)
-		return new Reine(etat);
-		else return new Ouvriere(etat);
-	}
 
 	public Etat getEtat() {
 		return etat;

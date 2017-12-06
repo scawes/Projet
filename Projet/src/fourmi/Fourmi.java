@@ -26,7 +26,7 @@ public class Fourmi implements Trace {
 
 	public Fourmi(Fourmiliere fourmiliere,Position position) {
 		etat=new Oeuf(this);
-		this.fourmiliere=fourmiliere;
+		setFourmiliere(fourmiliere);
 		deplacement = new Deplacement(this,position);
 	        this.poid = (poidMin + (double)Math.random()* ((poidMax-poidMin)+1));
 	        this.dureeDevie = (dureeDeVieMin + (double)Math.random()* ((dureeDeVieMax-dureeDeVieMin)+1));

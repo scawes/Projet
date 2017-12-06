@@ -15,6 +15,7 @@ public class Deplacement {
 		this.fourmi=fourmi;
 		emplacement = position;
 		emplacementPrecedent=emplacement;
+		changerCase(position);
 	}
 	
 	Territoire getTerritoire() {
