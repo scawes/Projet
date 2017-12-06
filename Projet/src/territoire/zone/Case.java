@@ -22,7 +22,7 @@ import territoire.entite.proie.Proie;
 import territoire.fourmiliere.Fourmiliere;
 import territoire.zone.pheromone.Pheromone;
 import territoire.zone.pheromone.PheromoneFemelle;
-import territoire.zone.pheromone.PheromoneMale;
+import territoire.zone.pheromone.PheromoneChasse;
 
 public class Case implements Observable, Trace{
 
@@ -88,16 +88,16 @@ public class Case implements Observable, Trace{
 	
 	
 	
-	public void addPheromone(Role maFourmi){
-	        if(this.listePheromones.containsKey(maFourmi.getEtat().getFourmi().getFourmiliere())){
-                 this.listePheromones.get(maFourmi.getEtat().getFourmi().getFourmiliere()).passageFourmie();
+	public void addPheromone(Fourmiliere maFourmiliere){
+	        if(this.listePheromones.containsKey(maFourmiliere)){
+                 this.listePheromones.get(maFourmiliere).passageFourmie();
                 }
 	        else {
 	          Pheromone pheromone;
-	          if(maFourmi instanceof Ouvriere)pheromone=new PheromoneMale(maFourmi.getEtat().getFourmi()) ;
-	          else pheromone=new PheromoneFemelle(maFourmi.getEtat().getFourmi()) ;
+	          pheromone=new PheromoneChasse(maFourmiliere) ;
 	          
-	          this.listePheromones.put(maFourmi.getEtat().getFourmi().getFourmiliere(),pheromone );
+	          
+	          this.listePheromones.put(maFourmiliere,pheromone );
 	        }
 		vie=100;
 		setModifier();

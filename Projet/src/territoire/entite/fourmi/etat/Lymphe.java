@@ -6,25 +6,29 @@ import territoire.entite.fourmi.Fourmi;
 
 public class Lymphe extends Etat implements Trace{
 
+	private final int VIE_LYMPHE = 20;
+	
 	Lymphe(Fourmi fourmi) {
 		super(fourmi);
-		this.setDureeDeVie(20);
-		
-		
+		this.setDureeDeVie(VIE_LYMPHE);
 	}
 
 	@Override
 	public void evenement() {
 		// TODO Auto-generated method stub
-		this.decrementDureeDeVie();
-		if(this.getDureeDeVie()<0) {
-			fourmi.evolution(new Adulte(fourmi));
-		}
+		vieillir();
 	}
 
 	@Override
 	public void trace(Rapport rapport) {
 		rapport.traceForFourmiliere(this);
+	}
+
+	@Override
+	void vieillir() {
+		if(dureeDeVie.decrementer()) {
+			fourmi.evolution(new Adulte(fourmi));
+		}
 	}
 
 }

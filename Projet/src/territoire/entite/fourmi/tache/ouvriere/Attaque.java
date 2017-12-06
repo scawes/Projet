@@ -35,11 +35,11 @@ public class Attaque extends TacheOuvriere {
 	}
 	
 	public double getPoid() {
-		return getFourmi().getPoid();
+		return role.getEtat().getPoid();
 	}
 	
 	public void phaseAttaque() {
-		getTerritoire().getCase(getDeplacement().getEmplacement()).addPheromone(role);
+		getTerritoire().getCase(getDeplacement().getEmplacement()).addPheromone(getFourmi().getFourmiliere());
 		if(!proie.getDeplacement().getEmplacement().equals(getDeplacement().getEmplacement())){
 			fuiteProie();
 		}

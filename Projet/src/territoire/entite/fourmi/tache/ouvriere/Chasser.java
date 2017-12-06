@@ -41,7 +41,7 @@ public class Chasser extends TacheOuvriere {
 		};
 		Position caseSuivante =nextCase(getDeplacement().getVoisin());
 		getDeplacement().changerCase(caseSuivante);
-		getTerritoire().getCase(caseSuivante).addPheromone(role);
+		getTerritoire().getCase(caseSuivante).addPheromone(getFourmi().getFourmiliere());
 		voirProie();
 		
 	}

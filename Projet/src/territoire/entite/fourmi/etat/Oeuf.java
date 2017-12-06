@@ -6,10 +6,11 @@ import territoire.entite.fourmi.Fourmi;
 
 public class Oeuf extends Etat implements Trace{
 
-
+	private final int VIE_OEUF = 3;
+	
 	public Oeuf(Fourmi fourmi) {
 		super(fourmi);
-		this.setDureeDeVie(3);
+		this.setDureeDeVie(VIE_OEUF);
 	}
 
 	
@@ -19,15 +20,22 @@ public class Oeuf extends Etat implements Trace{
 	@Override
 	public void evenement() {
 		// TODO Auto-generated method stub
-		this.decrementDureeDeVie();
-		if(this.getDureeDeVie()<0) {
-			fourmi.evolution(new Larve(fourmi));
-		}
+		vieillir();
+		
 	}
 
 	@Override
 	public void trace(Rapport rapport) {
 		rapport.traceForFourmiliere(this);
+	}
+
+
+	@Override
+	void vieillir() {
+		// TODO Auto-generated method stub
+		if(dureeDeVie.decrementer()) {
+			fourmi.evolution(new Larve(fourmi));
+		}
 	}
 
 }

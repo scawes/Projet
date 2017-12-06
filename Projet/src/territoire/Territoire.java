@@ -28,6 +28,7 @@ public class Territoire implements Observeur,Trace{
 		grilleX= new HashMap<Integer, Map<Integer,Case>>();
 		listeFourmiliere=new ArrayList<Fourmiliere>();
 		listeProie=new ArrayList<Proie>();
+		
 	}
 	
 	

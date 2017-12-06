@@ -1,40 +1,37 @@
 package territoire.entite.fourmi.etat;
 
 import rapports.Trace;
+import territoire.entite.DureeVie;
 import territoire.entite.fourmi.Fourmi;
 
 public abstract class Etat implements Trace {
 
-	Fourmi fourmi;
+	private final double POID_MIN = 1.5;
+	private final double POID_MAX = 2;
 	
-	double appetit;
-	int timerNourriture;
+	Fourmi fourmi;
+	protected double poid;
+	protected DureeVie dureeDeVie;
 	
 	
 	Etat(Fourmi fourmi){
 		this.fourmi=fourmi;
 	}
 	
-	/*double getPoid() {
-	 return this.fourmi.getPoid();
+	public double getPoid() {
+	 return this.poid;
 	}
 	
-	void setPoid(double poid) {
-	  this.fourmi.setPoid(poid);
-	}*/
-	
-	double getDureeDeVie() {
-      return this.fourmi.getDureeDeVie();
+	public void setPoid(double poid) {
+	  this.poid=poid;
+	}
+        
+    public void setDureeDeVie(int duree) {
+    	dureeDeVie = new DureeVie(duree);
     }
         
-    void setDureeDeVie(double duree) {
-      this.fourmi.setDureeDeVie(duree);
-    }
-        
-    void decrementDureeDeVie() {
-      double tampon=this.getDureeDeVie()-1;
-      this.fourmi.setDureeDeVie(tampon);
-    }
+    abstract void vieillir() ;
+
         /*
         /**
          * retourne l'instance de la case sur la qu'elle elle se situe

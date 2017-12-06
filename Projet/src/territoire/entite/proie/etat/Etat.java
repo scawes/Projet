@@ -1,7 +1,6 @@
 package territoire.entite.proie.etat;
 
 import rapports.Trace;
-import territoire.entite.fourmi.tache.ouvriere.Attaque;
 import territoire.entite.proie.Proie;
 import territoire.zone.Position;
 
