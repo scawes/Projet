@@ -1,28 +1,33 @@
 package proie.etat;
 
 
+import fourmi.tache.ouvriere.Attaque;
 import proie.Proie;
-import proie.etat.tache.Deplacer;
-import proie.etat.tache.Tache;
+import proie.etat.tache.vivant.Deplacer;
+import proie.etat.tache.vivant.EstAttaquer;
+import proie.etat.tache.vivant.TacheProieVivant;
 import rapports.Rapport;
 import rapports.Trace;
 
 public class Vivant extends Etat implements Trace {
 
 	
-	Tache tache;
+	TacheProieVivant tache;
 	int tempsDehors ; 
 
 	public Vivant(Proie proie) {
 		super(proie);
 
-		tache=getTache(this);//ajouter cette methode danss adulte
-
+		tache=getTache();
 	}
 	
-	public Tache getTache(Etat etat) {
-		//if(etat.getFourmi().getFourmiliere().getListeFourmi().size()<1)
-		return new Deplacer(etat);
+	@Override
+	public void setTache() {
+		tache = getTache();
+	}
+	
+	public TacheProieVivant getTache() {
+		return new Deplacer(this);
 	}
 	
 
@@ -38,5 +43,22 @@ public class Vivant extends Etat implements Trace {
 		//rapport.traceForFourmiliere(this);
 		//role.trace(rapport);
 	}
+
+	@Override
+	public void actionFourmi(Attaque fourmi) {
+		if (tache.estAttaquer()) {
+			((EstAttaquer) tache).fourmiArrive(fourmi);
+		} else {
+			tache = new EstAttaquer(this,fourmi);
+		}
+	}
+
+	@Override
+	public boolean getVivant() {
+		// TODO Auto-generated method stub
+		return true;
+	}
+
+	
 
 }

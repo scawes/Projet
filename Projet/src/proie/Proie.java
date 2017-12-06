@@ -33,7 +33,15 @@ public class Proie {
 	  
 	  public Territoire getTerritoire() {
 		    return this.territoire;
-		  }
+	  }
+	  
+	  public boolean getVivant() {
+		  return etat.getVivant();
+	  }
+	  
+	  public Etat getEtat() {
+		  return etat;
+	  }
 	   
 	  public double getPoid() {
 	    return this.poid;

@@ -1,17 +1,20 @@
-package fourmi.tache;
+package fourmi.tache.ouvriere;
+
+import java.util.List;
 
 import fourmi.Fourmi;
-import fourmi.role.Role;
+import fourmi.role.Ouvriere;
+import proie.Proie;
 import territoire.Territoire;
 import territoire.zone.DeplacementFourmi;
 import territoire.zone.Position;
 
-public class Chasser extends Tache {
+public class Chasser extends TacheOuvriere {
 
 	final int NOMBRE_VOISIN = 4;
 	final int DISTANCE_MAX = 200;
 	
-	public Chasser(Role role) {
+	public Chasser(Ouvriere role) {
 		super(role);
 	}
 
@@ -35,6 +38,19 @@ public class Chasser extends Tache {
 		Position caseSuivante =nextCase(getDeplacement().getVoisin());
 		getDeplacement().changerCase(caseSuivante);
 		getTerritoire().getCase(caseSuivante).addPheromone(role);
+		
+		List<Proie> listeProie = getTerritoire().getCase(caseSuivante).getProies();
+		if(listeProie.size()>0) {
+			for(Proie proie : listeProie) {
+				if(proie.getVivant()==true) {
+					role.tacheAttaque(proie);
+					
+				} else {
+					//A COMPLETER
+				}
+			}
+		}
+		
 	}
 	
 	

@@ -1,17 +1,17 @@
-package proie.etat.tache;
+package proie.etat.tache.vivant;
 
 import proie.Proie;
-import proie.etat.Etat;
+import proie.etat.Vivant;
 import territoire.Territoire;
 import territoire.zone.Deplacement;
 import territoire.zone.Position;
 
-public class Deplacer extends Tache {
+public class Deplacer extends TacheProieVivant {
 
 	final int NOMBRE_VOISIN = 4;
 	final int DISTANCE_MAX = 200;
 	
-	public Deplacer(Etat etat) {
+	public Deplacer(Vivant etat) {
 		super(etat);
 	}
 
@@ -66,6 +66,12 @@ public class Deplacer extends Tache {
 	@Override
 	public void evenement() {
 		phaseDeplacement();
+	}
+
+	@Override
+	public boolean estAttaquer() {
+		// TODO Auto-generated method stub
+		return false;
 	}
 	
 }
