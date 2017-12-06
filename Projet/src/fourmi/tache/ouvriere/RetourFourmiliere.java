@@ -1,5 +1,7 @@
 package fourmi.tache.ouvriere;
 
+import java.util.List;
+
 import fourmi.Fourmi;
 import fourmi.role.Ouvriere;
 import proie.Proie;
@@ -38,13 +40,22 @@ public class RetourFourmiliere extends TacheOuvriere{
 	}
 	
 	public void phaseRentrer() {
+		if(voirFourmiliere())return;
 		Position caseSuivante =nextCase(getDeplacement().getVoisin());
 		getDeplacement().changerCase(caseSuivante);
+		proie.actionFourmi(caseSuivante);
 		getTerritoire().getCase(caseSuivante).addPheromone(role);
-		
+		voirFourmiliere();
 	}
 
-	
+	public boolean voirFourmiliere() {
+		if(getFourmi().getFourmiliere().getPosition().contains(getDeplacement().getEmplacement())) {
+			role.getTache();
+			System.out.println("RAMENER");
+			return true;
+		}
+		return false;
+	}
 	
 	
 	Position nextCase(Position [] listeVoisin){
@@ -77,7 +88,7 @@ public class RetourFourmiliere extends TacheOuvriere{
 		if(positionTest.getX()<getFourmi().getFourmiliere().getPosition().get(0).getX()-DISTANCE_MAX)return 0;
 		if(positionTest.getY()>getFourmi().getFourmiliere().getPosition().get(0).getY()+DISTANCE_MAX)return 0;
 		if(positionTest.getY()<getFourmi().getFourmiliere().getPosition().get(0).getY()-DISTANCE_MAX)return 0;
-		if(positionTest.equals(getDeplacement().getEmplacementPrecedent()))return 10;	//pr�f�rence aucun retour en arriere
+		if(positionTest.equals(getDeplacement().getEmplacementPrecedent()))return 1;	//pr�f�rence aucun retour en arriere
 		int pheromone = getTerritoire().getCase(positionTest).getPheromone(role);
 		//option case inataignable
 		if(pheromone==-2)return 0;

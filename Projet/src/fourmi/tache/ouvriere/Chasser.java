@@ -5,6 +5,7 @@ import java.util.List;
 import fourmi.Fourmi;
 import fourmi.role.Ouvriere;
 import proie.Proie;
+import proie.etat.MortProie;
 import territoire.Territoire;
 import territoire.zone.DeplacementFourmi;
 import territoire.zone.Position;
@@ -53,7 +54,7 @@ public class Chasser extends TacheOuvriere {
 					role.tacheAttaque(proie);
 					return true;
 				} else {
-					//A COMPLETER
+					role.tacheRamenerProie((MortProie) proie.getEtat());
 					return true;
 				}
 			}

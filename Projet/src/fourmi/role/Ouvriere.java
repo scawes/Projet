@@ -3,8 +3,10 @@ package fourmi.role;
 import fourmi.etat.Etat;
 import fourmi.tache.ouvriere.Attaque;
 import fourmi.tache.ouvriere.Chasser;
+import fourmi.tache.ouvriere.RetourFourmiliere;
 import fourmi.tache.ouvriere.TacheOuvriere;
 import proie.Proie;
+import proie.etat.MortProie;
 import rapports.Rapport;
 import rapports.Trace;
 
@@ -37,6 +39,12 @@ public class Ouvriere extends Role implements Trace{
 		Attaque attaque = new Attaque(this,proie);
 		tache = attaque;
 		return attaque;
+	}
+	
+	public RetourFourmiliere tacheRamenerProie(MortProie proie) {
+		RetourFourmiliere retourFourmiliere = new RetourFourmiliere(this,proie);
+		tache = retourFourmiliere;
+		return retourFourmiliere;
 	}
 
 }
