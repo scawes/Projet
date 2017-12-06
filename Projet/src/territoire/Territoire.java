@@ -10,6 +10,8 @@ import observeur.Evenement;
 import observeur.Observeur;
 import rapports.Rapport;
 import rapports.Trace;
+import territoire.entite.fourmi.Fourmi;
+import territoire.entite.fourmi.etat.Adulte;
 import territoire.entite.proie.Proie;
 import territoire.fourmiliere.Fourmiliere;
 import territoire.zone.Case;
@@ -72,11 +74,24 @@ public class Territoire implements Observeur,Trace{
 	
 	
 	
-	public Fourmiliere nouvelleFourmilliere(Position position){
+	public void nouvelleFourmilliere(Position position){
 		Fourmiliere fourmiliere = new Fourmiliere(position,this);
 		listeFourmiliere.add(fourmiliere);
-		return fourmiliere;
+		Fourmi reine = new Fourmi(fourmiliere,position);
+		reine.evolution(new Adulte(reine));
+		fourmiliere.ajouterFourmi(reine);
 	}
+	
+	/*
+	 * public void NouvelleFourmiliere(Position position){
+		gestionnaire.getTerritoire().getCase(position);
+		Fourmiliere fourmiliere = gestionnaire.getTerritoire().nouvelleFourmilliere(position);
+		Fourmi reine = new Fourmi(fourmiliere,position);
+		reine.evolution(new Adulte(reine));
+		fourmiliere.ajouterFourmi(reine);
+		
+	}
+	 */
 	
 	public List<Fourmiliere> getFourmiliere(){
 		return listeFourmiliere;

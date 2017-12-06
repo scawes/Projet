@@ -11,6 +11,7 @@ public class Oeuf extends Etat implements Trace{
 	public Oeuf(Fourmi fourmi) {
 		super(fourmi);
 		this.setDureeDeVie(VIE_OEUF);
+		this.setPoid(-1);
 	}
 
 	

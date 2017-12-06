@@ -9,7 +9,7 @@ import territoire.entite.fourmi.role.Role;
 
 public class Adulte extends Etat implements Trace {
 
-	private final int VIE_ADULTE = 1000;
+	private final int VIE_ADULTE = 2000;
 	private final double POID_MIN = 1.5;
 	private final double POID_MAX = 2;
 	
@@ -21,8 +21,8 @@ public class Adulte extends Etat implements Trace {
 		super(fourmi);
 		setDureeDeVie(VIE_ADULTE);
 		this.poid = (POID_MIN + (double)Math.random()* ((POID_MAX-POID_MIN)+1));
-		this.role=getRole(this);//ajouter cette methode danss adulte
-		//this.tempsDehors=0;
+		getFourmi().setAppetit(poid/3);
+		this.role=getRole(this);
 	}
 	
 	public Role getRole(Etat etat) {
@@ -34,7 +34,7 @@ public class Adulte extends Etat implements Trace {
 
 	@Override
 	public	void evenement() {
-
+		vieillir();
 		role.evenement();
 	}
 	
@@ -46,8 +46,9 @@ public class Adulte extends Etat implements Trace {
 
 	@Override
 	void vieillir() {
-		// TODO Auto-generated method stub
-		
+		if(dureeDeVie.decrementer()) {
+			//A COMPLETER : mort fourmi
+		}
 	}
 	
 }

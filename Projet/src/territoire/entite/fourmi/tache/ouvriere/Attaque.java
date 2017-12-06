@@ -1,5 +1,6 @@
 package territoire.entite.fourmi.tache.ouvriere;
 
+import rapports.Rapport;
 import territoire.Territoire;
 import territoire.entite.fourmi.Fourmi;
 import territoire.entite.fourmi.role.Ouvriere;
@@ -55,6 +56,11 @@ public class Attaque extends TacheOuvriere {
 	@Override
 	public void evenement() {
 		phaseAttaque();
+	}
+
+	@Override
+	public void trace(Rapport rapport) {
+		rapport.traceForFourmiliere(this);
 	}
 	
 }

@@ -21,7 +21,6 @@ import territoire.entite.fourmi.role.Sexue;
 import territoire.entite.proie.Proie;
 import territoire.fourmiliere.Fourmiliere;
 import territoire.zone.pheromone.Pheromone;
-import territoire.zone.pheromone.PheromoneFemelle;
 import territoire.zone.pheromone.PheromoneChasse;
 
 public class Case implements Observable, Trace{

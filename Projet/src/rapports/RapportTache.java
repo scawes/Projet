@@ -18,38 +18,31 @@ import territoire.fourmiliere.Fourmiliere;
 import territoire.zone.Case;
 import territoire.zone.Position;
 
-public class RapportTrace implements Rapport{
-	private Integer nombreOeuf;
-	private Integer nombreLymphe;
-	private Integer nombreLarve;
+public class RapportTache implements Rapport{
 	private Integer nombreFourmi;
-	private Integer nombreOuvriere;
-	private Integer nombreSolda;
-	private Integer nombreSexue;
-	private Integer nombreAdult;
+	private Integer nombreAttaque;
+	private Integer nombreChasser;
+	private Integer nombreManger;
+	private Integer nombreRetourFourmiliere;
+
 	
-	public RapportTrace() {
-		this.nombreOeuf = new Integer(0);
-		this.nombreLymphe = new Integer(0);
-		this.nombreLarve = new Integer(0);
+	public RapportTache() {
 		this.nombreFourmi = new Integer(0);
-		this.nombreOuvriere = new Integer(0);
-		this.nombreSolda = new Integer(0);
-		this.nombreSexue = new Integer(0);
-		this.nombreAdult = new Integer(0);
+		this.nombreAttaque = new Integer(0);
+		this.nombreChasser = new Integer(0);
+		this.nombreManger = new Integer(0);
+		this.nombreRetourFourmiliere = new Integer(0);
 	}
 	
 	@Override
 	public String toString() {
 		String resultat = "";
-		resultat += "Fourmis : "  + nombreFourmi +"\n";
-		resultat += "Oeuf : "+ nombreOeuf +"\n" ;
-		resultat += "Larve : "  + nombreLarve +"\n";
-		resultat += "Lymphe : "  + nombreLymphe +"\n";
-		resultat += "Adulte : "  + nombreAdult +"\n";
-		resultat += "Ouvriere : "  + nombreOuvriere +"\n";
-		resultat += "Soldat : "  + nombreSolda +"\n";
-		resultat += "Sexue : "  + nombreSexue +"\n";
+		resultat += "Total : "  + nombreFourmi +"\n";
+		resultat += "Attaque : "  + nombreAttaque +"\n";
+		resultat += "Chasser : "+ nombreChasser +"\n" ;
+		resultat += "Manger : "  + nombreManger +"\n";
+		resultat += "Retour Fourmiliere : "  + nombreRetourFourmiliere +"\n";
+
 		
 		return resultat;
 	}
@@ -66,22 +59,18 @@ public class RapportTrace implements Rapport{
 
 	@Override
 	public void traceForFourmiliere(Adulte adulte) {
-		this.nombreAdult++;
 	}
 
 	@Override
 	public void traceForFourmiliere(Larve larve) {
-		this.nombreLarve++;
 	}
 
 	@Override
 	public void traceForFourmiliere(Oeuf oeuf) {
-		this.nombreOeuf++;
 	}
 
 	@Override
 	public void traceForFourmiliere(Nymphe lymphe) {
-		this.nombreLymphe++;
 	}
 
 	@Override
@@ -91,17 +80,14 @@ public class RapportTrace implements Rapport{
 
 	@Override
 	public void traceForFourmiliere(Ouvriere ouvriere) {
-		this.nombreOuvriere++;
 	}
 
 	@Override
 	public void traceForFourmiliere(Sexue sexue) {
-		this.nombreSexue++;
 	}
 
 	@Override
 	public void traceForFourmiliere(Soldat solda) {
-		this.nombreSolda++;
 	}
 
 	@Override
@@ -113,35 +99,28 @@ public class RapportTrace implements Rapport{
 
 	@Override
 	public void traceForFourmiliere(Case caseTerritoire) {
-		// TODO Auto-generated method stub
-		if(caseTerritoire.getPosition().equals(new Position(10, 10))){
-			System.out.println("Nourriture disponible : "+caseTerritoire.getProies().size());
-			System.out.println("Fourmi disponible : "+caseTerritoire.getEntite().size());
-		}
+
 	}
 
 	@Override
 	public void traceForFourmiliere(Attaque attaque) {
-		// TODO Auto-generated method stub
-		
+		nombreAttaque++;
 	}
 
 	@Override
 	public void traceForFourmiliere(Chasser chasser) {
-		// TODO Auto-generated method stub
+		nombreChasser++;
 		
 	}
 
 	@Override
 	public void traceForFourmiliere(Manger manger) {
-		// TODO Auto-generated method stub
-		
+		nombreManger++;
 	}
 
 	@Override
 	public void traceForFourmiliere(RetourFourmiliere retourFourmiliere) {
-		// TODO Auto-generated method stub
-		
+		nombreRetourFourmiliere++;
 	}
 	
 }

@@ -28,8 +28,19 @@ public class Controleur implements Initializable {
 	}
 	
 	@FXML
+	public void traceRole(){
+		gestionnaire.getGestionRapport().traceTache();
+	}
+	
+	@FXML
 	public void zoom(){
 		gestionnaire.getGestionVue().setTaille(10);
+		gestionnaire.getGestionRapport().graphique();
+	}
+	
+	@FXML
+	public void dezoom(){
+		gestionnaire.getGestionVue().setTaille(5);
 		gestionnaire.getGestionRapport().graphique();
 	}
 	
@@ -44,14 +55,30 @@ public class Controleur implements Initializable {
 	}
 	
 	@FXML
-	public void dezoom(){
-		gestionnaire.getGestionVue().setTaille(5);
-		gestionnaire.getGestionRapport().graphique();
+	public void decalageDroite(){
+		gestionnaire.getGestionVue().decalageDroite();
 	}
 	
 	@FXML
+	public void decalageGauche(){
+		gestionnaire.getGestionVue().decalageGauche();
+	}
+	
+	@FXML
+	public void decalageBas(){
+		gestionnaire.getGestionVue().decalageBas();
+	}
+	
+	@FXML
+	public void decalageHaut(){
+		gestionnaire.getGestionVue().decalageHaut();
+	}
+	
+	
+	
+	@FXML
 	public void NouvelleFourmiliere(){
-		gestionnaire.getGestionVue().NouvelleFourmiliere(new Position(10,10));
+		gestionnaire.NouvelleFourmiliere(new Position(10,10));
 	}
 	
 	@Override

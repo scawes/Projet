@@ -1,6 +1,5 @@
 package territoire.zone.pheromone;
 
-import territoire.entite.fourmi.Fourmi;
 import territoire.fourmiliere.Fourmiliere;
 
 public class PheromoneChasse extends Pheromone {

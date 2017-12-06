@@ -20,9 +20,14 @@ public class GestionVue implements Observeur{
 	private int taille;
 	Gestionnaire gestionnaire;
 	
+	int decalageX;
+	int decalageY;
+	
 	 GestionVue(Gestionnaire gestionnaire,Canvas canvas) {
 		 this.gestionnaire=gestionnaire;
 		setCanvas(canvas);
+		decalageX=0;
+		decalageY=0;
 		taille = 10;
 		gestionnaire.getSimulateur().record(TimeChange.class.getName(), gestionnaire.getTerritoire());
 	}
@@ -37,73 +42,85 @@ public class GestionVue implements Observeur{
 		this.taille=taille;
 	}
 	
+	public void decalageDroite(){
+		decalageX-=20;
+		gestionnaire.getGestionRapport().graphique();
+	}
+	public void decalageGauche(){
+		decalageX+=20;
+		gestionnaire.getGestionRapport().graphique();
+	}
+	public void decalageBas(){
+		decalageY-=20;
+		gestionnaire.getGestionRapport().graphique();
+	}
+	public void decalageHaut(){
+		decalageY+=20;
+		gestionnaire.getGestionRapport().graphique();
+	}
 	
-	public void NouvelleFourmiliere(Position position){
-		gestionnaire.getTerritoire().getCase(position);
-		Fourmiliere fourmiliere = gestionnaire.getTerritoire().nouvelleFourmilliere(position);
-		Fourmi reine = new Fourmi(fourmiliere,position);
-		reine.evolution(new Adulte(reine));
-		fourmiliere.ajouterFourmi(reine);
-		
+	double decalX(double valeur){
+		return valeur+decalageX;
+	}
+	
+	double decalY(double valeur){
+		return valeur+decalageY;
+	}
+	
+	boolean onCanvas(Position position){
+		if(position.getX() < 1-decalageX/taille)return true;
+		if(position.getX() > ((canvas.getWidth()/taille)-1)-decalageX/taille)return true;
+		if(position.getY() < 1-decalageY/taille)return true;
+		if(position.getY() > ((canvas.getHeight()/taille)-1)-decalageY/taille)return true;
+		return false;
 	}
 	
 	public void drawCase(Position position,int element) {
-		if(position.getX()<1||position.getY()<1)return;
-		if(position.getY()>(canvas.getHeight()/taille)-1||position.getX()>(canvas.getWidth()/taille)-1)return;
+		if(onCanvas(position))return;
         if(this.taille>5) {
         	gc.setFill(Color.GRAY);
-        	gc.fillRect(position.getX()*taille, position.getY()*taille, taille, taille);
+        	gc.fillRect(decalX(position.getX()*taille), decalY(position.getY()*taille), taille, taille);
         	gc.setFill(getColorCase(element));
-            gc.fillRect(position.getX()*taille+1, position.getY()*taille+1, taille-2, taille-2); 
+            gc.fillRect(decalX(position.getX()*taille+1), decalY(position.getY()*taille+1), taille-2, taille-2); 
         } else {
         	gc.setFill(getColorCase(element));
-            gc.fillRect(position.getX()*taille+1, position.getY()*taille+1, taille-2, taille-2); 
-        }
-
-              
+            gc.fillRect(decalX(position.getX()*taille+1), decalY(position.getY()*taille+1), taille-2, taille-2); 
+        }     
     }
 	
 	public void drawFourmi(Position position,int nombreFourmis) {
-		if(position.getX()<1||position.getY()<1)return;
-		if(position.getY()>(canvas.getHeight()/taille)-1||position.getX()>(canvas.getWidth()/taille)-1)return;
+		if(onCanvas(position))return;
 		gc.setFill(Color.BLACK);
 		if(taille>5) {
 			for(int index=0;index<nombreFourmis;index++) {
-				gc.fillOval(position.getX()*(taille)+(Math.random()*(taille-4))+2,
-						position.getY()*(taille)+(Math.random()*(taille-4))+2,
+				gc.fillOval(decalX( (position.getX()*(taille)+(Math.random()*(taille-4))+2)),
+						decalY( (position.getY()*(taille)+(Math.random()*(taille-4))+2)),
 						taille/4, taille/4); 
 			}
 		} else {
 			for(int index=0;index<nombreFourmis;index++) {
-			gc.fillOval(position.getX()*(taille)+taille/2,
-					position.getY()*(taille)+taille/2,
+			gc.fillOval(decalX(position.getX()*(taille)+taille/2),
+					decalY(position.getY()*(taille)+taille/2),
 					taille/4, taille/4); 
 			}
 		}
-		
 	}
 	
 	public void drawProie(Position position,boolean vivant) {
-		if(position.getX()<1||position.getY()<1)return;
-		if(position.getY()>(canvas.getHeight()/taille)-1||position.getX()>(canvas.getWidth()/taille)-1)return;
+		if(onCanvas(position))return;
 		if(vivant) {
 			gc.setFill(Color.BLUE);
 		} else {
 			gc.setFill(Color.RED);
 		}
 		if(taille>5) {
-			
-			gc.fillOval(position.getX()*(taille)+2,
-					position.getY()*(taille)+2,
+			gc.fillOval(decalX(position.getX()*(taille)+2),
+					decalY(position.getY()*(taille)+2),
 					taille/2, taille/2); 
-			
-
 		} else {
-			
-				gc.fillOval(position.getX()*(taille)+2,
-						position.getY()*(taille)+2,
-						taille/2, taille/2); 
-				
+			gc.fillOval(decalX(position.getX()*(taille)+2),
+					decalY(position.getY()*(taille)+2),
+					taille/2, taille/2); 
 		}
 		
 	}

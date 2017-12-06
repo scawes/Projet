@@ -16,41 +16,35 @@
   <children>
     <MenuBar VBox.vgrow="NEVER">
       <menus>
-        <Menu mnemonicParsing="false" text="File">
+        <Menu mnemonicParsing="false" text="Action">
           <items>
-            <MenuItem mnemonicParsing="false" onAction="#trace" text="Trace" />
             <MenuItem mnemonicParsing="false" onAction="#rafraichir" text="rafraichir" />
             <MenuItem mnemonicParsing="false" onAction="#NouvelleFourmiliere" text="Nouvelle Fourmiliere" />
-            <Menu mnemonicParsing="false" text="Open Recent" />
-            <SeparatorMenuItem mnemonicParsing="false" />
-            <MenuItem mnemonicParsing="false" text="Save" />
-            <MenuItem mnemonicParsing="false" text="Save As…" />
-            <MenuItem mnemonicParsing="false" text="Revert" />
-            <SeparatorMenuItem mnemonicParsing="false" />
-            <MenuItem mnemonicParsing="false" text="Preferences…" />
-            <SeparatorMenuItem mnemonicParsing="false" />
-            <MenuItem mnemonicParsing="false" text="Quit" />
           </items>
         </Menu>
-        <Menu mnemonicParsing="false" text="Edit">
+        <Menu mnemonicParsing="false" text="Option">
           <items>
             <MenuItem mnemonicParsing="false" onAction="#zoom" text="zoom" />
             <MenuItem mnemonicParsing="false" onAction="#dezoom" text="dezoom" />
             <SeparatorMenuItem mnemonicParsing="false" />
             <MenuItem mnemonicParsing="false" onAction="#vite" text="accelerer" />
             <MenuItem mnemonicParsing="false" onAction="#lent" text="ralentir" />
-            <MenuItem mnemonicParsing="false" text="Paste" />
-            <MenuItem mnemonicParsing="false" text="Delete" />
-            <SeparatorMenuItem mnemonicParsing="false" />
-            <MenuItem mnemonicParsing="false" text="Select All" />
-            <MenuItem mnemonicParsing="false" text="Unselect All" />
           </items>
         </Menu>
-        <Menu mnemonicParsing="false" text="Help">
-          <items>
-            <MenuItem mnemonicParsing="false" text="About MyHelloApp" />
-          </items>
+        <Menu mnemonicParsing="false" text="Rapport">
+               <items>
+            <MenuItem mnemonicParsing="false" onAction="#trace" text="Trace" />
+            <MenuItem mnemonicParsing="false" onAction="#traceRole" text="Role" />
+               </items>
         </Menu>
+            <Menu mnemonicParsing="false" text="Deplacement">
+               <items>
+                  <MenuItem mnemonicParsing="false" onAction="#decalageDroite" text="Droite" />
+                  <MenuItem mnemonicParsing="false" onAction="#decalageGauche" text="Gauche" />
+                  <MenuItem mnemonicParsing="false" onAction="#decalageBas" text="Bas" />
+                  <MenuItem mnemonicParsing="false" onAction="#decalageHaut" text="Haut" />
+               </items>
+            </Menu>
       </menus>
     </MenuBar>
     <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">

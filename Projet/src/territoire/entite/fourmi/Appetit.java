@@ -2,25 +2,37 @@ package territoire.entite.fourmi;
 
 public class Appetit {
 
-	int appetit;
+	final int JOURNEE = 1000;
 	
-	public Appetit(int appetit){
+	double faim;
+	double appetit;
+	
+	public Appetit(double appetit){
+		
 		this.appetit=appetit;
+		faim = JOURNEE*appetit;
+		if(appetit==0){
+			faim = 1;
+		}
+	}
+	
+	public Appetit(){
+		faim = 1;
 	}
 	
 	public boolean decrementer(){
-		appetit--;
-		if(appetit<=0){
-			return false;
+		faim-=appetit;
+		if(faim<=0){
+			return true;
 		}
-		return true;
+		return false;
 	}
 	
-	public void manger(int nourriture){
-		appetit+=nourriture;
+	public void manger(double nourriture){
+		faim+=nourriture*JOURNEE;
 	}
 	
-	public int faim(){
-		return appetit;
+	public double faim(){
+		return faim/JOURNEE;
 	}
 }

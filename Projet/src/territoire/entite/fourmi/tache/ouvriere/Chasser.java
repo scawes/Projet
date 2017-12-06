@@ -2,6 +2,7 @@ package territoire.entite.fourmi.tache.ouvriere;
 
 import java.util.List;
 
+import rapports.Rapport;
 import territoire.Territoire;
 import territoire.entite.fourmi.Fourmi;
 import territoire.entite.fourmi.role.Ouvriere;
@@ -118,6 +119,11 @@ public class Chasser extends TacheOuvriere {
 	@Override
 	public void evenement() {
 		phaseChasse();
+	}
+	
+	@Override
+	public void trace(Rapport rapport) {
+		rapport.traceForFourmiliere(this);
 	}
 	
 }

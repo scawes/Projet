@@ -3,6 +3,7 @@ package gestionnaire;
 import javafx.scene.canvas.Canvas;
 import simulateur.Simulateur;
 import territoire.Territoire;
+import territoire.zone.Position;
 
 public class Gestionnaire {
 
@@ -34,6 +35,10 @@ public class Gestionnaire {
 	
 	public GestionRapport getGestionRapport() {
 		return gestionRapport;
+	}
+
+	public void NouvelleFourmiliere(Position position) {
+		getTerritoire().nouvelleFourmilliere(position);
 	}
 	
 }

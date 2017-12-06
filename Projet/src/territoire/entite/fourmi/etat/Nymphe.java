@@ -4,13 +4,14 @@ import rapports.Rapport;
 import rapports.Trace;
 import territoire.entite.fourmi.Fourmi;
 
-public class Lymphe extends Etat implements Trace{
+public class Nymphe extends Etat implements Trace{
 
 	private final int VIE_LYMPHE = 20;
 	
-	Lymphe(Fourmi fourmi) {
+	Nymphe(Fourmi fourmi) {
 		super(fourmi);
 		this.setDureeDeVie(VIE_LYMPHE);
+		setPoid(-1);
 	}
 
 	@Override

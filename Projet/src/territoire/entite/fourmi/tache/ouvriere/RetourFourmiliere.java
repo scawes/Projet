@@ -1,5 +1,6 @@
 package territoire.entite.fourmi.tache.ouvriere;
 
+import rapports.Rapport;
 import territoire.Territoire;
 import territoire.entite.fourmi.Fourmi;
 import territoire.entite.fourmi.role.Ouvriere;
@@ -99,6 +100,11 @@ public class RetourFourmiliere extends TacheOuvriere{
 	public void evenement() {
 		phaseRentrer();
 		
+	}
+	
+	@Override
+	public void trace(Rapport rapport) {
+		rapport.traceForFourmiliere(this);
 	}
 
 }

@@ -5,12 +5,16 @@ import territoire.Territoire;
 import territoire.entite.fourmi.Fourmi;
 import territoire.entite.fourmi.etat.Adulte;
 import territoire.entite.fourmi.etat.Larve;
-import territoire.entite.fourmi.etat.Lymphe;
+import territoire.entite.fourmi.etat.Nymphe;
 import territoire.entite.fourmi.etat.Oeuf;
 import territoire.entite.fourmi.role.Ouvriere;
 import territoire.entite.fourmi.role.Reine;
 import territoire.entite.fourmi.role.Sexue;
 import territoire.entite.fourmi.role.Soldat;
+import territoire.entite.fourmi.tache.ouvriere.Attaque;
+import territoire.entite.fourmi.tache.ouvriere.Chasser;
+import territoire.entite.fourmi.tache.ouvriere.Manger;
+import territoire.entite.fourmi.tache.ouvriere.RetourFourmiliere;
 import territoire.fourmiliere.Fourmiliere;
 import territoire.zone.Case;
 
@@ -54,7 +58,7 @@ public class RapportGraphique implements Rapport{
 	}
 
 	@Override
-	public void traceForFourmiliere(Lymphe lymphe) {
+	public void traceForFourmiliere(Nymphe lymphe) {
 		
 	}
 
@@ -89,6 +93,30 @@ public class RapportGraphique implements Rapport{
 	public void traceForFourmiliere(Case caseTerritoire) {
 		// TODO Auto-generated method stub
 		gestionRapport.getGestionnaire().getGestionVue().drawCase(caseTerritoire.getPosition(),caseTerritoire.getPheromone());
+	}
+
+	@Override
+	public void traceForFourmiliere(Attaque attaque) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void traceForFourmiliere(Chasser chasser) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void traceForFourmiliere(Manger manger) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void traceForFourmiliere(RetourFourmiliere retourFourmiliere) {
+		// TODO Auto-generated method stub
+		
 	}
 	
 }

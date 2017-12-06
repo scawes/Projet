@@ -28,6 +28,7 @@ public class Ouvriere extends Role implements Trace{
 	@Override
 	public void trace(Rapport rapport) {
 		rapport.traceForFourmiliere(this);
+		tache.trace(rapport);
 	}
 	
 	public TacheOuvriere getTache() {
