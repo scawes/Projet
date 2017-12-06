@@ -1,4 +1,4 @@
-package territoire;
+package territoire.zone;
 
 public class Position {
 	int x;

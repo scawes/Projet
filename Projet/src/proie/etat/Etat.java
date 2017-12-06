@@ -1,4 +1,4 @@
-package fourmi.etat;
+package proie.etat;
 
 import java.util.List;
 

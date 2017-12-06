@@ -5,14 +5,15 @@ import fourmi.etat.Oeuf;
 import fourmiliere.Fourmiliere;
 import rapports.Rapport;
 import rapports.Trace;
-import territoire.Position;
+import territoire.zone.DeplacementFourmi;
+import territoire.zone.Position;
 
 public class Fourmi implements Trace {
 	
 	Fourmiliere fourmiliere;
 	Etat etat;
 	Position position;
-	Deplacement deplacement;
+	DeplacementFourmi deplacement;
 	private double dureeDevie;
 	private double poid;
 	private static double poidMin = 1.5;
@@ -27,7 +28,7 @@ public class Fourmi implements Trace {
 	public Fourmi(Fourmiliere fourmiliere,Position position) {
 		etat=new Oeuf(this);
 		setFourmiliere(fourmiliere);
-		deplacement = new Deplacement(this,position);
+		deplacement = new DeplacementFourmi(this,position);
 	        this.poid = (poidMin + (double)Math.random()* ((poidMax-poidMin)+1));
 	        this.dureeDevie = (dureeDeVieMin + (double)Math.random()* ((dureeDeVieMax-dureeDeVieMin)+1));
 	}
@@ -47,7 +48,7 @@ public class Fourmi implements Trace {
 	  this.dureeDevie=duree;
 	}
 	
-	public Deplacement getDeplacement() {
+	public DeplacementFourmi getDeplacement() {
 		return deplacement;
 	}
 	

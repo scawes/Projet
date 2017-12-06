@@ -10,8 +10,8 @@ import fourmi.role.Reine;
 import fourmi.role.Sexue;
 import fourmi.role.Soldat;
 import fourmiliere.Fourmiliere;
-import territoire.Case;
 import territoire.Territoire;
+import territoire.zone.Case;
 
 public class RapportTrace implements Rapport{
 	private Integer nombreOeuf;

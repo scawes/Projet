@@ -5,17 +5,20 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import Vue.Gestionnaire;
-import fourmi.Fourmi;
 import fourmiliere.Fourmiliere;
 import observeur.Evenement;
 import observeur.Observeur;
+import proie.Proie;
 import rapports.Rapport;
 import rapports.Trace;
+import territoire.zone.Case;
+import territoire.zone.Position;
 
 public class Territoire implements Observeur,Trace{
 
 	Map<Integer, Map<Integer,Case>> grilleX;
 	List<Fourmiliere> listeFourmiliere;
+	List<Proie> listeProie;
 	Gestionnaire gestionnaire;
 	
 	
@@ -23,6 +26,7 @@ public class Territoire implements Observeur,Trace{
 		this.gestionnaire = gestionnaire;
 		grilleX= new HashMap<Integer, Map<Integer,Case>>();
 		listeFourmiliere=new ArrayList<Fourmiliere>();
+		listeProie=new ArrayList<Proie>();
 	}
 	
 	
@@ -75,6 +79,30 @@ public class Territoire implements Observeur,Trace{
 	public List<Fourmiliere> getFourmiliere(){
 		return listeFourmiliere;
 	}
+	
+	public Proie nouvelleProie(){
+		
+		Position positionRandom = new Position(20, 20);
+		
+		/*int randomKeySet = (int) (grilleX.keySet().size()*Math.random());
+		Set<Integer> randomInt =grilleX.keySet();
+		Object[] test = randomInt.toArray();
+		List<Integer> test2 = new ArrayList<Integer>();
+		test2.addAll(randomInt);
+		System.out.println(test);
+		/*Map<Integer, Case> getRandomX = grilleX.get(randomInt);
+		int getRandomY = (int) (Math.random()* grilleX.get(getRandomX).keySet().size());
+		Position positionRandom = new Position(getRandomX, getRandomY);
+		
+		return null;*/
+		Proie proie = new Proie(this,positionRandom);
+		listeProie.add(proie);
+		return proie;
+	}
+	
+	public List<Proie> getProie(){
+		return listeProie;
+	}
 
 	
 	
@@ -93,8 +121,9 @@ public class Territoire implements Observeur,Trace{
 
 	@Override
 	public void receive(Evenement evt) {
+		nouvelleProie();
 		for(Fourmiliere fourmiliere : listeFourmiliere){
-			fourmiliere.evenement();;
+			fourmiliere.evenement();
 		}
 		for(Integer positionX : grilleX.keySet()){
 			for(Integer PositionY:grilleX.get(positionX).keySet()){

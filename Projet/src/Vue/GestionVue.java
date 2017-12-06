@@ -9,8 +9,8 @@ import javafx.scene.paint.Color;
 import observeur.Evenement;
 import observeur.Observeur;
 import observeur.TimeChange;
-import territoire.Case;
-import territoire.Position;
+import territoire.zone.Case;
+import territoire.zone.Position;
 
 public class GestionVue implements Observeur{
 	
@@ -74,9 +74,32 @@ public class GestionVue implements Observeur{
 						taille/4, taille/4); 
 			}
 		} else {
-			/*gc.fillOval(position.getX()*(taille)+taille/2,
+			for(int index=0;index<nombreFourmis;index++) {
+			gc.fillOval(position.getX()*(taille)+taille/2,
 					position.getY()*(taille)+taille/2,
-					taille/4, taille/4); */
+					taille/4, taille/4); 
+			}
+		}
+		
+	}
+	
+	public void drawProie(Position position,int nombreProie) {
+		if(position.getX()<1||position.getY()<1)return;
+		if(position.getY()>(canvas.getHeight()/taille)-1||position.getX()>(canvas.getWidth()/taille)-1)return;
+		gc.setFill(Color.BLUE);
+		if(taille>5) {
+			for(int index=0;index<nombreProie;index++) {
+			gc.fillOval(position.getX()*(taille)+2,
+					position.getY()*(taille)+2,
+					taille/2, taille/2); 
+			}
+
+		} else {
+			for(int index=0;index<nombreProie;index++) {
+				gc.fillOval(position.getX()*(taille)+2,
+						position.getY()*(taille)+2,
+						taille/2, taille/2); 
+				}
 		}
 		
 	}
@@ -122,6 +145,7 @@ public class GestionVue implements Observeur{
 	public void receive(Evenement evt) {
 		Case casemodif = (Case)evt.source();
 		drawCase(casemodif.getPosition(),casemodif.getPheromone());
+		drawProie(casemodif.getPosition(),casemodif.getProies().size());
 		drawFourmi(casemodif.getPosition(),casemodif.getEntite().size());
 	}
 	

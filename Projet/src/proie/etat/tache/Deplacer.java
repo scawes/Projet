@@ -1,26 +1,25 @@
-package fourmi.tache;
+package proie.etat.tache;
 
-import fourmi.Fourmi;
-import fourmi.role.Role;
+import proie.etat.Etat;
 import territoire.Territoire;
 import territoire.zone.DeplacementFourmi;
 import territoire.zone.Position;
 
-public class Chasser extends Tache {
+public class Deplacer extends Tache {
 
 	final int NOMBRE_VOISIN = 4;
 	final int DISTANCE_MAX = 200;
 	
-	public Chasser(Role role) {
-		super(role);
+	public Deplacer(Etat etat) {
+		super(etat);
 	}
 
 	Territoire getTerritoire() {
-		return getFourmi().getFourmiliere().getTerritoire();
+		return etat.getFourmiliere().getTerritoire();
 	}
 	
 	Fourmi getFourmi() {
-		return role.getEtat().getFourmi();
+		return etat.getFourmi();
 	}
 	
 	DeplacementFourmi getDeplacement() {

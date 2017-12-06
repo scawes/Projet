@@ -1,4 +1,4 @@
-package territoire;
+package territoire.zone;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -34,7 +34,7 @@ public class Case implements Observable, Trace{
 	private Map<String, List<Observeur>> observers;
 	private boolean isModifier;
 	
-	Case(Position position,GestionVue gestionVue) {
+	public Case(Position position,GestionVue gestionVue) {
 		observers = new HashMap<String, List<Observeur>>();
 		setModifier();
 		this.position = position;
@@ -54,9 +54,7 @@ public class Case implements Observable, Trace{
 		return position;
 	}
 	
-	public List<Fourmi> getEntite(){
-		return fourmiPresente;
-	}
+	
 	
 	public void ajouterEntite(Fourmi fourmi){
 		fourmiPresente.add(fourmi);
@@ -68,9 +66,25 @@ public class Case implements Observable, Trace{
 		setModifier();
 	}
 	
+	public void ajouterEntite(Proie proie){
+		proiePresente.add(proie);
+		setModifier();
+	}
+	
+	public void supprimerEntite(Proie proie){
+		proiePresente.remove(proie);
+		setModifier();
+	}
+	
+	public List<Fourmi> getEntite(){
+		return fourmiPresente;
+	}
+	
 	public List<Proie> getProies(){
 	  return this.proiePresente;
 	}
+	
+	
 	
 	
 	

@@ -1,33 +1,13 @@
-package fourmi;
+package territoire.zone;
 
-import territoire.Position;
 import territoire.Territoire;
 
-public class Deplacement {
+public abstract class Deplacement {
 
-	int NOMBRE_VOISIN = 4;
+int NOMBRE_VOISIN = 4;
 	
 	Position emplacement;
 	Position emplacementPrecedent;
-	Fourmi fourmi;
-	
-	public Deplacement(Fourmi fourmi,Position position) {
-		this.fourmi=fourmi;
-		emplacement = position;
-		emplacementPrecedent=emplacement;
-		changerCase(position);
-	}
-	
-	Territoire getTerritoire() {
-		return fourmi.getFourmiliere().getTerritoire();
-	}
-	
-	public void changerCase(Position nouvellePosition){
-		emplacementPrecedent=emplacement;
-		getTerritoire().getCase(emplacementPrecedent).supprimerEntite(fourmi);
-		emplacement=nouvellePosition;
-		getTerritoire().getCase(emplacement).ajouterEntite(fourmi);
-	}
 	
 	public Position[] getVoisin(){
 		int positionX = emplacement.getX();
@@ -47,4 +27,9 @@ public class Deplacement {
 	public Position getEmplacementPrecedent() {
 		return emplacementPrecedent;
 	}
+	
+	abstract Territoire getTerritoire();
+	
+	abstract public void changerCase(Position nouvellePosition);
+	
 }

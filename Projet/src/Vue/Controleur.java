@@ -6,7 +6,7 @@ import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.canvas.Canvas;
-import territoire.Position;
+import territoire.zone.Position;
 
 public class Controleur implements Initializable {
 	
