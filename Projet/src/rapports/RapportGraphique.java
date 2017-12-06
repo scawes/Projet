@@ -1,17 +1,17 @@
 package rapports;
 
-import Vue.GestionRapport;
-import fourmi.Fourmi;
-import fourmi.etat.Adulte;
-import fourmi.etat.Larve;
-import fourmi.etat.Lymphe;
-import fourmi.etat.Oeuf;
-import fourmi.role.Ouvriere;
-import fourmi.role.Reine;
-import fourmi.role.Sexue;
-import fourmi.role.Soldat;
-import fourmiliere.Fourmiliere;
+import gestionnaire.GestionRapport;
 import territoire.Territoire;
+import territoire.entite.fourmi.Fourmi;
+import territoire.entite.fourmi.etat.Adulte;
+import territoire.entite.fourmi.etat.Larve;
+import territoire.entite.fourmi.etat.Lymphe;
+import territoire.entite.fourmi.etat.Oeuf;
+import territoire.entite.fourmi.role.Ouvriere;
+import territoire.entite.fourmi.role.Reine;
+import territoire.entite.fourmi.role.Sexue;
+import territoire.entite.fourmi.role.Soldat;
+import territoire.fourmiliere.Fourmiliere;
 import territoire.zone.Case;
 
 public class RapportGraphique implements Rapport{

@@ -4,13 +4,14 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import Vue.Gestionnaire;
-import fourmiliere.Fourmiliere;
+
+import gestionnaire.Gestionnaire;
 import observeur.Evenement;
 import observeur.Observeur;
-import proie.Proie;
 import rapports.Rapport;
 import rapports.Trace;
+import territoire.entite.proie.Proie;
+import territoire.fourmiliere.Fourmiliere;
 import territoire.zone.Case;
 import territoire.zone.Position;
 

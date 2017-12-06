@@ -7,22 +7,22 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
-import Vue.GestionVue;
-import fourmi.Fourmi;
-import fourmi.role.Ouvriere;
-import fourmi.role.Role;
-import fourmi.role.Sexue;
-import fourmiliere.Fourmiliere;
+import gestionnaire.GestionVue;
 import observeur.Evenement;
 import observeur.ModificationCase;
 import observeur.Observable;
 import observeur.Observeur;
-import pheromone.Pheromone;
-import pheromone.PheromoneFemelle;
-import pheromone.PheromoneMale;
-import proie.Proie;
 import rapports.Rapport;
 import rapports.Trace;
+import territoire.entite.fourmi.Fourmi;
+import territoire.entite.fourmi.role.Ouvriere;
+import territoire.entite.fourmi.role.Role;
+import territoire.entite.fourmi.role.Sexue;
+import territoire.entite.proie.Proie;
+import territoire.fourmiliere.Fourmiliere;
+import territoire.zone.pheromone.Pheromone;
+import territoire.zone.pheromone.PheromoneFemelle;
+import territoire.zone.pheromone.PheromoneMale;
 
 public class Case implements Observable, Trace{
 

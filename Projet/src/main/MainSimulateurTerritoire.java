@@ -1,6 +1,6 @@
 package main;
 
-import Vue.LanceurVue;
+import vue.LanceurVue;
 
 public class MainSimulateurTerritoire {
 
