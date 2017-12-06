@@ -125,7 +125,7 @@ public class Case implements Observable, Trace{
 	}
 	
 	
-	public void decrementPeromone() {
+	public void decrementPheromone() {
 		for(Entry<Fourmiliere, Pheromone> entry : this.listePheromones.entrySet()) {
 			entry.getValue().decrementPheromone();
 			if(entry.getValue().getPuissance()>0)setModifier();
@@ -146,7 +146,7 @@ public class Case implements Observable, Trace{
 
 	
 	public void evenement() {
-		this.decrementPeromone();
+		this.decrementPheromone();
 		if(isModifier)draw();
 	}
 	
