@@ -1,6 +1,7 @@
 package proie;
 
 import proie.etat.Etat;
+import proie.etat.MortProie;
 import proie.etat.Vivant;
 import territoire.Territoire;
 import territoire.zone.Deplacement;
@@ -17,7 +18,7 @@ public class Proie {
 	  double poid;
 	  int fraicheur;//a enlever
 	  private final double poidMin = 1.5;
-	  private final double poidMax = 240;
+	  private final double poidMax = 5;
 	  
 	  public Proie(Territoire territoire,Position position) {
 		  this.territoire = territoire;
@@ -35,12 +36,20 @@ public class Proie {
 		    return this.territoire;
 	  }
 	  
-	  public boolean getVivant() {
+	  public boolean isVivant() {
+		  return etat.isVivant();
+	  }
+	  
+	  public Etat getVivant() {
 		  return etat.getVivant();
 	  }
 	  
 	  public Etat getEtat() {
 		  return etat;
+	  }
+	  
+	  public void mortProie() {
+		  etat = new MortProie(this);
 	  }
 	   
 	  public double getPoid() {

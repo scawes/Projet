@@ -35,22 +35,30 @@ public class Chasser extends TacheOuvriere {
 	}
 	
 	public void phaseChasse() {
+		if(voirProie()) {
+			return;
+		};
 		Position caseSuivante =nextCase(getDeplacement().getVoisin());
 		getDeplacement().changerCase(caseSuivante);
 		getTerritoire().getCase(caseSuivante).addPheromone(role);
+		voirProie();
 		
-		List<Proie> listeProie = getTerritoire().getCase(caseSuivante).getProies();
+	}
+	
+	public boolean voirProie() {
+		List<Proie> listeProie = getTerritoire().getCase(getDeplacement().getEmplacement()).getProies();
 		if(listeProie.size()>0) {
 			for(Proie proie : listeProie) {
-				if(proie.getVivant()==true) {
+				if(proie.isVivant()==true) {
 					role.tacheAttaque(proie);
-					
+					return true;
 				} else {
 					//A COMPLETER
+					return true;
 				}
 			}
 		}
-		
+		return false;
 	}
 	
 	

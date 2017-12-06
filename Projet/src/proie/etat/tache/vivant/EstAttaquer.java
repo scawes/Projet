@@ -25,8 +25,18 @@ public class EstAttaquer extends TacheProieVivant {
 		return etat.getProie();
 	}
 	
-	public void fourmiArrive(Attaque fourmi) {
-		listeFourmis.add(fourmi);
+	public void fourmiArrive(Attaque nouvellefourmi) {
+		listeFourmis.add(nouvellefourmi);
+		int poidTotal = 0;
+		for(Attaque fourmi : listeFourmis) {
+			poidTotal+=fourmi.getPoid();
+		}
+		if(poidTotal>etat.getProie().getPoid()) {
+			for(Attaque fourmi : listeFourmis) {
+				fourmi.fuiteProie();
+			}
+			getProie().mortProie();
+		}
 		liberation=TEMP_LIBERATION;
 	}
 	

@@ -3,6 +3,7 @@ package fourmi.tache.ouvriere;
 import fourmi.Fourmi;
 import fourmi.role.Ouvriere;
 import proie.Proie;
+import proie.etat.Vivant;
 import territoire.Territoire;
 import territoire.zone.DeplacementFourmi;
 
@@ -13,7 +14,8 @@ public class Attaque extends TacheOuvriere {
 	public Attaque(Ouvriere role,Proie proie) {
 		super(role);
 		this.proie=proie;
-		proie.getEtat().actionFourmi(this);
+		Vivant vivant = (Vivant)proie.getEtat().getVivant();//actionFourmi(this);
+		vivant.actionFourmi(this);
 	}
 
 	Territoire getTerritoire() {
@@ -30,6 +32,10 @@ public class Attaque extends TacheOuvriere {
 	
 	int getIndexFourmiliere(){
 		return getTerritoire().getFourmiliere().indexOf(role.getEtat().getFourmi().getFourmiliere())+1;
+	}
+	
+	public double getPoid() {
+		return getFourmi().getPoid();
 	}
 	
 	public void phaseAttaque() {

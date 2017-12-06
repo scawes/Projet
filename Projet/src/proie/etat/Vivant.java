@@ -13,7 +13,6 @@ public class Vivant extends Etat implements Trace {
 
 	
 	TacheProieVivant tache;
-	int tempsDehors ; 
 
 	public Vivant(Proie proie) {
 		super(proie);
@@ -44,7 +43,6 @@ public class Vivant extends Etat implements Trace {
 		//role.trace(rapport);
 	}
 
-	@Override
 	public void actionFourmi(Attaque fourmi) {
 		if (tache.estAttaquer()) {
 			((EstAttaquer) tache).fourmiArrive(fourmi);
@@ -54,9 +52,15 @@ public class Vivant extends Etat implements Trace {
 	}
 
 	@Override
-	public boolean getVivant() {
+	public boolean isVivant() {
 		// TODO Auto-generated method stub
 		return true;
+	}
+	
+	@Override
+	public Etat getVivant() {
+		// TODO Auto-generated method stub
+		return this;
 	}
 
 	

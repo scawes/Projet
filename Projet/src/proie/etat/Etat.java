@@ -21,11 +21,11 @@ public abstract class Etat implements Trace {
 		return proie;
 	}
 	
-	public abstract void actionFourmi(Attaque fourmi);
-	
 	public abstract void setTache();
 	
-	public abstract boolean getVivant();
+	public abstract Etat getVivant();
+	
+	public abstract boolean isVivant();
 	
 	public abstract void evenement();
 
