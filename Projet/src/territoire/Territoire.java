@@ -80,9 +80,9 @@ public class Territoire implements Observeur,Trace{
 		return listeFourmiliere;
 	}
 	
-	public Proie nouvelleProie(){
+	public Proie nouvelleProie(Position position){
 		
-		Position positionRandom = new Position(20, 20);
+		Position positionRandom = new Position((int)(Math.random()*200)+position.getX()-100, (int)(Math.random()*200)+position.getY()-100);
 		
 		/*int randomKeySet = (int) (grilleX.keySet().size()*Math.random());
 		Set<Integer> randomInt =grilleX.keySet();
@@ -121,9 +121,13 @@ public class Territoire implements Observeur,Trace{
 
 	@Override
 	public void receive(Evenement evt) {
-		nouvelleProie();
+		
 		for(Fourmiliere fourmiliere : listeFourmiliere){
 			fourmiliere.evenement();
+			nouvelleProie(fourmiliere.getPosition().get(0));
+		}
+		for(Proie proie : listeProie){
+			proie.evenement();
 		}
 		for(Integer positionX : grilleX.keySet()){
 			for(Integer PositionY:grilleX.get(positionX).keySet()){

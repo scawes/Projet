@@ -11,14 +11,14 @@ public class Larve extends Etat implements Trace{
 	Larve(Fourmi fourmi) {
 		super(fourmi);
 		this.setDureeDeVie(10);
-		this.setPoid(this.getPoid()*3);
+		//this.setPoid(this.getPoid()*3);
 		appetit =0;
 		
 	}
 	/*
 	 * Elle represente l'evolution de l'appetit dans le temps
 	 */
-	public void incrementeAppetit() {
+	/*public void incrementeAppetit() {
           
           if(this.timerNourriture ==0) {
             appetit += (this.getPoid()/60);
@@ -31,7 +31,7 @@ public class Larve extends Etat implements Trace{
         /*
          * Elle represente l'action de nourir la larve 
          * La fourmi en parametre est celle qui la nourrie
-         */
+         *//*
         public void manger(Fourmi fourmi) {
           int j =0;
           double nourriture;
@@ -53,7 +53,7 @@ public class Larve extends Etat implements Trace{
             
             }
           }
-        }
+        }*/
 	
 	
 

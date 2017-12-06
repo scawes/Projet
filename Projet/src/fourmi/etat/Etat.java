@@ -1,12 +1,7 @@
 package fourmi.etat;
 
-import java.util.List;
-
 import fourmi.Fourmi;
-import proie.Proie;
 import rapports.Trace;
-import territoire.zone.Case;
-import territoire.zone.Position;
 
 public abstract class Etat implements Trace {
 
@@ -20,31 +15,33 @@ public abstract class Etat implements Trace {
 		this.fourmi=fourmi;
 	}
 	
-	double getPoid() {
+	/*double getPoid() {
 	 return this.fourmi.getPoid();
 	}
 	
 	void setPoid(double poid) {
 	  this.fourmi.setPoid(poid);
-	}
+	}*/
 	
 	double getDureeDeVie() {
-          return this.fourmi.getDureeDeVie();
-        }
+      return this.fourmi.getDureeDeVie();
+    }
         
-        void setDureeDeVie(double duree) {
-          this.fourmi.setDureeDeVie(duree);
-        }
+    void setDureeDeVie(double duree) {
+      this.fourmi.setDureeDeVie(duree);
+    }
         
-        void decrementDureeDeVie() {
-          double tampon=this.getDureeDeVie()-1;
-          this.fourmi.setDureeDeVie(tampon);
-        }
-        
+    void decrementDureeDeVie() {
+      double tampon=this.getDureeDeVie()-1;
+      this.fourmi.setDureeDeVie(tampon);
+    }
+        /*
         /**
          * retourne l'instance de la case sur la qu'elle elle se situe
          * @return Case
          */
+	
+	/*
         Case getCase() {
           return this.fourmi.getFourmiliere().getTerritoire().getCase(this.fourmi.getDeplacement().getEmplacement());
         }
@@ -60,7 +57,7 @@ public abstract class Etat implements Trace {
 
         List<Proie> getProiePresnte(){
           return this.getCase().getProies();
-        }
+        }*/
 	
 	public Fourmi getFourmi() {
 		return fourmi;

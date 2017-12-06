@@ -3,8 +3,6 @@ package Vue;
 import rapports.Rapport;
 import rapports.RapportGraphique;
 import rapports.RapportTrace;
-import simulateur.Simulateur;
-import territoire.Territoire;
 
 public class GestionRapport {
 	

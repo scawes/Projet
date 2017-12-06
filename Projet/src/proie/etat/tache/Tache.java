@@ -1,6 +1,5 @@
 package proie.etat.tache;
 
-import fourmi.role.Role;
 import proie.etat.Etat;
 
 public abstract class Tache {
@@ -11,8 +10,8 @@ public abstract class Tache {
 		this.etat=etat;
 	}
 
-	public static Tache getTache(Role role) {
-		return new Deplacer(role);
+	public static Tache getTache(Etat etat) {
+		return new Deplacer(etat);
 	}
 	
 	public abstract void evenement();

@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import fourmi.Fourmi;
-import proie.Proie;
 import rapports.Rapport;
 import rapports.Trace;
 import territoire.Territoire;

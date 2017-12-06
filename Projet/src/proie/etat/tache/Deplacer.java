@@ -1,8 +1,9 @@
 package proie.etat.tache;
 
+import proie.Proie;
 import proie.etat.Etat;
 import territoire.Territoire;
-import territoire.zone.DeplacementFourmi;
+import territoire.zone.Deplacement;
 import territoire.zone.Position;
 
 public class Deplacer extends Tache {
@@ -14,26 +15,21 @@ public class Deplacer extends Tache {
 		super(etat);
 	}
 
+	Proie getProie() {
+		return etat.getProie();
+	}
+	
 	Territoire getTerritoire() {
-		return etat.getFourmiliere().getTerritoire();
+		return getProie().getTerritoire();
 	}
 	
-	Fourmi getFourmi() {
-		return etat.getFourmi();
+	Deplacement getDeplacement() {
+		return getProie().getDeplacement();
 	}
 	
-	DeplacementFourmi getDeplacement() {
-		return getFourmi().getDeplacement();
-	}
-	
-	int getIndexFourmiliere(){
-		return getTerritoire().getFourmiliere().indexOf(role.getEtat().getFourmi().getFourmiliere())+1;
-	}
-	
-	public void phaseChasse() {
+	public void phaseDeplacement() {
 		Position caseSuivante =nextCase(getDeplacement().getVoisin());
 		getDeplacement().changerCase(caseSuivante);
-		getTerritoire().getCase(caseSuivante).addPheromone(role);
 	}
 	
 	
@@ -46,7 +42,6 @@ public class Deplacer extends Tache {
 			total += listeProbabilite[i];
 		}
 
-		
 		double random = Math.random()*total;
 		
 		int seuil=0;
@@ -62,26 +57,15 @@ public class Deplacer extends Tache {
 		
 	}
 	
-	
-	
 	int importanceCase(Position positionTest){
-		if(positionTest.getX()>getFourmi().getFourmiliere().getPosition().get(0).getX()+DISTANCE_MAX)return 0; //fixe
-		if(positionTest.getX()<getFourmi().getFourmiliere().getPosition().get(0).getX()-DISTANCE_MAX)return 0;
-		if(positionTest.getY()>getFourmi().getFourmiliere().getPosition().get(0).getY()+DISTANCE_MAX)return 0;
-		if(positionTest.getY()<getFourmi().getFourmiliere().getPosition().get(0).getY()-DISTANCE_MAX)return 0;
 		if(positionTest.equals(getDeplacement().getEmplacementPrecedent()))return 10;	//pr�f�rence aucun retour en arriere
-		int pheromone = getTerritoire().getCase(positionTest).getPheromone(role);
-		//option case inataignable
-		if(pheromone==-2)return 0;
-		//case par defaut  
-		if(pheromone<50)return 50;
 		
-		return pheromone;
+		return 50;
 	}
 
 	@Override
 	public void evenement() {
-		phaseChasse();
+		phaseDeplacement();
 	}
 	
 }

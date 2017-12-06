@@ -35,13 +35,20 @@ public class Adulte extends Etat implements Trace {
 
 		role.evenement();
 	}
+	
+	@Override
+	public void trace(Rapport rapport) {
+		rapport.traceForFourmiliere(this);
+		role.trace(rapport);
+	}
+	
 	/*
 	 * Renvoi un boolean
 	 * Vrai : duree du trajet dépasse le temps limite
 	 * Faux : Il reste du temps en exterieur
 	 */
 	
-	public boolean dureetrajetLimite() {
+	/*public boolean dureetrajetLimite() {
         	if(this.getPosition()!=this.getPositionsFourmiliere()) {  // vérification que la fourmi sois bien a l'exterieur
           	  if(tempsDehors>600) {// 600 correspond a 10*60 minutes
           	    return true;
@@ -55,20 +62,16 @@ public class Adulte extends Etat implements Trace {
         	  tempsDehors=0;
         	  return false;
         	}
-	}
+	}*/
 	
 	
 
-	@Override
-	public void trace(Rapport rapport) {
-		rapport.traceForFourmiliere(this);
-		role.trace(rapport);
-	}
+	
 	
 	/*
 	 * Cette méthode augmente l'appetit de la fourmi dans le temps
 	 */
-	public void incrementeAppetit() {
+	/*public void incrementeAppetit() {
 	  
 	  if(this.timerNourriture ==0) {
 	    appetit += (this.fourmi.getPoid()/180);
@@ -77,11 +80,11 @@ public class Adulte extends Etat implements Trace {
 	  else {
 	    this.timerNourriture--;
 	  }
-	}
+	}*/
 	/*
 	 * Cette methode represente l'action de se nourir de la fourmi
 	 */
-	public void manger() {
+	/*public void manger() {
 	  int j =0;
 	  double nourriture;
 	  for (int i = 0 ; i< this.getPositionsFourmiliere().size(); i++) { //verification de la position de la fourmi
@@ -103,6 +106,6 @@ public class Adulte extends Etat implements Trace {
 	    
 	    }
 	  }
-	}
+	}*/
 
 }
