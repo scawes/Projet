@@ -1,7 +1,6 @@
 package rapports;
 
 import Vue.GestionRapport;
-import Vue.GestionVue;
 import fourmi.Fourmi;
 import fourmi.etat.Adulte;
 import fourmi.etat.Larve;

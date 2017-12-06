@@ -2,11 +2,8 @@ package territoire;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
-
 import Vue.Gestionnaire;
 import fourmi.Fourmi;
 import fourmiliere.Fourmiliere;
@@ -17,37 +14,57 @@ import rapports.Trace;
 
 public class Territoire implements Observeur,Trace{
 
-	Map<Position, Case> grille;
+	Map<Integer, Map<Integer,Case>> grilleX;
 	List<Fourmiliere> listeFourmiliere;
 	Gestionnaire gestionnaire;
 	
 	
 	public Territoire(Gestionnaire gestionnaire) {
 		this.gestionnaire = gestionnaire;
-		grille= new HashMap<Position,Case>();
+		grilleX= new HashMap<Integer, Map<Integer,Case>>();
 		listeFourmiliere=new ArrayList<Fourmiliere>();
 	}
 	
 	
-	public Case creerCase(Position nouvellePosition){
-		Case nouvelleCase = new Case(nouvellePosition,gestionnaire.getGestionVue());
-		grille.put(nouvellePosition, nouvelleCase);
-		return nouvelleCase;
-	}
+	
 	
 	public Case getCase(Position position){
 
-		for(Position key : grille.keySet()){
-			if(key.equals(position)){
-				return grille.get(key);
-			}
-		}
-		return creerCase(position);
+		Map<Integer,Case> positionX = getX(position.getX());
+		Case positionY =  getY(position,positionX);
+		return positionY;
 	}
 	
-	public void removeCase(Case maCase){
-		grille.remove(maCase.getPosition());
+	public Map<Integer,Case> getX(Integer positionX){
+
+		for(Integer key : grilleX.keySet()){
+			if(key.equals(positionX)){
+				return grilleX.get(key);
+			}
+		}
+		return creerX(positionX);
 	}
+	public Case getY(Position position ,Map<Integer,Case> grilleY){
+
+		for(Integer key : grilleY.keySet()){
+			if(key.equals(position.getY())){
+				return grilleY.get(key);
+			}
+		}
+		return creerY(position,grilleY);
+	}
+	
+	public Map<Integer,Case> creerX(Integer positionX){
+		grilleX.put(positionX, new HashMap<Integer,Case>());
+		return grilleX.get(positionX);
+	}
+	
+	public Case creerY(Position position,Map<Integer,Case> grilleY){
+		grilleY.put(position.getY(), new Case(position,gestionnaire.getGestionVue()));
+		return grilleY.get(position.getY());
+	}
+	
+	
 	
 	public Fourmiliere nouvelleFourmilliere(Fourmi reine){
 		Fourmiliere fourmiliere = new Fourmiliere(reine,this);
@@ -59,19 +76,19 @@ public class Territoire implements Observeur,Trace{
 		return listeFourmiliere;
 	}
 
+	
+	
 	@Override
 	public void trace(Rapport rapport) {
 		rapport.traceForFourmiliere(this);
 		for(Fourmiliere fourmiliere : listeFourmiliere){
 			fourmiliere.trace(rapport);
 		}
-		for(Iterator<Entry<Position, Case>> iterateur = grille.entrySet().iterator();iterateur.hasNext();){
-			Map.Entry<Position, Case> emplacement = (Map.Entry<Position, Case>) iterateur.next();
-			emplacement.getValue().trace(rapport);
+		for(Integer positionX : grilleX.keySet()){
+			for(Integer PositionY:grilleX.get(positionX).keySet()){
+				grilleX.get(positionX).get(PositionY).trace(rapport);
+			}
 		}
-		/*for(Position position : grille.keySet()){
-			grille.get(position).trace(rapport);
-		}*/
 	}
 
 	@Override
@@ -79,21 +96,10 @@ public class Territoire implements Observeur,Trace{
 		for(Fourmiliere fourmiliere : listeFourmiliere){
 			fourmiliere.evenement();;
 		}
-		Iterator<Entry<Position, Case>> iterateur = grille.entrySet().iterator();
-		Map.Entry<Position, Case> emplacement  = (Map.Entry<Position, Case>) iterateur.next();
-		Case temporaire = emplacement.getValue();
-		while(iterateur.hasNext()){
-			emplacement = (Map.Entry<Position, Case>) iterateur.next();
-			temporaire.evenement();
-			temporaire =  emplacement.getValue();
+		for(Integer positionX : grilleX.keySet()){
+			for(Integer PositionY:grilleX.get(positionX).keySet()){
+				grilleX.get(positionX).get(PositionY).evenement();
+			}
 		}
-		
-		
-		
-		/*for(Iterator<Entry<Position, Case>> iterateur = grille.entrySet().iterator();iterateur.hasNext();){
-			Map.Entry<Position, Case> emplacement = (Map.Entry<Position, Case>) iterateur.next();
-			emplacement.getValue().evenement();
-			iterateur.
-		}*/
 	}
 }

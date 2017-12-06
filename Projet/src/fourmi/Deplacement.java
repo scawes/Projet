@@ -1,6 +1,5 @@
 package fourmi;
 
-import territoire.Case;
 import territoire.Position;
 import territoire.Territoire;
 

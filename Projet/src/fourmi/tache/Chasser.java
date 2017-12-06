@@ -9,6 +9,7 @@ import territoire.Territoire;
 public class Chasser extends Tache {
 
 	final int NOMBRE_VOISIN = 4;
+	final int DISTANCE_MAX = 200;
 	
 	public Chasser(Role role) {
 		super(role);
@@ -65,7 +66,10 @@ public class Chasser extends Tache {
 	
 	
 	int importanceCase(Position positionTest){
-		//if(positionTest.getX()<0 || positionTest.getY()<0)return 0; //fixe
+		if(positionTest.getX()>getFourmi().getFourmiliere().getPosition().get(0).getX()+DISTANCE_MAX)return 0; //fixe
+		if(positionTest.getX()<getFourmi().getFourmiliere().getPosition().get(0).getX()-DISTANCE_MAX)return 0;
+		if(positionTest.getY()>getFourmi().getFourmiliere().getPosition().get(0).getY()+DISTANCE_MAX)return 0;
+		if(positionTest.getY()<getFourmi().getFourmiliere().getPosition().get(0).getY()-DISTANCE_MAX)return 0;
 		if(positionTest.equals(getDeplacement().getEmplacementPrecedent()))return 10;	//pr�f�rence aucun retour en arriere
 		int pheromone = getTerritoire().getCase(positionTest).getPheromone(role);
 		//option case inataignable

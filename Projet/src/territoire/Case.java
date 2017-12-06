@@ -29,26 +29,43 @@ public class Case implements Observable, Trace{
 	Position position;
 	List<Fourmi> fourmiPresente;
 	List<Proie> proiePresente;
-	int element;
 	int vie = 20;
 	Map<Fourmiliere,Pheromone> listePheromones ;
 	private Map<String, List<Observeur>> observers;
+	private boolean isModifier;
 	
 	Case(Position position,GestionVue gestionVue) {
 		observers = new HashMap<String, List<Observeur>>();
-		
+		setModifier();
 		this.position = position;
 		fourmiPresente = new ArrayList<Fourmi>();
 		proiePresente = new ArrayList<Proie>();
-		element=0;
 		listePheromones = new HashMap<Fourmiliere,Pheromone>();
 		record(ModificationCase.class.getName(), gestionVue);
 		draw();
 		
 	}
 	
+	void setModifier() {
+		isModifier=true;
+	}
+	
 	public Position getPosition(){
 		return position;
+	}
+	
+	public List<Fourmi> getEntite(){
+		return fourmiPresente;
+	}
+	
+	public void ajouterEntite(Fourmi fourmi){
+		fourmiPresente.add(fourmi);
+		setModifier();
+	}
+	
+	public void supprimerEntite(Fourmi fourmi){
+		fourmiPresente.remove(fourmi);
+		setModifier();
 	}
 	
 	public List<Proie> getProies(){
@@ -58,10 +75,8 @@ public class Case implements Observable, Trace{
 	
 	
 	public void addPheromone(Role maFourmi){
-	      
 	        if(this.listePheromones.containsKey(maFourmi.getEtat().getFourmi().getFourmiliere())){
                  this.listePheromones.get(maFourmi.getEtat().getFourmi().getFourmiliere()).passageFourmie();
-                  
                 }
 	        else {
 	          Pheromone pheromone;
@@ -70,9 +85,8 @@ public class Case implements Observable, Trace{
 	          
 	          this.listePheromones.put(maFourmi.getEtat().getFourmi().getFourmiliere(),pheromone );
 	        }
-	      
-	        draw();
 		vie=100;
+		setModifier();
 	}
 	
 	public int getPheromone(){
@@ -91,7 +105,6 @@ public class Case implements Observable, Trace{
 			if(pheromone.isFourmiliere(role.getEtat().getFourmi().getFourmiliere())) {
 				if((!pheromone.isSexue()) && role instanceof Sexue) return pheromone.getPuissance();
 				if((pheromone.isSexue()) && role instanceof Ouvriere) return pheromone.getPuissance();
-				
 			}
 		}
 		return puissance;
@@ -101,25 +114,14 @@ public class Case implements Observable, Trace{
 	public void decrementPeromone() {
 		for(Entry<Fourmiliere, Pheromone> entry : this.listePheromones.entrySet()) {
 			entry.getValue().decrementPheromone();
-			
+			if(entry.getValue().getPuissance()>0)setModifier();
 		}
-		
 	}
 
-	public void ajouterEntite(Fourmi fourmi){
-		fourmiPresente.add(fourmi);
-	}
-	
-	public void supprimerEntite(Fourmi fourmi){
-		fourmiPresente.remove(fourmi);
-	}
-	
-	public List<Fourmi> getEntite(){
-		return fourmiPresente;
-	}
-	
+
 	void draw(){
 		signal(new ModificationCase(this));
+		isModifier=false;
 	}
 	
 	
@@ -129,8 +131,9 @@ public class Case implements Observable, Trace{
 	}
 
 	
-	public void evenement() {		
+	public void evenement() {
 		this.decrementPeromone();
+		if(isModifier)draw();
 	}
 	
 	@Override

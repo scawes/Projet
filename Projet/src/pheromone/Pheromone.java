@@ -22,7 +22,9 @@ public abstract class Pheromone {
   
   
   public void decrementPheromone() {
-	  this.dureeDAction --;
+	  if(dureeDAction>0) {
+		  this.dureeDAction --;
+	  }
   }
   
   public boolean isFourmiliere(Fourmiliere fourmiliere) {

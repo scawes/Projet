@@ -1,6 +1,5 @@
 package fourmi.role;
 
-import fourmi.Fourmi;
 import fourmi.etat.Etat;
 import fourmi.tache.Tache;
 import rapports.Rapport;

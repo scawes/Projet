@@ -6,8 +6,6 @@ import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.canvas.Canvas;
-import javafx.scene.canvas.GraphicsContext;
-import simulateur.Simulateur;
 import territoire.Position;
 
 public class Controleur implements Initializable {
@@ -46,7 +44,7 @@ public class Controleur implements Initializable {
 	
 	@FXML
 	public void dezoom(){
-		gestionnaire.getGestionVue().setTaille(3);
+		gestionnaire.getGestionVue().setTaille(5);
 		gestionnaire.getGestionRapport().graphique();
 	}
 	
@@ -58,7 +56,7 @@ public class Controleur implements Initializable {
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		gestionnaire=new Gestionnaire(canvas);
-		gestionnaire.getGestionVue().setTaille(3);
+		zoom();
 	}
 	
 

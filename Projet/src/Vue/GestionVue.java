@@ -8,10 +8,8 @@ import javafx.scene.paint.Color;
 import observeur.Evenement;
 import observeur.Observeur;
 import observeur.TimeChange;
-import simulateur.Simulateur;
 import territoire.Case;
 import territoire.Position;
-import territoire.Territoire;
 
 public class GestionVue implements Observeur{
 	
@@ -49,17 +47,33 @@ public class GestionVue implements Observeur{
 	public void drawCase(Position position,int element) {
 		if(position.getX()<1||position.getY()<1)return;
 		if(position.getY()>(canvas.getHeight()/taille)-1||position.getX()>(canvas.getWidth()/taille)-1)return;
-        gc.setFill(Color.BLACK);
+        if(this.taille>5) {
+        	gc.setFill(Color.GRAY);
+        	gc.fillRect(position.getX()*taille, position.getY()*taille, taille, taille);
+        } else {
+        	gc.setFill(Color.WHITE);
+        	gc.fillRect(position.getX()*taille, position.getY()*taille, taille, taille);
+        }
 
-        gc.fillRect(position.getX()*taille, position.getY()*taille, taille, taille);
-        
-        gc.setFill(getColor2(element));
-        
+        gc.setFill(getColorCase(element));
         gc.fillRect(position.getX()*taille+1, position.getY()*taille+1, taille-2, taille-2);       
-        gc.setFill(Color.BLACK);
-        //gc.fillText(String.valueOf(Territoire.getInstance().getCase(position).getEntite().size()), position.getX()*taille+taille*0.25, position.getY()*taille+taille*0.75, taille/2);
-        //gc.fillText(String.valueOf(Territoire.getInstance().getCase(position).getEntite().size()), position.getX()*taille+taille*0.25, position.getY()*taille+taille*0.75);
     }
+	
+	public void drawFourmi(Position position,int nombreFourmis) {
+		if(position.getX()<1||position.getY()<1)return;
+		if(position.getY()>(canvas.getHeight()/taille)-1||position.getX()>(canvas.getWidth()/taille)-1)return;
+		gc.setFill(Color.BLACK);
+		if(taille>5) {
+			for(int index=0;index<nombreFourmis;index++) {
+				gc.fillOval(position.getX()*(taille)+(Math.random()*(taille-4))+2,
+						position.getY()*(taille)+(Math.random()*(taille-4))+2,
+						taille/4, taille/4); 
+			}
+		} else {
+			gc.fillOval(position.getX()*(taille)+taille/2, position.getY()*(taille)+taille/2, 1, 1); 
+		}
+		
+	}
 	
 	Color getColor(int element){
 		if(element == 1) {
@@ -73,7 +87,7 @@ public class GestionVue implements Observeur{
         }
 	}
 	
-	Color getColor2(int element){
+	Color getColorCase(int element){
 		if(element > 0) {
 			if(element < SEUIL)return Color.color(1-(double)element/SEUIL, 1, 1-(double)element/SEUIL);
 			else return Color.color(0, 1, 0);
@@ -102,6 +116,7 @@ public class GestionVue implements Observeur{
 	public void receive(Evenement evt) {
 		Case casemodif = (Case)evt.source();
 		drawCase(casemodif.getPosition(),casemodif.getPheromone());
+		drawFourmi(casemodif.getPosition(),casemodif.getEntite().size());
 	}
 	
 }
