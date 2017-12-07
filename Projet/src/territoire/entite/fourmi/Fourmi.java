@@ -10,7 +10,6 @@ import territoire.zone.deplacement.DeplacementFourmi;
 
 public class Fourmi implements Trace {
 	
-
 	/*
 	 * Attributs
 	 */
