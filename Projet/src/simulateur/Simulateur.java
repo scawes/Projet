@@ -52,7 +52,7 @@ public class Simulateur extends Thread implements Observable {
 	}
 
 	/**
-	 * Modifier la valeur de vittesse
+	 * Modifier la valeur de vitesse
 	 */
 	public void plusVite() {
 		if (vitesse > 100) {
@@ -62,7 +62,7 @@ public class Simulateur extends Thread implements Observable {
 	}
 
 	/**
-	 * Modifier la valeur de vittesse
+	 * Modifier la valeur de vitesse
 	 */
 	public void plusLent() {
 		if (vitesse < 2000) {

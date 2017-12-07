@@ -9,7 +9,7 @@ public class Appetit implements Trace {
 	 * Attributs
 	 */
 
-	final int JOURNEE = 120;
+	final int JOURNEE = 200;
 
 	double faim;
 	double appetit;
@@ -29,10 +29,12 @@ public class Appetit implements Trace {
 	}
 
 	/**
-	 * Constructeur d'appetit.
+	 * Constructeur d'appetit .
+	 * Une fourmi ne consomme pas.
 	 */
 	public Appetit() {
 		faim = 1;
+		this.appetit = 0;
 	}
 
 	/*
@@ -53,14 +55,27 @@ public class Appetit implements Trace {
 		return false;
 	}
 
+	
+	/**
+	 *  La fourmi mange la quantiter de nourriture donner
+	 * @param nourriture
+	 */
 	public void manger(double nourriture) {
 		faim += nourriture * JOURNEE;
 	}
 
+	
+	/**
+	 * @return faim de la fourmi
+	 */
 	public double faim() {
 		return faim / JOURNEE;
 	}
 
+	/**
+	 * 
+	 * @return quantite de nourriture pouvant etre manger
+	 */
 	public double besoin() {
 		double result = appetit - faim / JOURNEE;
 		if (result < 0) {
@@ -69,6 +84,11 @@ public class Appetit implements Trace {
 		return appetit - faim / JOURNEE;
 	}
 
+	/**
+	 * 
+	 * @return total de nourriture qui peux etre manger
+	 */
+	
 	public double capacite() {
 		return appetit * JOURNEE;
 	}

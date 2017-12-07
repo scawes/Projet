@@ -25,7 +25,7 @@ public abstract class TacheOuvriere implements Trace {
 	}
 
 	/*
-	 * Getteurs et Setteurs
+	 * Getteurs
 	 */
 
 	Territoire getTerritoire() {

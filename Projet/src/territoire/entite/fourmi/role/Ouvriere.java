@@ -48,7 +48,9 @@ public class Ouvriere extends Role implements Trace {
 	}
 
 	/**
-	 * 
+	 * Definie la prochaine tache d'une ouvriere.
+	 * si elle se trouve dans le nid, elle donne a manger.
+	 * sinon elle va chasser.
 	 * @return
 	 */
 	public TacheOuvriere getTache() {
@@ -62,7 +64,7 @@ public class Ouvriere extends Role implements Trace {
 	}
 
 	/**
-	 * 
+	 * La fourmi va chasser.
 	 * @return
 	 */
 	public TacheOuvriere getChasse() {
@@ -72,7 +74,7 @@ public class Ouvriere extends Role implements Trace {
 
 	
 	/**
-	 * 
+	 * La fourmi attaque une proie
 	 * @param proie
 	 * @return
 	 */
@@ -84,7 +86,7 @@ public class Ouvriere extends Role implements Trace {
 
 	
 	/**
-	 * 
+	 * La fourmi ramene une proie
 	 * @param proie
 	 * @return
 	 */

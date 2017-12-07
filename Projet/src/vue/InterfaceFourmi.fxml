@@ -51,7 +51,7 @@
     <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="386.0" prefWidth="640.0" VBox.vgrow="ALWAYS">
       <children>
             <Canvas fx:id="canvas" cache="true" cacheHint="QUALITY" height="375.0" width="640.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-            <Label layoutX="14.0" layoutY="381.0" text="Temps passer : " />
+            <Label layoutX="14.0" layoutY="381.0" text="Temps passe : " />
             <TextField fx:id="textTemps" editable="false" layoutX="96.0" layoutY="377.0" />
       </children>
     </AnchorPane>

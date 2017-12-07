@@ -10,7 +10,7 @@ public class Larve extends Etat implements Trace {
 	 * Attributs
 	 */
 
-	private final int VIE_LARVE = 150;
+	private final int VIE_LARVE = 100;
 	private final double POID = 6;
 
 	/**

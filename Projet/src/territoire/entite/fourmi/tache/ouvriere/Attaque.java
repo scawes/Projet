@@ -45,7 +45,8 @@ public class Attaque extends TacheOuvriere {
 	 */
 	
 	/**
-	 * 
+	 * 1. ajoute des pheromone sur la case
+	 * 2. regarde si la proie est morte ou enfuite
 	 */
 	public void phaseAttaque() {
 		getTerritoire().getCase(getDeplacement().getEmplacement()).addPheromone(getFourmi().getFourmiliere());
@@ -55,7 +56,7 @@ public class Attaque extends TacheOuvriere {
 	}
 
 	/**
-	 * 
+	 * definie une nouvelle tache
 	 */
 	public void fuiteProie() {
 		role.getTache();

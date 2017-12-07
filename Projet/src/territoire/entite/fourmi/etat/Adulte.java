@@ -24,7 +24,7 @@ public class Adulte extends Etat implements Trace {
 	 * Constructeur de l'etat Adulte.
 	 * 
 	 * @param fourmi
-	 *            l'etat connait sa fourmi
+	 *            l'etat connait sa fourmi.
 	 */
 	public Adulte(Fourmi fourmi) {
 		super(fourmi);
@@ -34,10 +34,11 @@ public class Adulte extends Etat implements Trace {
 		this.role = getRole(this);
 	}
 
-	/*
-	 * Getteurs et Setteur
+	/**
+	 * choisi le role de la fourmie selon le nombre de fourmis dans la fourmiliere
+	 * @param etat
+	 * @return
 	 */
-
 	public Role getRole(Etat etat) {
 		if (etat.getFourmi().getFourmiliere().getListeFourmi().size() < 1)
 			return new Reine(etat);

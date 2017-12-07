@@ -21,9 +21,9 @@ public class Fourmi implements Trace {
 	
 	/**
 	 * Constructeur d'une fourmi,
-	 * il initialise sa posotion sur la grille et son poid.
+	 * il initialise sa posotion sur la grille et son appetit.
 	 * @param fourmiliere une fourmi connait sa fourmillière
-	 * @param position position de la fourmis
+	 * @param position de la fourmis
 	 */
 	public Fourmi(Fourmiliere fourmiliere,Position position) {
 		this.etat=new Oeuf(this);
@@ -70,8 +70,9 @@ public class Fourmi implements Trace {
 	
 	
 	/**
-	 * Fonction qui permet la propagation de l'evenement TimeChange. La fourmi
-	 * propage a son tour l'evenement a son etat.
+	 * Fonction qui permet la propagation de l'evenement TimeChange.
+	 * La fourmi decremente son appetit
+	 * La fourmi propage a son tour l'evenement a son etat.
 	 */
 	public void evenement() {
 		appetit();
