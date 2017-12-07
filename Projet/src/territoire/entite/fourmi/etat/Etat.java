@@ -6,14 +6,26 @@ import territoire.entite.fourmi.Fourmi;
 
 public abstract class Etat implements Trace {
 	
+	/*
+	 * Attributs
+	 */
+	
 	Fourmi fourmi;
 	protected double poid;
 	protected DureeVie dureeDeVie;
 	
-	
+	/**
+	 * Constructeur de Etat,
+	 * il permet de creer le lien entre les etats et les fourmis
+	 * @param fourmi fourmi lier à l'etat
+	 */
 	Etat(Fourmi fourmi){
 		this.fourmi=fourmi;
 	}
+	
+	/*
+	 * Getteur et Setteur 
+	 */
 	
 	public double getPoid() {
 	 return this.poid;
@@ -26,37 +38,25 @@ public abstract class Etat implements Trace {
     public void setDureeDeVie(int duree) {
     	dureeDeVie = new DureeVie(duree);
     }
-        
-    abstract void vieillir() ;
-
-        /*
-        /**
-         * retourne l'instance de la case sur la qu'elle elle se situe
-         * @return Case
-         */
-	
-	/*
-        Case getCase() {
-          return this.fourmi.getFourmiliere().getTerritoire().getCase(this.fourmi.getDeplacement().getEmplacement());
-        }
-        
-        
-        Position getPosition() {
-          return this.fourmi.getDeplacement().getEmplacement();
-        }
-        
-        List<Position> getPositionsFourmiliere(){
-          return this.fourmi.getFourmiliere().getPosition();
-        }
-
-        List<Proie> getProiePresnte(){
-          return this.getCase().getProies();
-        }*/
-	
-	public Fourmi getFourmi() {
+    
+    public Fourmi getFourmi() {
 		return fourmi;
 	}
-	
+    
+    /*
+	 * Methodes
+	 */
+    
+    /**
+     * Fonction qui diminue l'esperance de vie de la fourmi.
+     * Et permet de changer l'etat de la fourmi
+     */
+    abstract void vieillir() ;
+
+    /**
+	 * Fonction qui permet la propagation de l'evenement TimeChange.
+	 * L'etat propage à son tour l'evenement.
+	 */
 	public abstract void evenement();
 
 }

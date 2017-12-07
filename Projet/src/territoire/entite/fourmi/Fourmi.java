@@ -86,9 +86,6 @@ public class Fourmi implements Trace {
 		etat=nouvelEtat;
 	}
 
-	/**
-	 * Fonction qui permet d'ecrire dans le rapport en cour
-	 */
 	@Override
 	public void trace(Rapport rapport) {
 		rapport.traceForFourmiliere(this);
