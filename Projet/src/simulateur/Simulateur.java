@@ -14,84 +14,81 @@ import observeur.Observeur;
 import observeur.TimeChange;
 
 public class Simulateur extends Thread implements Observable {
-	
+
+	/*
+	 * Attributs
+	 */
+
 	int vitesse;
 
 	private Map<String, List<Observeur>> observers;
-	
-	
+
 	Timeline timeline;
-	
-	public void plusVite(){
-		if(vitesse>100){
+
+	/*
+	 * Constructeurs
+	 */
+
+	/**
+	 * Constructeur de Simulateur. Initialise la vitesse à 100
+	 */
+	public Simulateur() {
+		this(100);
+	}
+
+	/**
+	 * Constructeur de Simulateur.
+	 * 
+	 * @param time
+	 */
+	public Simulateur(int time) {
+		vitesse = 100;
+		this.observers = new HashMap<>();
+		timeline = new Timeline(new KeyFrame(Duration.seconds(0), event -> run()),
+				new KeyFrame(Duration.seconds((double) time / 1000)));
+		timeline.setCycleCount(Timeline.INDEFINITE);
+		timeline.play();
+
+	}
+
+	/**
+	 * Modifier la valeur de vittesse
+	 */
+	public void plusVite() {
+		if (vitesse > 100) {
 			vitesse -= 100;
 		}
 		setTimer(vitesse);
 	}
-	
-	public void plusLent(){
-		if(vitesse<2000){
-			vitesse +=50;
+
+	/**
+	 * Modifier la valeur de vittesse
+	 */
+	public void plusLent() {
+		if (vitesse < 2000) {
+			vitesse += 50;
 		}
 		setTimer(vitesse);
 	}
 
-	public Simulateur() {
-		this(100);
-	}
-	
-	//simulateur temps optimiser canvas
-	public Simulateur(int time) {
-		vitesse = 100;
-		this.observers = new HashMap<>();
-		timeline = new Timeline(
-                new KeyFrame(
-                        Duration.seconds(0), 
-                        event -> run()
-                ),
-                new KeyFrame(Duration.seconds((double)time/1000))
-        );
-        timeline.setCycleCount(Timeline.INDEFINITE);
-        timeline.play();
-		
-	}
-	
-	public void setTimer(int temps){
+	/**
+	 * Stop la timeline puis, modifier la valeur de vittesse, et la relance
+	 */
+	public void setTimer(int temps) {
 		timeline.stop();
-		timeline = new Timeline(
-                new KeyFrame(
-                        Duration.seconds(0), 
-                        event -> run()
-                ),
-                new KeyFrame(Duration.seconds((double)temps/1000))
-        );
-        timeline.setCycleCount(Timeline.INDEFINITE);
-        timeline.play();
+		timeline = new Timeline(new KeyFrame(Duration.seconds(0), event -> run()),
+				new KeyFrame(Duration.seconds((double) temps / 1000)));
+		timeline.setCycleCount(Timeline.INDEFINITE);
+		timeline.play();
 	}
 	
-	Simulateur(Observeur observer) {
-		this.observers = new HashMap<>();
-		this.record(TimeChange.class.getName(), observer);
-	}
+	/*
+	 * Methodes
+	 */
 
-	/*@Override
-	public void run() {
-		while (true) {
-
-			try {
-				Thread.sleep(TICK);
-			} catch (InterruptedException e) {
-				e.printStackTrace();
-			}
-			this.signal(new TimeChange(this));
-		}
-
-	}*/
 	@Override
 	public void run() {
-			this.signal(new TimeChange(this));
-		
-
+		this.signal(new TimeChange(this));
 	}
 
 	@Override

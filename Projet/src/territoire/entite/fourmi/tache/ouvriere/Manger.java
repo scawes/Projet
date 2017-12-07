@@ -8,68 +8,109 @@ import territoire.zone.Position;
 
 public class Manger extends TacheOuvriere {
 
+	/**
+	 * Constructeur de Manger
+	 * 
+	 * @param role
+	 *            le role connait sa tache
+	 * 
+	 */
 	public Manger(Ouvriere role) {
 		super(role);
 	}
 
-	Fourmi chercherFourmiCase(Position position){
-		for(Fourmi fourmi : getTerritoire().getCase(position).getEntite()){
-			if (fourmi.getAppetit().besoin()>0){
+	
+	/*
+	 * Methodes
+	 */
+	
+	/**
+	 * 
+	 * @param position
+	 * @return
+	 */
+	Fourmi chercherFourmiCase(Position position) {
+		for (Fourmi fourmi : getTerritoire().getCase(position).getEntite()) {
+			if (fourmi.getAppetit().besoin() > 0) {
 				return fourmi;
 			}
 		}
 		return null;
 	}
-	
-	Fourmi chercherFourmi(){
+
+	/**
+	 * 
+	 * @return
+	 */
+	Fourmi chercherFourmi() {
 		Fourmi fourmi;
-		for(Position position : getFourmi().getFourmiliere().getPosition()){
+		for (Position position : getFourmi().getFourmiliere().getPosition()) {
 			fourmi = chercherFourmiCase(position);
-			if(fourmi!=null)return fourmi;
+			if (fourmi != null)
+				return fourmi;
 		}
 		return null;
 	}
+
 	
-	Proie chercherProieCase(Position position){
-		for(Proie proie : getTerritoire().getCase(position).getProies()){
-			if (!proie.isVivant()){
-				if (proie.getPoid()>0){
+	/**
+	 * 
+	 * @param position
+	 * @return
+	 */
+	Proie chercherProieCase(Position position) {
+		for (Proie proie : getTerritoire().getCase(position).getProies()) {
+			if (!proie.isVivant()) {
+				if (proie.getPoid() > 0) {
 					return proie;
 				}
 			}
 		}
 		return null;
 	}
+
 	
-	Proie chercherProie(){
+	/**
+	 * 
+	 * @return
+	 */
+	Proie chercherProie() {
 		Proie proie;
-		for(Position position : getFourmi().getFourmiliere().getPosition()){
+		for (Position position : getFourmi().getFourmiliere().getPosition()) {
 			proie = chercherProieCase(position);
-			if(proie!=null)return proie;
+			if (proie != null)
+				return proie;
 		}
 		return null;
 	}
+
 	
-	void nourrir(){
+	/**
+	 * 
+	 */
+	void nourrir() {
 		Fourmi fourmi = chercherFourmi();
 		Proie proie = chercherProie();
-		if(fourmi != null && proie != null){
-			
+		if (fourmi != null && proie != null) {
+
 			double besoin = fourmi.getAppetit().besoin();
 			double donner = proie.decrementePoid(besoin);
 			fourmi.getAppetit().manger(donner);
-			
+
 			role.getTache();
 			return;
 		}
 		role.getChasse();
-		
+
 	}
-	
-	void phaseManger(){
+
+	/**
+	 * 
+	 */
+	void phaseManger() {
 		nourrir();
 	}
-	
+
 	@Override
 	public void evenement() {
 		phaseManger();
@@ -79,5 +120,5 @@ public class Manger extends TacheOuvriere {
 	public void trace(Rapport rapport) {
 		rapport.traceForFourmiliere(this);
 	}
-	
+
 }
