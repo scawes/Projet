@@ -4,24 +4,26 @@ import rapports.Rapport;
 import rapports.Trace;
 import territoire.entite.fourmi.Fourmi;
 
-public class Nymphe extends Etat implements Trace{
-	
+public class Nymphe extends Etat implements Trace {
+
 	/*
 	 * Attributs
 	 */
 
 	private final int VIE_LYMPHE = 20;
-	
+
 	/**
 	 * Constructeur de l'etat Nymphe.
-	 * @param fourmi l'etat connait sa fourmi
+	 * 
+	 * @param fourmi
+	 *            l'etat connait sa fourmi
 	 */
 	Nymphe(Fourmi fourmi) {
 		super(fourmi);
 		this.setDureeDeVie(VIE_LYMPHE);
 		setPoid(-1);
 	}
-	
+
 	/*
 	 * Methodes
 	 */
@@ -39,7 +41,7 @@ public class Nymphe extends Etat implements Trace{
 
 	@Override
 	void vieillir() {
-		if(dureeDeVie.decrementer()) {
+		if (dureeDeVie.decrementer()) {
 			fourmi.evolution(new Adulte(fourmi));
 		}
 	}

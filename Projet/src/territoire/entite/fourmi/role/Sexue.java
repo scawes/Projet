@@ -8,13 +8,10 @@ public class Sexue extends Role implements Trace {
 
 	public Sexue(Etat etat) {
 		super(etat);
-		// TODO Auto-generated constructor stub
 	}
 
 	@Override
-	public	void evenement() {
-		// TODO Auto-generated method stub
-		
+	public void evenement() {
 	}
 
 	@Override

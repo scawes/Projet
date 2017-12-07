@@ -8,13 +8,10 @@ public class Soldat extends Role implements Trace {
 
 	public Soldat(Etat etat) {
 		super(etat);
-		// TODO Auto-generated constructor stub
 	}
 
 	@Override
-	public	void evenement() {
-		// TODO Auto-generated method stub
-		
+	public void evenement() {
 	}
 
 	@Override

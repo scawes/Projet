@@ -70,8 +70,8 @@ public class Fourmi implements Trace {
 	
 	
 	/**
-	 * Fonction qui permet la propagation de l'evenement TimeChange.
-	 * La fourmi propage a son tour l'evenement a son etat.
+	 * Fonction qui permet la propagation de l'evenement TimeChange. La fourmi
+	 * propage a son tour l'evenement a son etat.
 	 */
 	public void evenement() {
 		appetit();
