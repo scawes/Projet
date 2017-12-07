@@ -30,7 +30,7 @@ public class Proie implements Trace {
 	 * @param territoire
 	 *            la proie connait le territoire
 	 * @param position
-	 *            La position de la proie est initiliser
+	 *            La position de la proie est initiliser 
 	 */
 	public Proie(Territoire territoire, Position position) {
 		this.territoire = territoire;
