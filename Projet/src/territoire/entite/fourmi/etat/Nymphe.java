@@ -22,6 +22,7 @@ public class Nymphe extends Etat implements Trace {
 		super(fourmi);
 		this.setDureeDeVie(VIE_LYMPHE);
 		setPoid(-1);
+		getFourmi().setAppetit(0);
 	}
 
 	/*
