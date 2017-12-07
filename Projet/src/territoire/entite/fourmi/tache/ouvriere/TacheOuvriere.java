@@ -27,7 +27,7 @@ public abstract class TacheOuvriere implements Trace {
 	/*
 	 * Getteurs et Setteurs
 	 */
-	
+
 	Territoire getTerritoire() {
 		return getFourmi().getFourmiliere().getTerritoire();
 	}
@@ -47,10 +47,10 @@ public abstract class TacheOuvriere implements Trace {
 	/*
 	 * Methodes
 	 */
-	
+
 	/**
-	 * Fonction qui permet la propagation de l'evenement TimeChange. TacheOuvriere propage
-	 * à son tour l'evenement.
+	 * Fonction qui permet la propagation de l'evenement TimeChange. TacheOuvriere
+	 * propage à son tour l'evenement.
 	 */
 	public abstract void evenement();
 }
