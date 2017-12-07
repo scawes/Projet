@@ -22,7 +22,7 @@ public class Proie implements Trace {
 
 	double poid;
 	private final double poidMin = 1.5;
-	private final double poidMax = 5;
+	private final double poidMax = 10;
 
 	/**
 	 * Constructeur de proie.
