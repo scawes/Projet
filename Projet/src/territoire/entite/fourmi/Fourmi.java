@@ -10,18 +10,33 @@ import territoire.zone.deplacement.DeplacementFourmi;
 
 public class Fourmi implements Trace {
 	
+
+	/*
+	 * Attributs
+	 */
+	
 	private Fourmiliere fourmiliere;
 	private Etat etat;
 	private DeplacementFourmi deplacement;
 	private Appetit appetit;
 	
-	
+	/**
+	 * Constructeur d'une fourmi,
+	 * il initialise sa posotion sur la grille et son poid.
+	 * @param fourmiliere une fourmi connait sa fourmillière
+	 * @param position position de la fourmis
+	 */
 	public Fourmi(Fourmiliere fourmiliere,Position position) {
 		this.etat=new Oeuf(this);
 		setFourmiliere(fourmiliere);
 		this.deplacement = new DeplacementFourmi(this,position);
 		this.appetit=new Appetit();
 	}
+	
+	/*
+	 * Getteurs et setteurs de la classe fourmie
+	 */
+	
 	
 	public DeplacementFourmi getDeplacement() {
 		return deplacement;
@@ -39,6 +54,14 @@ public class Fourmi implements Trace {
 		this.appetit = new Appetit(appetit);
 	}
 	
+	public Appetit getAppetit(){
+		return appetit;
+	}
+	
+	
+	/**
+	 * Fonction qui permet de decrementer l'appetit
+	 */
 	public void appetit(){
 		if(this.appetit.decrementer()){
 			//A COMPLETER : mort fourmi
@@ -46,19 +69,27 @@ public class Fourmi implements Trace {
 		};
 	}
 	
-	public Appetit getAppetit(){
-		return appetit;
-	}
-
+	
+	/**
+	 * Fonction qui permet la propagation de l'evenement TimeChange.
+	 * La fourmi propage a son tour l'evenement a son etat.
+	 */
 	public void evenement() {
 		appetit();
 		etat.evenement();
 	}
 	
+	/**
+	 * Fonction qui permet de changer l'etat d'une fourmie
+	 * @param nouvelEtat
+	 */
 	public void evolution(Etat nouvelEtat) {
 		etat=nouvelEtat;
 	}
 
+	/**
+	 * Fonction qui permet d'ecrire dans le rapport en cour
+	 */
 	@Override
 	public void trace(Rapport rapport) {
 		rapport.traceForFourmiliere(this);
