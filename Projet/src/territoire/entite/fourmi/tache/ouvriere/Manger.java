@@ -19,13 +19,13 @@ public class Manger extends TacheOuvriere {
 		super(role);
 	}
 
-	
 	/*
 	 * Methodes
 	 */
-	
+
 	/**
 	 * regarde si des fourmie sur la case on faim
+	 * 
 	 * @param position
 	 * @return Fourmi affamer ou null
 	 */
@@ -40,6 +40,7 @@ public class Manger extends TacheOuvriere {
 
 	/**
 	 * regarde la faim de toute les fourmis de la fourmiliere
+	 * 
 	 * @return Fourmi affamer ou null
 	 */
 	Fourmi chercherFourmi() {
@@ -52,9 +53,9 @@ public class Manger extends TacheOuvriere {
 		return null;
 	}
 
-	
 	/**
 	 * regarde si une proie peut etre consommer sur la case
+	 * 
 	 * @param position
 	 * @return Proie consommable ou null
 	 */
@@ -69,9 +70,9 @@ public class Manger extends TacheOuvriere {
 		return null;
 	}
 
-	
 	/**
 	 * regarde les proie consommable au nid
+	 * 
 	 * @return Proie consommable ou null
 	 */
 	Proie chercherProie() {
@@ -84,12 +85,10 @@ public class Manger extends TacheOuvriere {
 		return null;
 	}
 
-	
 	/**
-	 * cherche une fourmie a nourrir et une proie a consommer
-	 * si ce n'est pas disponnible, va chasser
-	 * sinon donne a manger a la fourmi
-	 * et cherche une nouvelle tache
+	 * cherche une fourmie a nourrir et une proie a consommer si ce n'est pas
+	 * disponnible, va chasser sinon donne a manger a la fourmi et cherche une
+	 * nouvelle tache
 	 */
 	void nourrir() {
 		Fourmi fourmi = chercherFourmi();

@@ -43,7 +43,7 @@ public class Proie implements Trace {
 	/*
 	 * Getteurs et Setteurs
 	 */
-	
+
 	public Deplacement getDeplacement() {
 		return this.deplacement;
 	}
@@ -75,7 +75,7 @@ public class Proie implements Trace {
 	/*
 	 * Methodes
 	 */
-	
+
 	/**
 	 * 
 	 * @param manger

@@ -1,6 +1,5 @@
 package territoire.entite.proie.etat;
 
-
 import rapports.Rapport;
 import rapports.Trace;
 import territoire.entite.fourmi.tache.ouvriere.Attaque;
@@ -11,33 +10,30 @@ import territoire.entite.proie.etat.tache.vivant.TacheProieVivant;
 
 public class Vivant extends Etat implements Trace {
 
-	
 	TacheProieVivant tache;
 
 	public Vivant(Proie proie) {
 		super(proie);
 
-		tache=getTache();
+		tache = getTache();
 	}
-	
+
 	@Override
 	public void setTache() {
 		tache = getTache();
 	}
-	
+
 	public TacheProieVivant getTache() {
 		Deplacer tache = new Deplacer(this);
 		tache.evenement();
 		return tache;
 	}
-	
 
 	@Override
-	public	void evenement() {
+	public void evenement() {
 
 		tache.evenement();
 	}
-
 
 	@Override
 	public void trace(Rapport rapport) {
@@ -49,7 +45,7 @@ public class Vivant extends Etat implements Trace {
 		if (tache.estAttaquer()) {
 			((EstAttaquer) tache).fourmiArrive(fourmi);
 		} else {
-			tache = new EstAttaquer(this,fourmi);
+			tache = new EstAttaquer(this, fourmi);
 		}
 	}
 
@@ -58,13 +54,11 @@ public class Vivant extends Etat implements Trace {
 		// TODO Auto-generated method stub
 		return true;
 	}
-	
+
 	@Override
 	public Etat getVivant() {
 		// TODO Auto-generated method stub
 		return this;
 	}
-
-	
 
 }

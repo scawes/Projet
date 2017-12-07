@@ -23,63 +23,63 @@ import territoire.entite.proie.etat.tache.vivant.EstAttaquer;
 import territoire.fourmiliere.Fourmiliere;
 import territoire.zone.Case;
 
-public class RapportGraphique implements Rapport{
-	
+public class RapportGraphique implements Rapport {
+
 	GestionRapport gestionRapport;
-	
+
 	public RapportGraphique(GestionRapport gestionRapport) {
-		this.gestionRapport=gestionRapport;
+		this.gestionRapport = gestionRapport;
 	}
-	
+
 	@Override
 	public String toString() {
-		
+
 		return "";
 	}
 
 	@Override
 	public void traceForFourmiliere(Fourmiliere fourmiliere) {
-		
+
 	}
 
 	@Override
 	public void traceForFourmiliere(Fourmi fourmi) {
-		
+
 	}
 
 	@Override
 	public void traceForFourmiliere(Adulte adulte) {
-		
+
 	}
 
 	@Override
 	public void traceForFourmiliere(Larve larve) {
-		
+
 	}
 
 	@Override
 	public void traceForFourmiliere(Oeuf oeuf) {
-		
+
 	}
 
 	@Override
 	public void traceForFourmiliere(Nymphe lymphe) {
-		
+
 	}
 
 	@Override
 	public void traceForFourmiliere(Reine reine) {
-		
+
 	}
 
 	@Override
 	public void traceForFourmiliere(Ouvriere ouvriere) {
-		
+
 	}
 
 	@Override
 	public void traceForFourmiliere(Sexue sexue) {
-		
+
 	}
 
 	@Override
@@ -90,68 +90,68 @@ public class RapportGraphique implements Rapport{
 	@Override
 	public void traceForFourmiliere(Territoire territoire) {
 		// TODO Auto-generated method stub
-		
-	}
 
+	}
 
 	@Override
 	public void traceForFourmiliere(Case caseTerritoire) {
 		// TODO Auto-generated method stub
-		gestionRapport.getGestionnaire().getGestionVue().drawCase(caseTerritoire.getPosition(),caseTerritoire.getPheromone());
+		gestionRapport.getGestionnaire().getGestionVue().drawCase(caseTerritoire.getPosition(),
+				caseTerritoire.getPheromone());
 	}
 
 	@Override
 	public void traceForFourmiliere(Attaque attaque) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void traceForFourmiliere(Chasser chasser) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void traceForFourmiliere(Manger manger) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void traceForFourmiliere(RetourFourmiliere retourFourmiliere) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void traceForFourmiliere(MortProie mortProie) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void traceForFourmiliere(Vivant vivant) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void traceForFourmiliere(EstAttaquer estAttaquer) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void traceForFourmiliere(Deplacer deplacer) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void traceForFourmiliere(Appetit appetit) {
 		// TODO Auto-generated method stub
-		
+
 	}
-	
+
 }

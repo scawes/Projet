@@ -29,8 +29,7 @@ public class Appetit implements Trace {
 	}
 
 	/**
-	 * Constructeur d'appetit .
-	 * Une fourmi ne consomme pas.
+	 * Constructeur d'appetit . Une fourmi ne consomme pas.
 	 */
 	public Appetit() {
 		faim = 1;
@@ -55,16 +54,15 @@ public class Appetit implements Trace {
 		return false;
 	}
 
-	
 	/**
-	 *  La fourmi mange la quantiter de nourriture donner
+	 * La fourmi mange la quantiter de nourriture donner
+	 * 
 	 * @param nourriture
 	 */
 	public void manger(double nourriture) {
 		faim += nourriture * JOURNEE;
 	}
 
-	
 	/**
 	 * @return faim de la fourmi
 	 */
@@ -88,7 +86,7 @@ public class Appetit implements Trace {
 	 * 
 	 * @return total de nourriture qui peux etre manger
 	 */
-	
+
 	public double capacite() {
 		return appetit * JOURNEE;
 	}

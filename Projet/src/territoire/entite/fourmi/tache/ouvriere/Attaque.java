@@ -30,23 +30,21 @@ public class Attaque extends TacheOuvriere {
 		vivant.actionFourmi(this);
 	}
 
-	
 	/*
 	 * Getteurs et Setteurs
 	 */
-	
+
 	public double getPoid() {
 		return role.getEtat().getPoid();
 	}
 
-	
 	/*
 	 * Methodes
 	 */
-	
+
 	/**
-	 * 1. ajoute des pheromone sur la case
-	 * 2. regarde si la proie est morte ou enfuite
+	 * 1. ajoute des pheromone sur la case 2. regarde si la proie est morte ou
+	 * enfuite
 	 */
 	public void phaseAttaque() {
 		getTerritoire().getCase(getDeplacement().getEmplacement()).addPheromone(getFourmi().getFourmiliere());

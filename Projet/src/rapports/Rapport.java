@@ -24,28 +24,44 @@ import territoire.zone.Case;
 
 public interface Rapport {
 	void traceForFourmiliere(Fourmiliere fourmiliere);
+
 	void traceForFourmiliere(Fourmi fourmi);
-	
+
 	void traceForFourmiliere(Adulte adulte);
+
 	void traceForFourmiliere(Larve larve);
+
 	void traceForFourmiliere(Oeuf oeuf);
+
 	void traceForFourmiliere(Nymphe lymphe);
-	
+
 	void traceForFourmiliere(Reine reine);
+
 	void traceForFourmiliere(Ouvriere ouvriere);
+
 	void traceForFourmiliere(Soldat soldat);
+
 	void traceForFourmiliere(Sexue sexue);
-	
+
 	void traceForFourmiliere(Attaque attaque);
+
 	void traceForFourmiliere(Chasser chasser);
+
 	void traceForFourmiliere(Manger manger);
+
 	void traceForFourmiliere(RetourFourmiliere retourFourmiliere);
-	
+
 	void traceForFourmiliere(Territoire territoire);
+
 	void traceForFourmiliere(Case caseTerritoire);
+
 	void traceForFourmiliere(MortProie mortProie);
+
 	void traceForFourmiliere(Vivant vivant);
+
 	void traceForFourmiliere(EstAttaquer estAttaquer);
+
 	void traceForFourmiliere(Deplacer deplacer);
+
 	void traceForFourmiliere(Appetit appetit);
 }

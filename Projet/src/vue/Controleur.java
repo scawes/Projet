@@ -12,92 +12,88 @@ import observeur.TimeChange;
 import territoire.zone.Position;
 
 public class Controleur implements Initializable {
-	
+
 	Gestionnaire gestionnaire;
-	
+
 	@FXML
 	Canvas canvas;
-	
+
 	@FXML
 	TextField textTemps;
-	
-	
+
 	@FXML
-	public void rafraichir(){
+	public void rafraichir() {
 		gestionnaire.getGestionRapport().graphique();
 	}
-	
+
 	@FXML
-	public void trace(){
+	public void trace() {
 		gestionnaire.getGestionRapport().trace();
 	}
-	
+
 	@FXML
-	public void traceRole(){
+	public void traceRole() {
 		gestionnaire.getGestionRapport().traceTache();
 	}
-	
+
 	@FXML
-	public void traceMort(){
+	public void traceMort() {
 		gestionnaire.getGestionRapport().traceMort();
 	}
-	
+
 	@FXML
-	public void zoom(){
-		gestionnaire.getGestionVue().zoom();;
+	public void zoom() {
+		gestionnaire.getGestionVue().zoom();
+		;
 		gestionnaire.getGestionRapport().graphique();
 	}
-	
+
 	@FXML
-	public void dezoom(){
+	public void dezoom() {
 		gestionnaire.getGestionVue().dezoom();
 		gestionnaire.getGestionRapport().graphique();
 	}
-	
+
 	@FXML
-	public void vite(){
+	public void vite() {
 		gestionnaire.getSimulateur().plusVite();
 	}
-	
+
 	@FXML
-	public void lent(){
+	public void lent() {
 		gestionnaire.getSimulateur().plusLent();
 	}
-	
+
 	@FXML
-	public void decalageDroite(){
+	public void decalageDroite() {
 		gestionnaire.getGestionVue().decalageDroite();
 	}
-	
+
 	@FXML
-	public void decalageGauche(){
+	public void decalageGauche() {
 		gestionnaire.getGestionVue().decalageGauche();
 	}
-	
+
 	@FXML
-	public void decalageBas(){
+	public void decalageBas() {
 		gestionnaire.getGestionVue().decalageBas();
 	}
-	
+
 	@FXML
-	public void decalageHaut(){
+	public void decalageHaut() {
 		gestionnaire.getGestionVue().decalageHaut();
 	}
-	
-	
-	
+
 	@FXML
-	public void NouvelleFourmiliere(){
-		gestionnaire.NouvelleFourmiliere(new Position(10,10));
+	public void NouvelleFourmiliere() {
+		gestionnaire.NouvelleFourmiliere(new Position(10, 10));
 	}
-	
+
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		gestionnaire=new Gestionnaire(canvas);
+		gestionnaire = new Gestionnaire(canvas);
 		gestionnaire.getSimulateur().record(TimeChange.class.getName(), new MiseAJour(textTemps));
 		zoom();
 	}
-	
 
-	
 }

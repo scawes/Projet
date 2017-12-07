@@ -1,5 +1,5 @@
 package observeur;
 
 public interface Observeur {
-  void receive(Evenement evt);
+	void receive(Evenement evt);
 }

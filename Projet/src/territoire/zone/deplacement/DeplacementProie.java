@@ -7,14 +7,14 @@ import territoire.zone.Position;
 public class DeplacementProie extends Deplacement {
 
 	Proie proie;
-	
-	public DeplacementProie(Proie proie,Position position) {
-		this.proie=proie;
+
+	public DeplacementProie(Proie proie, Position position) {
+		this.proie = proie;
 		emplacement = position;
-		emplacementPrecedent=emplacement;
+		emplacementPrecedent = emplacement;
 		changerCase(position);
 	}
-	
+
 	@Override
 	Territoire getTerritoire() {
 		return proie.getTerritoire();
@@ -22,9 +22,9 @@ public class DeplacementProie extends Deplacement {
 
 	@Override
 	public void changerCase(Position nouvellePosition) {
-		emplacementPrecedent=emplacement;
+		emplacementPrecedent = emplacement;
 		getTerritoire().getCase(emplacementPrecedent).supprimerEntite(proie);
-		emplacement=nouvellePosition;
+		emplacement = nouvellePosition;
 		getTerritoire().getCase(emplacement).ajouterEntite(proie);
 	}
 

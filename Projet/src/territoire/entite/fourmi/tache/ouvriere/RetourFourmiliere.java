@@ -32,9 +32,8 @@ public class RetourFourmiliere extends TacheOuvriere {
 	}
 
 	/**
-	 * 1. deplace la fourmi
-	 * 2. deplace la proie
-	 * 3. regarde si la fourmi a atteind la fourmiliere
+	 * 1. deplace la fourmi 2. deplace la proie 3. regarde si la fourmi a atteind la
+	 * fourmiliere
 	 */
 	public void phaseRentrer() {
 		Position caseSuivante = nextCase(getDeplacement().getVoisin());
@@ -45,7 +44,8 @@ public class RetourFourmiliere extends TacheOuvriere {
 
 	/**
 	 * regarde si la fourmi a atteind la fourmiliere
-	 * @return 
+	 * 
+	 * @return
 	 */
 	public boolean voirFourmiliere() {
 		for (Position positionFourmiliere : getFourmi().getFourmiliere().getPosition()) {
@@ -92,7 +92,7 @@ public class RetourFourmiliere extends TacheOuvriere {
 	 * @return calcul la valeur d'importance de la casse en chasse
 	 */
 	int importanceCase(Position positionTest) {
-		//la case se trouve trop loin de la fourmiliere : importance null
+		// la case se trouve trop loin de la fourmiliere : importance null
 		if (positionTest.getX() > getFourmi().getFourmiliere().getPosition().get(0).getX() + DISTANCE_MAX)
 			return 0;
 		if (positionTest.getX() < getFourmi().getFourmiliere().getPosition().get(0).getX() - DISTANCE_MAX)
@@ -104,7 +104,7 @@ public class RetourFourmiliere extends TacheOuvriere {
 		// la case est la position precedente : importance tres faible
 
 		if (positionTest.equals(getDeplacement().getEmplacementPrecedent()))
-			return 1; 
+			return 1;
 		int pheromone = getTerritoire().getCase(positionTest).getPheromone(role);
 		// option case inataignable
 		if (pheromone == -2)
@@ -115,7 +115,7 @@ public class RetourFourmiliere extends TacheOuvriere {
 		// case avec pheromone : importance fort
 		if (pheromone < 50)
 			return 50;
-		// case avec beaucoup de pheromone : importance tres fort		
+		// case avec beaucoup de pheromone : importance tres fort
 		return pheromone;
 	}
 

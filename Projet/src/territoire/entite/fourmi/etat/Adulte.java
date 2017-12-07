@@ -36,6 +36,7 @@ public class Adulte extends Etat implements Trace {
 
 	/**
 	 * choisi le role de la fourmie selon le nombre de fourmis dans la fourmiliere
+	 * 
 	 * @param etat
 	 * @return
 	 */

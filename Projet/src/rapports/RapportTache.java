@@ -22,14 +22,13 @@ import territoire.entite.proie.etat.tache.vivant.EstAttaquer;
 import territoire.fourmiliere.Fourmiliere;
 import territoire.zone.Case;
 
-public class RapportTache implements Rapport{
+public class RapportTache implements Rapport {
 	private Integer nombreFourmi;
 	private Integer nombreAttaque;
 	private Integer nombreChasser;
 	private Integer nombreManger;
 	private Integer nombreRetourFourmiliere;
 
-	
 	public RapportTache() {
 		this.nombreFourmi = new Integer(0);
 		this.nombreAttaque = new Integer(0);
@@ -37,23 +36,22 @@ public class RapportTache implements Rapport{
 		this.nombreManger = new Integer(0);
 		this.nombreRetourFourmiliere = new Integer(0);
 	}
-	
+
 	@Override
 	public String toString() {
 		String resultat = "";
-		resultat += "Total : "  + nombreFourmi +"\n";
-		resultat += "Attaque : "  + nombreAttaque +"\n";
-		resultat += "Chasser : "+ nombreChasser +"\n" ;
-		resultat += "Manger : "  + nombreManger +"\n";
-		resultat += "Retour Fourmiliere : "  + nombreRetourFourmiliere +"\n";
+		resultat += "Total : " + nombreFourmi + "\n";
+		resultat += "Attaque : " + nombreAttaque + "\n";
+		resultat += "Chasser : " + nombreChasser + "\n";
+		resultat += "Manger : " + nombreManger + "\n";
+		resultat += "Retour Fourmiliere : " + nombreRetourFourmiliere + "\n";
 
-		
 		return resultat;
 	}
 
 	@Override
 	public void traceForFourmiliere(Fourmiliere fourmiliere) {
-		
+
 	}
 
 	@Override
@@ -79,7 +77,7 @@ public class RapportTache implements Rapport{
 
 	@Override
 	public void traceForFourmiliere(Reine reine) {
-		
+
 	}
 
 	@Override
@@ -97,9 +95,8 @@ public class RapportTache implements Rapport{
 	@Override
 	public void traceForFourmiliere(Territoire territoire) {
 		// TODO Auto-generated method stub
-		
-	}
 
+	}
 
 	@Override
 	public void traceForFourmiliere(Case caseTerritoire) {
@@ -114,7 +111,7 @@ public class RapportTache implements Rapport{
 	@Override
 	public void traceForFourmiliere(Chasser chasser) {
 		nombreChasser++;
-		
+
 	}
 
 	@Override
@@ -130,31 +127,31 @@ public class RapportTache implements Rapport{
 	@Override
 	public void traceForFourmiliere(MortProie mortProie) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void traceForFourmiliere(Vivant vivant) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void traceForFourmiliere(EstAttaquer estAttaquer) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void traceForFourmiliere(Deplacer deplacer) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void traceForFourmiliere(Appetit appetit) {
 		// TODO Auto-generated method stub
-		
+
 	}
-	
+
 }

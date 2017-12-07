@@ -4,14 +4,14 @@ import javafx.scene.control.TextField;
 import observeur.Evenement;
 import observeur.Observeur;
 
-public class MiseAJour implements Observeur{
+public class MiseAJour implements Observeur {
 
 	int temps;
 	TextField textTemps;
-	
-	MiseAJour(TextField textTemps){
+
+	MiseAJour(TextField textTemps) {
 		temps = 0;
-		this.textTemps=textTemps;
+		this.textTemps = textTemps;
 	}
 
 	@Override

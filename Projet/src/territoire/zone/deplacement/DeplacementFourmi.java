@@ -6,24 +6,23 @@ import territoire.zone.Position;
 
 public class DeplacementFourmi extends Deplacement {
 
-	
 	Fourmi fourmi;
-	
-	public DeplacementFourmi(Fourmi fourmi,Position position) {
-		this.fourmi=fourmi;
+
+	public DeplacementFourmi(Fourmi fourmi, Position position) {
+		this.fourmi = fourmi;
 		emplacement = position;
-		emplacementPrecedent=emplacement;
+		emplacementPrecedent = emplacement;
 		changerCase(position);
 	}
-	
+
 	Territoire getTerritoire() {
 		return fourmi.getFourmiliere().getTerritoire();
 	}
-	
-	public void changerCase(Position nouvellePosition){
-		emplacementPrecedent=emplacement;
+
+	public void changerCase(Position nouvellePosition) {
+		emplacementPrecedent = emplacement;
 		getTerritoire().getCase(emplacementPrecedent).supprimerEntite(fourmi);
-		emplacement=nouvellePosition;
+		emplacement = nouvellePosition;
 		getTerritoire().getCase(emplacement).ajouterEntite(fourmi);
 	}
 }

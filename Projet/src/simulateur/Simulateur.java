@@ -81,7 +81,7 @@ public class Simulateur extends Thread implements Observable {
 		timeline.setCycleCount(Timeline.INDEFINITE);
 		timeline.play();
 	}
-	
+
 	/*
 	 * Methodes
 	 */
