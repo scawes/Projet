@@ -1,6 +1,7 @@
 package gestionnaire;
 
 import javafx.scene.canvas.Canvas;
+import observeur.TimeChange;
 import simulateur.Simulateur;
 import territoire.Territoire;
 import territoire.zone.Position;
@@ -14,11 +15,12 @@ public class Gestionnaire {
 	
 	public Gestionnaire(Canvas canvas) {
 		simulateur =new Simulateur();
-		
 		territoire=new Territoire(this);
+		
+		getSimulateur().record(TimeChange.class.getName(), getTerritoire());
 		gestionVue = new GestionVue(this,canvas);
 		gestionRapport= new GestionRapport(this);
-
+		
 	}
 	
 	public Territoire getTerritoire() {

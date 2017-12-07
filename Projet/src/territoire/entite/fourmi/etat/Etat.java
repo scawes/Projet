@@ -5,9 +5,6 @@ import territoire.entite.DureeVie;
 import territoire.entite.fourmi.Fourmi;
 
 public abstract class Etat implements Trace {
-
-	private final double POID_MIN = 1.5;
-	private final double POID_MAX = 2;
 	
 	Fourmi fourmi;
 	protected double poid;

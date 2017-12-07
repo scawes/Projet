@@ -26,7 +26,9 @@ public class Vivant extends Etat implements Trace {
 	}
 	
 	public TacheProieVivant getTache() {
-		return new Deplacer(this);
+		Deplacer tache = new Deplacer(this);
+		tache.evenement();
+		return tache;
 	}
 	
 
@@ -39,8 +41,8 @@ public class Vivant extends Etat implements Trace {
 
 	@Override
 	public void trace(Rapport rapport) {
-		//rapport.traceForFourmiliere(this);
-		//role.trace(rapport);
+		rapport.traceForFourmiliere(this);
+		tache.trace(rapport);
 	}
 
 	public void actionFourmi(Attaque fourmi) {

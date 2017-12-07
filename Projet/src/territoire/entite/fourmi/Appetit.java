@@ -1,8 +1,11 @@
 package territoire.entite.fourmi;
 
-public class Appetit {
+import rapports.Rapport;
+import rapports.Trace;
 
-	final int JOURNEE = 1000;
+public class Appetit implements Trace{
+
+	final int JOURNEE = 120;
 	
 	double faim;
 	double appetit;
@@ -21,10 +24,11 @@ public class Appetit {
 	}
 	
 	public boolean decrementer(){
-		faim-=appetit;
 		if(faim<=0){
 			return true;
 		}
+		faim-=appetit;
+		
 		return false;
 	}
 	
@@ -34,5 +38,22 @@ public class Appetit {
 	
 	public double faim(){
 		return faim/JOURNEE;
+	}
+	
+	public double besoin(){
+		double result = appetit-faim/JOURNEE;
+		if(result<0) {
+			return 0;
+		}
+		return appetit-faim/JOURNEE;
+	}
+	
+	public double capacite(){
+		return appetit*JOURNEE;
+	}
+
+	@Override
+	public void trace(Rapport rapport) {
+		rapport.traceForFourmiliere(this);
 	}
 }

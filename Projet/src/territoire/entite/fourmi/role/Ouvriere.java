@@ -5,10 +5,12 @@ import rapports.Trace;
 import territoire.entite.fourmi.etat.Etat;
 import territoire.entite.fourmi.tache.ouvriere.Attaque;
 import territoire.entite.fourmi.tache.ouvriere.Chasser;
+import territoire.entite.fourmi.tache.ouvriere.Manger;
 import territoire.entite.fourmi.tache.ouvriere.RetourFourmiliere;
 import territoire.entite.fourmi.tache.ouvriere.TacheOuvriere;
 import territoire.entite.proie.Proie;
 import territoire.entite.proie.etat.MortProie;
+import territoire.zone.Position;
 
 public class Ouvriere extends Role implements Trace{
 	
@@ -32,6 +34,16 @@ public class Ouvriere extends Role implements Trace{
 	}
 	
 	public TacheOuvriere getTache() {
+		for (Position position : getEtat().getFourmi().getFourmiliere().getPosition()){
+			if(position.equals(getEtat().getFourmi().getDeplacement().getEmplacement())){
+				tache = new Manger(this);
+				return tache;
+			}
+		}
+		return getChasse();
+	}
+	
+	public TacheOuvriere getChasse() {
 		tache = new Chasser(this);
 		return tache;
 	}

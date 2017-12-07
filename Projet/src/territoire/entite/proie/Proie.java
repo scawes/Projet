@@ -1,5 +1,7 @@
 package territoire.entite.proie;
 
+import rapports.Rapport;
+import rapports.Trace;
 import territoire.Territoire;
 import territoire.entite.proie.etat.Etat;
 import territoire.entite.proie.etat.MortProie;
@@ -8,7 +10,7 @@ import territoire.zone.Position;
 import territoire.zone.deplacement.Deplacement;
 import territoire.zone.deplacement.DeplacementProie;
 
-public class Proie {
+public class Proie implements Trace {
 
 	Territoire territoire;
 	Etat etat;
@@ -56,13 +58,22 @@ public class Proie {
 	    return this.poid;
 	  }
 	  
-	  public void decrementePoid(double manger) {
-	    this.poid-= manger;
+	  public double decrementePoid(double manger) {
+		  if(this.poid-manger<0){
+			  manger=this.poid;
+		  }
+	    this.poid -= manger;
+	    return manger;
 	  }
 	  
 	  public void evenement() {
 		  etat.evenement();
 	  }
+
+	@Override
+	public void trace(Rapport rapport) {
+		etat.trace(rapport);
+	}
 	  
 	  /*public void deces() {
 

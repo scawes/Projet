@@ -7,6 +7,8 @@ import gestionnaire.Gestionnaire;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.canvas.Canvas;
+import javafx.scene.control.TextField;
+import observeur.TimeChange;
 import territoire.zone.Position;
 
 public class Controleur implements Initializable {
@@ -15,6 +17,9 @@ public class Controleur implements Initializable {
 	
 	@FXML
 	Canvas canvas;
+	
+	@FXML
+	TextField textTemps;
 	
 	
 	@FXML
@@ -33,25 +38,30 @@ public class Controleur implements Initializable {
 	}
 	
 	@FXML
+	public void traceMort(){
+		gestionnaire.getGestionRapport().traceMort();
+	}
+	
+	@FXML
 	public void zoom(){
-		gestionnaire.getGestionVue().setTaille(10);
+		gestionnaire.getGestionVue().zoom();;
 		gestionnaire.getGestionRapport().graphique();
 	}
 	
 	@FXML
 	public void dezoom(){
-		gestionnaire.getGestionVue().setTaille(5);
+		gestionnaire.getGestionVue().dezoom();
 		gestionnaire.getGestionRapport().graphique();
 	}
 	
 	@FXML
 	public void vite(){
-		gestionnaire.getSimulateur().setTimer(100);
+		gestionnaire.getSimulateur().plusVite();
 	}
 	
 	@FXML
 	public void lent(){
-		gestionnaire.getSimulateur().setTimer(1000);
+		gestionnaire.getSimulateur().plusLent();
 	}
 	
 	@FXML
@@ -84,6 +94,7 @@ public class Controleur implements Initializable {
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		gestionnaire=new Gestionnaire(canvas);
+		gestionnaire.getSimulateur().record(TimeChange.class.getName(), new MiseAJour(textTemps));
 		zoom();
 	}
 	

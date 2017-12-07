@@ -42,10 +42,16 @@ public class Fourmi implements Trace {
 	public void appetit(){
 		if(this.appetit.decrementer()){
 			//A COMPLETER : mort fourmi
+			//System.out.println("MORT");
 		};
+	}
+	
+	public Appetit getAppetit(){
+		return appetit;
 	}
 
 	public void evenement() {
+		appetit();
 		etat.evenement();
 	}
 	
@@ -57,6 +63,7 @@ public class Fourmi implements Trace {
 	public void trace(Rapport rapport) {
 		rapport.traceForFourmiliere(this);
 		etat.trace(rapport);
+		appetit.trace(rapport);
 	}
 	
 }

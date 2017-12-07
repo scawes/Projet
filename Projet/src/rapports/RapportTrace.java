@@ -1,6 +1,7 @@
 package rapports;
 
 import territoire.Territoire;
+import territoire.entite.fourmi.Appetit;
 import territoire.entite.fourmi.Fourmi;
 import territoire.entite.fourmi.etat.Adulte;
 import territoire.entite.fourmi.etat.Larve;
@@ -14,6 +15,11 @@ import territoire.entite.fourmi.tache.ouvriere.Attaque;
 import territoire.entite.fourmi.tache.ouvriere.Chasser;
 import territoire.entite.fourmi.tache.ouvriere.Manger;
 import territoire.entite.fourmi.tache.ouvriere.RetourFourmiliere;
+import territoire.entite.proie.Proie;
+import territoire.entite.proie.etat.MortProie;
+import territoire.entite.proie.etat.Vivant;
+import territoire.entite.proie.etat.tache.vivant.Deplacer;
+import territoire.entite.proie.etat.tache.vivant.EstAttaquer;
 import territoire.fourmiliere.Fourmiliere;
 import territoire.zone.Case;
 import territoire.zone.Position;
@@ -114,9 +120,15 @@ public class RapportTrace implements Rapport{
 	@Override
 	public void traceForFourmiliere(Case caseTerritoire) {
 		// TODO Auto-generated method stub
+		
 		if(caseTerritoire.getPosition().equals(new Position(10, 10))){
+			int nbProieConsomme=0;
 			System.out.println("Nourriture disponible : "+caseTerritoire.getProies().size());
 			System.out.println("Fourmi disponible : "+caseTerritoire.getEntite().size());
+			for(Proie proie : caseTerritoire.getProies()){
+				if(proie.getPoid()<=0)nbProieConsomme++;
+			}
+			System.out.println("Proie Consomme : "+nbProieConsomme);
 		}
 	}
 
@@ -140,6 +152,36 @@ public class RapportTrace implements Rapport{
 
 	@Override
 	public void traceForFourmiliere(RetourFourmiliere retourFourmiliere) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void traceForFourmiliere(MortProie mortProie) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void traceForFourmiliere(Vivant vivant) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void traceForFourmiliere(EstAttaquer estAttaquer) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void traceForFourmiliere(Deplacer deplacer) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void traceForFourmiliere(Appetit appetit) {
 		// TODO Auto-generated method stub
 		
 	}

@@ -7,16 +7,18 @@ import territoire.entite.fourmi.etat.Etat;
 
 public class Reine extends Role implements Trace {
 
-	int delaisPonte;
+	double delaisPonte;
 	
-	private static double dureeDeVieMin = 4000;
-	private static double dureeDeVieMax = 6000;
+	private final double DELAIS_PONTE = 5;
+	
+	private final double dureeDeVieMin = 4000;
+	private final double dureeDeVieMax = 6000;
 	//double poids;
 	
 	
 	public Reine(Etat etat) {
 		super(etat);
-		delaisPonte=5;
+		delaisPonte=DELAIS_PONTE;
 		
 		int dureeDeVie = ((int)(dureeDeVieMin + Math.random()* ((dureeDeVieMax-dureeDeVieMin)+1)));
 		etat.setDureeDeVie(dureeDeVie);

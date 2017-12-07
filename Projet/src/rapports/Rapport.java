@@ -1,6 +1,7 @@
 package rapports;
 
 import territoire.Territoire;
+import territoire.entite.fourmi.Appetit;
 import territoire.entite.fourmi.Fourmi;
 import territoire.entite.fourmi.etat.Adulte;
 import territoire.entite.fourmi.etat.Larve;
@@ -14,6 +15,10 @@ import territoire.entite.fourmi.tache.ouvriere.Attaque;
 import territoire.entite.fourmi.tache.ouvriere.Chasser;
 import territoire.entite.fourmi.tache.ouvriere.Manger;
 import territoire.entite.fourmi.tache.ouvriere.RetourFourmiliere;
+import territoire.entite.proie.etat.MortProie;
+import territoire.entite.proie.etat.Vivant;
+import territoire.entite.proie.etat.tache.vivant.Deplacer;
+import territoire.entite.proie.etat.tache.vivant.EstAttaquer;
 import territoire.fourmiliere.Fourmiliere;
 import territoire.zone.Case;
 
@@ -38,4 +43,9 @@ public interface Rapport {
 	
 	void traceForFourmiliere(Territoire territoire);
 	void traceForFourmiliere(Case caseTerritoire);
+	void traceForFourmiliere(MortProie mortProie);
+	void traceForFourmiliere(Vivant vivant);
+	void traceForFourmiliere(EstAttaquer estAttaquer);
+	void traceForFourmiliere(Deplacer deplacer);
+	void traceForFourmiliere(Appetit appetit);
 }

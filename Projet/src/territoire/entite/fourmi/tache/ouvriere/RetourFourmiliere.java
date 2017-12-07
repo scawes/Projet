@@ -1,12 +1,9 @@
 package territoire.entite.fourmi.tache.ouvriere;
 
 import rapports.Rapport;
-import territoire.Territoire;
-import territoire.entite.fourmi.Fourmi;
 import territoire.entite.fourmi.role.Ouvriere;
 import territoire.entite.proie.etat.MortProie;
 import territoire.zone.Position;
-import territoire.zone.deplacement.DeplacementFourmi;
 
 public class RetourFourmiliere extends TacheOuvriere{
 	
@@ -19,22 +16,6 @@ public class RetourFourmiliere extends TacheOuvriere{
 		super(role);
 		this.proie=proie;
 		// TODO Auto-generated constructor stub
-	}
-	
-	Territoire getTerritoire() {
-		return getFourmi().getFourmiliere().getTerritoire();
-	}
-	
-	Fourmi getFourmi() {
-		return role.getEtat().getFourmi();
-	}
-	
-	DeplacementFourmi getDeplacement() {
-		return getFourmi().getDeplacement();
-	}
-	
-	int getIndexFourmiliere(){
-		return getTerritoire().getFourmiliere().indexOf(role.getEtat().getFourmi().getFourmiliere())+1;
 	}
 	
 	public void phaseRentrer() {

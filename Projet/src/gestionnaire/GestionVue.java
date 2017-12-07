@@ -5,10 +5,6 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 import observeur.Evenement;
 import observeur.Observeur;
-import observeur.TimeChange;
-import territoire.entite.fourmi.Fourmi;
-import territoire.entite.fourmi.etat.Adulte;
-import territoire.fourmiliere.Fourmiliere;
 import territoire.zone.Case;
 import territoire.zone.Position;
 
@@ -29,7 +25,6 @@ public class GestionVue implements Observeur{
 		decalageX=0;
 		decalageY=0;
 		taille = 10;
-		gestionnaire.getSimulateur().record(TimeChange.class.getName(), gestionnaire.getTerritoire());
 	}
 	
 	public void setCanvas(Canvas canvas) {
@@ -40,6 +35,18 @@ public class GestionVue implements Observeur{
 	
 	public void setTaille(int taille) {
 		this.taille=taille;
+	}
+	
+	public void zoom() {
+		if(this.taille<20){
+			taille+=5;
+		}
+	}
+	
+	public void dezoom() {
+		if(this.taille>5){
+			taille-=5;
+		}
 	}
 	
 	public void decalageDroite(){

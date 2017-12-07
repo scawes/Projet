@@ -29,8 +29,7 @@ public class MortProie extends Etat implements Trace {
 
 	@Override
 	public void trace(Rapport rapport) {
-		//rapport.traceForFourmiliere(this);
-		//role.trace(rapport);
+		rapport.traceForFourmiliere(this);
 	}
 
 	

@@ -3,6 +3,7 @@ package territoire.entite.proie.etat.tache.vivant;
 import java.util.ArrayList;
 import java.util.List;
 
+import rapports.Rapport;
 import territoire.entite.fourmi.tache.ouvriere.Attaque;
 import territoire.entite.proie.Proie;
 import territoire.entite.proie.etat.Vivant;
@@ -68,6 +69,11 @@ public class EstAttaquer extends TacheProieVivant {
 	public boolean estAttaquer() {
 		// TODO Auto-generated method stub
 		return true;
+	}
+
+	@Override
+	public void trace(Rapport rapport) {
+		rapport.traceForFourmiliere(this);
 	}
 	
 }

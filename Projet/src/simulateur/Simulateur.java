@@ -15,14 +15,26 @@ import observeur.TimeChange;
 
 public class Simulateur extends Thread implements Observable {
 	
-	int TICK = 100;
+	int vitesse;
 
 	private Map<String, List<Observeur>> observers;
 	
 	
 	Timeline timeline;
 	
+	public void plusVite(){
+		if(vitesse>100){
+			vitesse -= 100;
+		}
+		setTimer(vitesse);
+	}
 	
+	public void plusLent(){
+		if(vitesse<2000){
+			vitesse +=50;
+		}
+		setTimer(vitesse);
+	}
 
 	public Simulateur() {
 		this(100);
@@ -30,7 +42,7 @@ public class Simulateur extends Thread implements Observable {
 	
 	//simulateur temps optimiser canvas
 	public Simulateur(int time) {
-		
+		vitesse = 100;
 		this.observers = new HashMap<>();
 		timeline = new Timeline(
                 new KeyFrame(

@@ -129,6 +129,9 @@ public class Territoire implements Observeur,Trace{
 		for(Fourmiliere fourmiliere : listeFourmiliere){
 			fourmiliere.trace(rapport);
 		}
+		for(Proie proie : listeProie){
+			proie.trace(rapport);
+		}
 		for(Integer positionX : grilleX.keySet()){
 			for(Integer PositionY:grilleX.get(positionX).keySet()){
 				grilleX.get(positionX).get(PositionY).trace(rapport);

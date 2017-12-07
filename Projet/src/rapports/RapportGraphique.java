@@ -2,6 +2,7 @@ package rapports;
 
 import gestionnaire.GestionRapport;
 import territoire.Territoire;
+import territoire.entite.fourmi.Appetit;
 import territoire.entite.fourmi.Fourmi;
 import territoire.entite.fourmi.etat.Adulte;
 import territoire.entite.fourmi.etat.Larve;
@@ -15,6 +16,10 @@ import territoire.entite.fourmi.tache.ouvriere.Attaque;
 import territoire.entite.fourmi.tache.ouvriere.Chasser;
 import territoire.entite.fourmi.tache.ouvriere.Manger;
 import territoire.entite.fourmi.tache.ouvriere.RetourFourmiliere;
+import territoire.entite.proie.etat.MortProie;
+import territoire.entite.proie.etat.Vivant;
+import territoire.entite.proie.etat.tache.vivant.Deplacer;
+import territoire.entite.proie.etat.tache.vivant.EstAttaquer;
 import territoire.fourmiliere.Fourmiliere;
 import territoire.zone.Case;
 
@@ -115,6 +120,36 @@ public class RapportGraphique implements Rapport{
 
 	@Override
 	public void traceForFourmiliere(RetourFourmiliere retourFourmiliere) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void traceForFourmiliere(MortProie mortProie) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void traceForFourmiliere(Vivant vivant) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void traceForFourmiliere(EstAttaquer estAttaquer) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void traceForFourmiliere(Deplacer deplacer) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void traceForFourmiliere(Appetit appetit) {
 		// TODO Auto-generated method stub
 		
 	}

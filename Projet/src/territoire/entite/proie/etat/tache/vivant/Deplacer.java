@@ -1,5 +1,6 @@
 package territoire.entite.proie.etat.tache.vivant;
 
+import rapports.Rapport;
 import territoire.Territoire;
 import territoire.entite.proie.Proie;
 import territoire.entite.proie.etat.Vivant;
@@ -72,6 +73,11 @@ public class Deplacer extends TacheProieVivant {
 	public boolean estAttaquer() {
 		// TODO Auto-generated method stub
 		return false;
+	}
+
+	@Override
+	public void trace(Rapport rapport) {
+		rapport.traceForFourmiliere(this);
 	}
 	
 }

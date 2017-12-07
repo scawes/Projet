@@ -6,13 +6,14 @@ import territoire.entite.fourmi.Fourmi;
 
 public class Larve extends Etat implements Trace{
   
-	private final int VIE_LARVE = 10;
+	private final int VIE_LARVE = 150;
 	private final double POID = 6;
 	
 	Larve(Fourmi fourmi) {
 		super(fourmi);
 		this.setDureeDeVie(VIE_LARVE);
 		setPoid(POID);
+		getFourmi().setAppetit(POID);
 		
 	}
 	/*

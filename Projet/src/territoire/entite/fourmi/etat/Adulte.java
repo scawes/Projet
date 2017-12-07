@@ -48,6 +48,7 @@ public class Adulte extends Etat implements Trace {
 	void vieillir() {
 		if(dureeDeVie.decrementer()) {
 			//A COMPLETER : mort fourmi
+			//System.out.println("MORT VIEILESSE");
 		}
 	}
 	
