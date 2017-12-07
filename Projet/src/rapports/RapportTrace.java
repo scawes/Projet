@@ -122,8 +122,7 @@ public class RapportTrace implements Rapport {
 
 		if (caseTerritoire.getPosition().equals(new Position(10, 10))) {
 			int nbProieConsomme = 0;
-			System.out.println("Nourriture disponible : " + caseTerritoire.getProies().size());
-			System.out.println("Fourmi disponible : " + caseTerritoire.getEntite().size());
+			System.out.println("Proie dans le nid : " + caseTerritoire.getProies().size());
 			for (Proie proie : caseTerritoire.getProies()) {
 				if (proie.getPoid() <= 0)
 					nbProieConsomme++;

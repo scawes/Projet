@@ -9,7 +9,7 @@ public class Appetit implements Trace {
 	 * Attributs
 	 */
 
-	final int JOURNEE = 200;
+	final int JOURNEE = 400;
 
 	double faim;
 	double appetit;
